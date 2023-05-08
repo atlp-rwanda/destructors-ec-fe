@@ -1,8 +1,22 @@
-import TestElements from "./components/TestElements";
-// import './App.css'
+import { useState } from 'react'
+import MyComponent from './components/MyComponent'
+
 
 function App() {
-  return <TestElements />;
+  const [count, setCount] = useState(0)
+
+  return (
+    <>
+      <div>
+        
+        <a href="https://react.dev" target="_blank">
+    
+        </a>
+      </div>
+      <h1 className='text-6xl text-blue-500'> Destructors </h1>
+      <MyComponent/>
+    </>
+  )
 }
 
-export default App;
+export default App
