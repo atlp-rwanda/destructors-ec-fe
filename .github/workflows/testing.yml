@@ -23,3 +23,7 @@ jobs:
           npm ci
           npm run build --if-present
           npm test
+      - name: Send coverage report to Coveralls
+        env:
+         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: npm run coverage
