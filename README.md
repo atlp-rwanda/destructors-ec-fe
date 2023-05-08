@@ -30,3 +30,6 @@ npm run dev
 ## Contributing
 
 After cloning this repo, first create **new branch** by `git checkout -b name_of_branch`; then add your contribution. Push and then open pull request.   
+
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/cbd9fc55fe213b1a3f65/maintainability)](https://codeclimate.com/github/atlp-rwanda/destructors-ec-fe/maintainability)
