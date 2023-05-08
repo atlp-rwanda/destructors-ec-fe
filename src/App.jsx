@@ -1,22 +1,15 @@
-import { useState } from 'react'
-import MyComponent from './components/MyComponent'
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Counter from './components/counter';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        
-        <a href="https://react.dev" target="_blank">
-    
-        </a>
-      </div>
-      <h1 className='text-6xl text-blue-500'> Destructors </h1>
-      <MyComponent/>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<Counter />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
