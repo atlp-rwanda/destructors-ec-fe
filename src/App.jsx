@@ -1,15 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Counter from './components/counter';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navigator from './routes/index.jsx'
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route exact path='/' element={<Counter />} />
-      </Routes>
+      <Navigator />
     </Router>
-  );
+  )
 }
 
 export default App;
