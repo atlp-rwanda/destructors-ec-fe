@@ -8,6 +8,18 @@ module.exports = {
       backgroundImage: {
         login: "",
       },
+      colors: {
+        brand: "#37475A",
+        primary: '#1B73E8',
+        hover: '#95CAEC',
+        hover2: '#f3f7fc',
+        background: '#fafafa',
+        red: '#de3929',
+        sidebar: '#F4F4F4',
+        active: '#E2E6EB',
+        hovercancel: '#9B1A1B',
+        cancel: '#9B1A1A',
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         raleway: ['Raleway', 'sans-serif'],
@@ -39,7 +51,9 @@ module.exports = {
       mdl:{ min: "1024px"},
       lg: { min: "1440px" },
       xl: { min: "2560px" },
+      laptop: { max: "1165px"}
+      },
+    
     },
-  },
   plugins: [],
 };

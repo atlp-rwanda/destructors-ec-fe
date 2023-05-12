@@ -18,8 +18,8 @@ const InputField = forwardRef(({ parentClassName, ...props }, ref) => {
           {...props}
         />
         {props.error && (
-          <p className='text-red-500 text-xs' id={`${props.name}-error`}>
-            {props.error?.message}
+          <p className='text-rose-400 text-xs' id={`${props.name}-error`}>
+            {props.error?.message.split(',')[0]}
           </p>
         )}
       </div>
