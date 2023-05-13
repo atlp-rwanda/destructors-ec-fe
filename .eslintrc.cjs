@@ -45,12 +45,6 @@ module.exports = {
       },
     ],
     "consistent-return": 0,
-
-    "prefer-destructuring": [
-      2,
-      { array: false, object: false },
-      { enforceForRenamedProperties: false },
-    ],
     "prefer-object-spread": 0,
     "prefer-rest-params": 0,
     "prefer-spread": 0,
@@ -75,5 +69,15 @@ module.exports = {
     "comma-spacing": "error",
     "brace-style": ["error", "1tbs", { allowSingleLine: true }],
     semi: ['error', 'always'],
+    "prefer-destructuring": [
+      "error",
+      {
+        array: false,
+        object: false,
+      },
+      {
+        enforceForRenamedProperties: false,
+      },
+    ],
   },
 };

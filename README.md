@@ -32,3 +32,8 @@ npm run dev
 ## Contributing
 
 After cloning this repo, first create **new branch** by `git checkout -b name_of_branch`; then add your contribution. Push and then open pull request.   
+
+[![Coverage Status](https://coveralls.io/repos/github/atlp-rwanda/destructors-ec-fe/badge.svg?branch=ch-run-codeclimate-coverage-185106841)](https://coveralls.io/github/atlp-rwanda/destructors-ec-fe?branch=ch-run-codeclimate-coverage-185106841)
+
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/cbd9fc55fe213b1a3f65/maintainability)](https://codeclimate.com/github/atlp-rwanda/destructors-ec-fe/maintainability)
