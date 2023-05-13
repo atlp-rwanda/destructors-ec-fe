@@ -11,7 +11,7 @@ export default defineConfig({
     setupFiles: "./setupTests",
     coverage: {
       provider: "c8",
-      reporter: ["text", "json", "html"],
+      reporter: ["text", "json", "html", "lcov"],
     },
   },
   build: {
