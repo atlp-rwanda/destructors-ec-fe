@@ -6,6 +6,7 @@ import ProfilePage from "../pages/Profile";
 import Login from "../components/Login";
 import Auth from "../utils/Auth";
 import TestElements from "../components/TestElements";
+import GetUsers from "../components/GetUsers";
 
 const navigator = () => {
   return (
@@ -13,6 +14,7 @@ const navigator = () => {
     <div>
       <Routes>
         <Route path="/" element={<Welcome />}></Route>
+        <Route path="/users" element={<GetUsers />}></Route>
         <Route path="/" element={<TestElements />}></Route>
         <Route path="/" element={<Auth />}>
           <Route path="/home" element={<Home />}></Route>

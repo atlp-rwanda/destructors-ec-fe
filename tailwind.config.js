@@ -24,6 +24,12 @@ export default {
         active: '#E2E6EB',
         hovercancel: '#9B1A1B',
         cancel: '#9B1A1A',
+        customBlue: '#2D719D',
+        customYellow: '#E9C368',
+        customGreen: '#2E9E8F',
+        customGray: '#37475A',
+        customBlack: '#131A22',
+
       },
     },
   },
