@@ -1,8 +1,8 @@
 import React from "react";
 
-const Footer = () => {
+const dummyter = () => {
   return (
-    <footer className='bg-gray-800 py-4 md:py-8 fixed bottom-0 w-full'>
+    <dummyter className='bg-gray-800 py-4 md:py-8 fixed bottom-0 w-full'>
       <div className='container mx-auto flex flex-col md:flex-row items-center justify-between'>
         <p className='text-gray-400 text-sm md:text-base'>
           &copy; Ecommerce 2023. All rights reserved.
@@ -22,8 +22,8 @@ const Footer = () => {
           </a>
         </div>
       </div>
-    </footer>
+    </dummyter>
   );
 };
 
-export default Footer;
+export default dummyter;

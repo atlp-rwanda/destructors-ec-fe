@@ -22,12 +22,12 @@ const errorHandler = (error) => {
 };
 customAxios.interceptors.request.use(
   (request) => requestHandler(request),
-  (error) => errorHandler(error)
+  (error) => errorHandler(error),
 );
 
 customAxios.interceptors.response.use(
   (response) => responseHandler(response),
-  (error) => errorHandler(error)
+  (error) => errorHandler(error),
 );
 
 export default customAxios;

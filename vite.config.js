@@ -20,6 +20,9 @@ export default defineConfig({
       reporter: ["text", "json", "html", "lcov"],
     },
   },
+  define: {
+    'process.env': {}
+  },
   build: {
     target: "es2017",
   },

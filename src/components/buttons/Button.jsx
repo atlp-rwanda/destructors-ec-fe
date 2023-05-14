@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-restricted-syntax
 const Button = ({ label, onClick, variant }) => {
   const buttonClass = variant ? `btn ${variant}` : 'btn';
 

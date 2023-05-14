@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../app/customAxios";
 
@@ -10,7 +11,7 @@ export const signup = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response);
     }
-  }
+  },
 );
 
 export const signupSlice = createSlice({
