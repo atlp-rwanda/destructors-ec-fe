@@ -9,7 +9,9 @@
     "test": "vitest --coverage",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
@@ -23,6 +25,13 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@storybook/addon-essentials": "^7.0.9",
+    "@storybook/addon-interactions": "^7.0.9",
+    "@storybook/addon-links": "^7.0.9",
+    "@storybook/blocks": "^7.0.9",
+    "@storybook/react": "^7.0.9",
+    "@storybook/react-vite": "^7.0.9",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
@@ -37,6 +46,9 @@
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.2",
-    "vitest": "^0.31.0"
+    "vitest": "^0.31.0",
+    "eslint-plugin-storybook": "^0.6.12",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.0.9"
   }
 }
