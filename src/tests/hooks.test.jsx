@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useProductAll, useProductDetails } from "../components/products/hooks";
 import { Provider } from "react-redux";
-import { store } from "../redux/app/store";
+import store from "../redux/store";
 import { describe, test, expect, vi } from "vitest";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";

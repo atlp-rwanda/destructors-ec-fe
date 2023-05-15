@@ -12,6 +12,8 @@ import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import expireReducer from 'redux-persist-expire';
 import usersReducer from "./reducers/AdminSlice";
+import profileSlice from './reducers/profileSlice';
+
 
 const middlewares = [];
 if (process.env.NODE_ENV === 'development') {
@@ -47,7 +49,8 @@ const store = configureStore({
     login:persistedLogin,
     createProduct: productReducer,
     categories: categoriesReducer,
-    user:userSlice
+    user:userSlice,
+    profile: profileSlice,
   },
   middleware: [...middlewares, thunk],
 });
