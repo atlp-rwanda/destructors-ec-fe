@@ -36,6 +36,7 @@ const persistConfig = {
 const persistedLogin = persistReducer(persistConfig, loginReducer);
 import productReducer from './reducers/createProductSlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
+import userSlice from "./reducers/userSlice";
 
 const store = configureStore({
   reducer: {
@@ -46,6 +47,7 @@ const store = configureStore({
     login:persistedLogin,
     createProduct: productReducer,
     categories: categoriesReducer,
+    user:userSlice
   },
   middleware: [...middlewares, thunk],
 });

@@ -5,6 +5,7 @@ import LandingPage from "../pages/LandingPage";
 import ProductDetails from "../components/products/ProductDetails";
 import LoginPage from "../pages/auth/LoginPage";
 import CreateProduct from "../pages/CreateProductPage";
+import { UpdatePassword } from "../components/forms/UpdatePassword";
 
 const navigator = () => {
   return (
@@ -16,6 +17,7 @@ const navigator = () => {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/products/:id" element={<ProductDetails />}></Route>
         <Route path='/product' element={<CreateProduct />}></Route>
+        <Route path='/profile/update-password' element={<UpdatePassword />}></Route>
       </Routes>
     </div>
   );
