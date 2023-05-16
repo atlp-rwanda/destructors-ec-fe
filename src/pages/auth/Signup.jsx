@@ -29,7 +29,7 @@ const SignupPage = () => {
           <p className='text-xl  xs:w-full '>
           already a user ?
             <br />
-            <a href='/auth/signin' className='text-[#2D719D] pt-2'>
+            <a href='/auth/login' className='text-[#2D719D] pt-2'>
             sign in!
             </a>
           </p>

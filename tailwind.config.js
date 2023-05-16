@@ -16,7 +16,7 @@ module.exports = {
         rubik: ['Rubik', 'sans-serif'],
       },
       borderRadius: {
-        circle: '50%'
+        circle: '50%',
       },
       colors: {
         brand: "#37475A",
