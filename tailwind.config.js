@@ -29,7 +29,6 @@ export default {
         customGreen: '#2E9E8F',
         customGray: '#37475A',
         customBlack: '#131A22',
-
       },
     },
   },

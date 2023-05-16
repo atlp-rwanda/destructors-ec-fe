@@ -7,7 +7,7 @@ const getUsers = async (token) => {
         'Authorization': token,
       },
     });
-    // console.log(response.data.users);
+    console.log(response.data.users);
     return response.data.users;
   } catch (error) {
     console.error(error);
