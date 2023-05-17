@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+module.exports = {
+  content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -13,21 +10,26 @@ export default {
       },
       borderRadius: {
         circle: '50%',
+        backgroundImage: {
+          login: "",
+        },
+        colors: {
+          brand: "#37475A",
+        },
+        fontFamily: {
+          poppins: ["Poppins", "sans-serif"],
+        },
       },
-      colors: {
-        primary: '#1B73E8',
-        hover: '#053A80',
-        hover2: '#f3f7fc',
-        background: '#fafafa',
-        red: '#de3929',
-        sidebar: '#F4F4F4',
-        active: '#E2E6EB',
-        hovercancel: '#9B1A1B',
-        cancel: '#9B1A1A',
+      screens: {
+        xs: { max: "425px" },
+        sm: { min: "426px" },
+        md: { min: "769px" },
+        lg: { min: "1440px" },
+        xl: { min: "2560px" },
       },
     },
+    variants: {},
+    plugins: [],
   },
-  variants: {},
-  plugins: [],
 };
 
