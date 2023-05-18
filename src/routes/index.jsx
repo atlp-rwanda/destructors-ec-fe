@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import { Route, Router, Routes } from "react-router";
 import Home from "../pages/DashboardPage";
 import Welcome from "../pages/WelcomePage";
 import About from "../pages/About.jsx";
@@ -23,4 +23,5 @@ const navigator = () => {
     </div>
   );
 };
+
 export default navigator;

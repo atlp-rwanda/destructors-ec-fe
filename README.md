@@ -1,5 +1,3 @@
-[![HoundCI](https://img.shields.io/badge/houndci-passing-brightgreen.svg)](https:/houndci.com)
-
 # Destructors Ec-Frontend
 
 ## About the Project
