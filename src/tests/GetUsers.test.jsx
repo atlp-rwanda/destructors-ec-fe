@@ -1,47 +1,56 @@
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import GetUsers from '../components/GetUsers';
 
-describe('GetUsers component', () => {
-  test('renders the component', async () => {
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from "react-redux";
+import store from "../redux/store";
+import React from 'react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import GetUsers from '../components/GetUsers';
+import { fetchUsers } from '../redux/actions/FetchUsers';
+import { updateStatus } from '../redux/actions/UpdateUser';
+vi.mock('../redux/actions/FetchUsers', () => ({
+  fetchUsers: vi.fn(),
+}));
+vi.mock('../redux/actions/UpdateUser', () => ({
+  updateStatus: vi.fn(),
+}));
+
+describe('GetUsers', () => {
+  test('renders the component', () => {
     render(
       <BrowserRouter basename="/">
-        <GetUsers />
+        <Provider store={store}>
+          <GetUsers />
+        </Provider>
       </BrowserRouter>,
     );
-    await screen.findByText((content, element) => {
-      return element.textContent === 'All Users';
-    });
-    expect(screen.queryAllByText('Dashboard')).toHaveLength(2);
+    expect(screen.getByText('Dashboard')).toBeInTheDocument();
     expect(screen.getByText('Assign Role')).toBeInTheDocument();
-    expect(screen.getByText('Logout')).toBeInTheDocument();
     expect(screen.getByText('Users')).toBeInTheDocument();
-    expect(screen.getByText('Buyers')).toBeInTheDocument();
-    expect(screen.getByText('Sellers')).toBeInTheDocument();
-    expect(screen.getByText('Admins')).toBeInTheDocument();
-    expect(screen.queryByText('mfirstname')).toBeNull();
-    expect(screen.queryByText('msecondname')).toBeNull();
-    expect(screen.queryByText('tstmail1234@gmail.com')).toBeNull();
+    expect(screen.getByText('Settings')).toBeInTheDocument();
+    expect(screen.getByText('Logout')).toBeInTheDocument();
   });
 
-  test('disables a user when confirmation is accepted', async () => {
-    <BrowserRouter basename="/">
-      <GetUsers />
-    </BrowserRouter>,
+  test('fetches users on component mount', () => {
+    expect(fetchUsers).toHaveBeenCalledTimes(1);
+  });
 
-    await screen.findByText('All Users');
+  test('disables account on disable button click', async () => {
+    const user = { id: 'user1' };
     const disableButton = screen.getByText('Disable');
-    expect(disableButton).toBeInTheDocument();
-    disableButton.click();
-    await screen.findByText('Are you sure you want to disable this user account?');
-    const confirmButton = screen.getByText('Disable');
-    confirmButton.click();
-    expect(disableUsers).toHaveBeenCalledTimes(1);
-    const cancelButton = screen.getByText('Cancel');
-    expect(cancelButton).toHaveBeenCalledTimes(1);
-    cancelButton.click();
-    expect(disableUsers).toHaveBeenCalledWith(1, expect.any(String));
-    const emailElement = screen.getByAltText('lock');
-    expect(emailElement).toBeInTheDocument();
+    fireEvent.click(disableButton);
+    expect(disableAccount).toHaveBeenCalledWith(user);
+    await waitFor(() => {
+      expect(disableAccount).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  test('updates user status on activate button click', async () => {
+    const user = { id: 'user1' };
+    const activateButton = screen.getByText('Activate');
+    fireEvent.click(activateButton);
+    expect(updateStatus).toHaveBeenCalledWith(user);
+    await waitFor(() => {
+      expect(updateStatus).toHaveBeenCalledTimes(1);
+    });
   });
 });
