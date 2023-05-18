@@ -10,8 +10,7 @@ import { signup } from "../../redux/reducers/signupSlice";
 import InputField from "./InputField";
 import Button from "./Button";
 
-/* eslint-disable no-restricted-syntax */
-function SignupForm () {
+function SignupForm() {
   const { isLoading } = useSelector((state) => state.signup);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);

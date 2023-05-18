@@ -12,7 +12,7 @@ describe("SignupForm", () => {
         <Provider store={store}>
           <SignupForm />
         </Provider>
-      </BrowserRouter>,
+      </BrowserRouter>
     );
     it("renders a form with required input fields", () => {
       render(
@@ -20,7 +20,7 @@ describe("SignupForm", () => {
           <Provider store={store}>
             <SignupForm />
           </Provider>
-        </BrowserRouter>,
+        </BrowserRouter>
       );
       expect(screen.getByPlaceholderText("firstname")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("lastname")).toBeInTheDocument();
@@ -33,7 +33,7 @@ describe("SignupForm", () => {
           <Provider store={store}>
             <SignupForm />
           </Provider>
-        </BrowserRouter>,
+        </BrowserRouter>
       );
 
       const firstNameInput = screen.getByPlaceholderText("firstname");

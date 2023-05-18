@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-syntax */
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const counterSlice = createSlice({
