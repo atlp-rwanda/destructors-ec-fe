@@ -1,25 +1,19 @@
-import { useState, useEffect } from 'react'
-import { Outlet, Navigate } from 'react-router-dom'
+
+import { Outlet, Navigate } from 'react-router-dom';
 
 const Auth = () => {
 
   const userAuth = () => {
-    const userlogin = localStorage.getItem('user')
-    if(userlogin){
-
-        return userlogin;
-
+    const userlogin = localStorage.getItem('user');
+    if (userlogin){
+      return userlogin;
     } else {
-      
-        return userlogin;
+      return userlogin;
     }
 
-  }  
-  const user =userAuth();
+  };
+  const user = userAuth();
+  return  user ? <Outlet/> : <Navigate to='/login'/>;
+};
 
-  return  user ? <Outlet/> : <Navigate to='/login'/>
-    
-  
-}
-
-export default Auth
+export default Auth;
