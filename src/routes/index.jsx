@@ -3,10 +3,8 @@ import Home from "../pages/DashboardPage";
 import Welcome from "../pages/WelcomePage";
 import About from "../pages/About.jsx";
 import ProfilePage from "../pages/Profile";
-import Login from "../components/Login";
-import Auth from "../utils/Auth";
 import SignupPage from "../pages/auth/Signup";
-
+import Auth from "../utils/Auth";
 const navigator = () => {
   return (
     <div>
@@ -17,13 +15,10 @@ const navigator = () => {
         <Route path="about" element={<About />}></Route>
         <Route path="profile" element={<ProfilePage />}></Route>
         <Route path='/' element={<Welcome />}></Route>
-        <Route path='/' element={<Auth />}>
           <Route path='/home' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='/profile' element={<ProfilePage />}></Route>
-        </Route>
-        <Route path='/auth/signup' element={<SignupPage />} />
-        <Route path='/login' element={<Login />}></Route>
+          <Route path='/auth/signup' element={<SignupPage />} />
       </Routes>
     </div>
   );

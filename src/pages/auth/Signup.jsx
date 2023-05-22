@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import SignupForm from "../../components/forms/SignupForm";
 import middleImage from "../../public/images/middleImage.png";
 import bgImage from "../../public/images/bgsvg.svg";
+import GoogleLogin from "../../components/GoggleLogin";
 
 const SignupPage = () => {
   const data = useSelector((state) => state.signup.data);
@@ -16,6 +17,7 @@ const SignupPage = () => {
   });
 
   return (
+    <div>
     <div className='flex flex-col w-full md:flex-row md:h-full md:justify-between justify-center items-center xs:flex-grow recursive'>
       <img
         src={bgImage}
@@ -45,6 +47,11 @@ const SignupPage = () => {
           <hr className='flex-grow border-gray-300 border-t' />
         </div>
         <div className='flex items-center justify-center mt-4'></div>
+        <div className='flex items-center justify-center mt-4'>
+
+      <GoogleLogin/>
+        </div>
+      </div>
       </div>
     </div>
   );
