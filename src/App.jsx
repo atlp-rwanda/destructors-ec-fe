@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navigator from "./routes/index.jsx";
 import Header from "./components/Header.jsx";
 
-function App() {
+function App () {
   return (
     <div className='overflow-hidden'>
       <Router>
@@ -16,5 +16,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
