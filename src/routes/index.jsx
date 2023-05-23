@@ -1,24 +1,17 @@
 import { Route, Routes } from "react-router";
-import Home from "../pages/DashboardPage";
-import Welcome from "../pages/WelcomePage";
-import About from "../pages/About.jsx";
-import ProfilePage from "../pages/Profile";
+import Login from "../components/Login";
 import SignupPage from "../pages/auth/Signup";
-import Auth from "../utils/Auth";
+import LandingPage from "../pages/LandingPage";
+import ProductDetails from "../components/products/ProductDetails";
+
 const navigator = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Welcome />}></Route>
-        <Route path="/" element={<Auth />} />
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="about" element={<About />}></Route>
-        <Route path="profile" element={<ProfilePage />}></Route>
-        <Route path='/' element={<Welcome />}></Route>
-          <Route path='/home' element={<Home />}></Route>
-          <Route path='/about' element={<About />}></Route>
-          <Route path='/profile' element={<ProfilePage />}></Route>
-          <Route path='/auth/signup' element={<SignupPage />} />
+        <Route path='/auth/signup' element={<SignupPage />} />
+        <Route path='/login' element={<Login />}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/products/:id" element={<ProductDetails />}></Route>
       </Routes>
     </div>
   );

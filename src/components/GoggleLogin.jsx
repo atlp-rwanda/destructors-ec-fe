@@ -1,7 +1,6 @@
 import React from 'react';
 import Google from '../assets/Google.png';
-
-function GoogleLogin() {
+function GoogleLogin () {
   const handleLogin = () => {
     const baseUrl = import.meta.env.VITE_BASE_URL;
     const googleLoginUrl = import.meta.env.VITE_GOOGLE_LOGIN_APP_API_URL;

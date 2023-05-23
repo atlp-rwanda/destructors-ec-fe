@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
+/* eslint-disable no-restricted-syntax */
 import React, { forwardRef } from "react";
 
 const InputField = forwardRef(({ parentClassName, ...props }, ref) => {
