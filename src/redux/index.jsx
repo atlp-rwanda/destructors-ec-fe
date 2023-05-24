@@ -1,6 +1,8 @@
 /* eslint-disable eol-last */
 import * as counterSlice from './reducers/counterSlice';
 import { combineReducers } from '@reduxjs/toolkit';
+import productReducer from './reducers/createProductSlice';
+import categoriesReducer from './reducers/retriveCategoriesSlice';
 
 const allReducers = combineReducers({
   counter: counterSlice.default,
@@ -11,7 +13,10 @@ const allReducers = combineReducers({
     default:
       return state;
     }
+
   },
+  createProduct: productReducer,
+  categories: categoriesReducer
 });
 
 export default allReducers;
