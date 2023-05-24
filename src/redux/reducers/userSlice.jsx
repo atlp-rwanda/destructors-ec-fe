@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-unused-vars */
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { showErrorMessage, showSuccessMessage } from "../../utils/toast";
 import axios from "../app/customAxios";
@@ -7,7 +9,7 @@ const initialState = {
   newPassword: '',
   confirmPassword: '',
   error: '',
-  loading: false
+  loading: false,
 };
 
 export const updatePassword = createAsyncThunk(
@@ -18,7 +20,7 @@ export const updatePassword = createAsyncThunk(
       const userData = { currentPassword, newPassword, confirmPassword };
       const response = await axios.patch(`/users/update-password`, userData);
       if (response.status != 200) {
-        const data =await response.data;
+        const data = await response.data;
         return rejectWithValue(data.error);
       }
 
@@ -28,7 +30,7 @@ export const updatePassword = createAsyncThunk(
     } catch (error) {
       return rejectWithValue("Failed to update password.");
     }
-  }
+  },
 );
 
 export const userSlice = createSlice({

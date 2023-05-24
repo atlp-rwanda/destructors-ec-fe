@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -80,6 +81,7 @@ const UpdateProfile = () => {
     }
   };
 
+  // eslint-disable-next-line no-unused-vars
   const renderErrorMessage = (fieldName) => {
     return errors[fieldName] && <p className="mt-2 text-sm text-red-500">{errors[fieldName].message}</p>;
   };

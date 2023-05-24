@@ -26,10 +26,10 @@ export const loginSchema = yup.object().shape({
     .required('Password is required'),
 });
 
-export const updatePasswordSchema=yup.object().shape({
+export const updatePasswordSchema = yup.object().shape({
   currentPassword:yup
-  .string()
-  .required('fill the field!'),
+    .string()
+    .required('fill the field!'),
   newPassword: yup
     .string()
     .min(8, 'Password must be at least 8 characters long')
@@ -39,4 +39,7 @@ export const updatePasswordSchema=yup.object().shape({
     .oneOf([yup.ref('newPassword'), null], "Passwords don't match.")
     .required('fill the field!'),
 
-})
+});
+export const twoAuthSchema = yup.object({
+  otp: yup.string().min(6).max(6).required(),
+});

@@ -12,7 +12,7 @@ describe("UpdatePassword", () => {
         <Provider store={store}>
           <UpdatePassword />
         </Provider>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     // Assert the presence of input fields
@@ -27,11 +27,11 @@ describe("UpdatePassword", () => {
         <Provider store={store}>
           <UpdatePassword />
         </Provider>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
 
     // Get input fields
-    const currentPasswordInput = screen.getByLabelText("Current Password")
+    const currentPasswordInput = screen.getByLabelText("Current Password");
     const newPasswordInput = screen.getByLabelText("New Password");
     const confirmPasswordInput = screen.getByLabelText("Confirm Password");
 
@@ -59,21 +59,21 @@ describe("UpdatePassword", () => {
         <Provider store={store}>
           <UpdatePassword />
         </Provider>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
-  
+
     // Get input fields and submit button
     const newPasswordInput = screen.getByLabelText("New Password");
     const confirmPasswordInput = screen.getByLabelText("Confirm Password");
     const submitButton = screen.getByRole("button", { name: "Save" });
-  
+
     // Fill in form fields
     fireEvent.change(newPasswordInput, { target: { value: "newPassword123" } });
     fireEvent.change(confirmPasswordInput, { target: { value: "differentPassword" } });
-  
+
     // Submit the form
     fireEvent.click(submitButton);
-  
+
   });
   it("displays an error message when new password is too short", () => {
     render(
@@ -81,18 +81,18 @@ describe("UpdatePassword", () => {
         <Provider store={store}>
           <UpdatePassword />
         </Provider>
-      </BrowserRouter>
+      </BrowserRouter>,
     );
-  
+
     // Get input fields and submit button
     const newPasswordInput = screen.getByLabelText("New Password");
     const confirmPasswordInput = screen.getByLabelText("Confirm Password");
     const submitButton = screen.getByRole("button", { name: "Save" });
-  
+
     // Fill in form fields with password less than 8 charactor long
     fireEvent.change(newPasswordInput, { target: { value: "short" } });
     fireEvent.change(confirmPasswordInput, { target: { value: "short" } });
-  
+
     // Submit the form
     fireEvent.click(submitButton);
   });

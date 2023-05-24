@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 import * as counterSlice from "./reducers/counterSlice";
 import { combineReducers } from "@reduxjs/toolkit";
 import productReducer from "./reducers/createProductSlice";

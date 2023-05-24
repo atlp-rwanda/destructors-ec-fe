@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +39,7 @@ export const UpdatePassword = () => {
   });
 
   const loading = useSelector((state) => state.user.loading);
+  // eslint-disable-next-line no-unused-vars
   const error = useSelector((state) => state.user.error);
 
   const onSubmit = (data) => {
@@ -45,7 +47,7 @@ export const UpdatePassword = () => {
 
       .then((data) => {
         if (data.error) {
-          console.log(data.error)
+          console.log(data.error);
           showErrorMessage("The current passward is incorrect!");
         } else {
           console.log(data);
@@ -53,7 +55,7 @@ export const UpdatePassword = () => {
         }
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         showErrorMessage(error.message);
       });
   };
@@ -68,66 +70,66 @@ export const UpdatePassword = () => {
             className="xs:flex-col xs:w-[100vw] xs:h-fit xs:gap-0 xs:justify-center xs:relative xs:top-[80px] border-[none]  flex relative justify-center items-start px-[25px] xs:px-[0px]font-poppins flex-col w-[920px] h-[250px] border rounded-xs mt-1"
           >
             <div>
-            <div className="current xs:flex-col flex flex-row gap-3 justify-center items-start w-[100%] xs:right-[20px] relative top-[20%]">
-              <label htmlFor="currentPassword" className="text-base font-poppins font-normal text-[16px] text-[#565656]">Current Password</label>
-              <div>
-                <InputField
-                  id="currentPassword"
-                  placeholder=""
-                  type={currentOpenEye ? 'text' : 'password'}
-                  className={`xs:w-[93vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] w-[40.5vw] border focus:outline-none focus:ring-2`}
-                  {...register("currentPassword")}
-                  error={errors?.currentPassword}
-                />
-                <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] right-[365px] transform -translate-y-1/2">
-                  {currentOpenEye ? (
-                    <AiOutlineEye  onClick={currentToggle} />
-                  ) : (
-                    <AiOutlineEyeInvisible onClick={currentToggle} />
-                  )}
+              <div className="current xs:flex-col flex flex-row gap-3 justify-center items-start w-[100%] xs:right-[20px] relative top-[20%]">
+                <label htmlFor="currentPassword" className="text-base font-poppins font-normal text-[16px] text-[#565656]">Current Password</label>
+                <div>
+                  <InputField
+                    id="currentPassword"
+                    placeholder=""
+                    type={currentOpenEye ? 'text' : 'password'}
+                    className={`xs:w-[93vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] w-[40.5vw] border focus:outline-none focus:ring-2`}
+                    {...register("currentPassword")}
+                    error={errors?.currentPassword}
+                  />
+                  <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] right-[365px] transform -translate-y-1/2">
+                    {currentOpenEye ? (
+                      <AiOutlineEye  onClick={currentToggle} />
+                    ) : (
+                      <AiOutlineEyeInvisible onClick={currentToggle} />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="newPassword xs:flex-col mb-4 flex flex-row gap-8 xs:gap-3 items-start xs:right-[20px] relative top-[10%]">
-              <label htmlFor="newPassword" className="text-base font-poppins text-[16px] font-normal text-[#565656]">New Password</label>
-              <div>
-                <InputField
-                  id="newPassword"
-                  type={newOpenEye ? 'text' : 'password'}
-                  placeholder=""
-                  className={`xs:w-[93vw] xs:rounded-xl xs:bg-[#EAF0F7] text-[gray] xs:h-[58.77px] w-[40.5vw] border focus:outline-none focus:ring-2`}
-                  {...register("newPassword")}
-                  error={errors?.newPassword}
-                />
-                <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[16%] right-[365px] transform -translate-y-1/2">
-                  {newOpenEye ? (
-                    <AiOutlineEye  onClick={newToggle} />
-                  ) : (
-                    <AiOutlineEyeInvisible onClick={newToggle} />
-                  )}
+              <div className="newPassword xs:flex-col mb-4 flex flex-row gap-8 xs:gap-3 items-start xs:right-[20px] relative top-[10%]">
+                <label htmlFor="newPassword" className="text-base font-poppins text-[16px] font-normal text-[#565656]">New Password</label>
+                <div>
+                  <InputField
+                    id="newPassword"
+                    type={newOpenEye ? 'text' : 'password'}
+                    placeholder=""
+                    className={`xs:w-[93vw] xs:rounded-xl xs:bg-[#EAF0F7] text-[gray] xs:h-[58.77px] w-[40.5vw] border focus:outline-none focus:ring-2`}
+                    {...register("newPassword")}
+                    error={errors?.newPassword}
+                  />
+                  <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[16%] right-[365px] transform -translate-y-1/2">
+                    {newOpenEye ? (
+                      <AiOutlineEye  onClick={newToggle} />
+                    ) : (
+                      <AiOutlineEyeInvisible onClick={newToggle} />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="confirmPassword items-start xs:right-[20px] mb-4 flex flex-row gap-2 xs:flex-col justify-center relative top-[-5%]">
-              <label htmlFor="confirmPassword" className="text-base text-[16px] font-poppins font-normal text-[#565656]">Confirm Password</label>
-              <div>
-                <InputField
-                id="confirmPassword"
-                  type={confirmOpenEye ? 'text' : 'password'}
-                  placeholder=""
-                  className={`xs:w-[93vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] w-[40.5vw] border`}
-                  {...register("confirmPassword")}
-                  error={errors?.confirmPassword}
-                />
-                <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] right-[365px] transform -translate-y-1/2">
-                  {confirmOpenEye ? (
-                    <AiOutlineEye  onClick={confirmToggle} />
-                  ) : (
-                    <AiOutlineEyeInvisible onClick={confirmToggle} />
-                  )}
+              <div className="confirmPassword items-start xs:right-[20px] mb-4 flex flex-row gap-2 xs:flex-col justify-center relative top-[-5%]">
+                <label htmlFor="confirmPassword" className="text-base text-[16px] font-poppins font-normal text-[#565656]">Confirm Password</label>
+                <div>
+                  <InputField
+                    id="confirmPassword"
+                    type={confirmOpenEye ? 'text' : 'password'}
+                    placeholder=""
+                    className={`xs:w-[93vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] w-[40.5vw] border`}
+                    {...register("confirmPassword")}
+                    error={errors?.confirmPassword}
+                  />
+                  <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] right-[365px] transform -translate-y-1/2">
+                    {confirmOpenEye ? (
+                      <AiOutlineEye  onClick={confirmToggle} />
+                    ) : (
+                      <AiOutlineEyeInvisible onClick={confirmToggle} />
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
             <button
               type="submit"

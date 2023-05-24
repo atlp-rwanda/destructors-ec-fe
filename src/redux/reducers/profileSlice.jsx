@@ -28,7 +28,7 @@ export const fetchUserProfile = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const updateUserProfileData = createAsyncThunk(
@@ -40,7 +40,7 @@ export const updateUserProfileData = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
+  },
 );
 
 export const profileSlice = createSlice({

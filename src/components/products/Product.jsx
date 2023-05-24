@@ -17,7 +17,7 @@ function Product (props) {
       }
       {status === "failed" && <p>Failed to fetch products.</p>}
       {status === "succeeded" && products ? (
-        <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mdl:grid-cols-4 gap-10 px-4 md:px-10 font-rubik">
+        <div className="flex justify-center gap-7 flex-wrap">
           {products.items.map((product) => (
             <div key={product.id} className="card flex flex-col">
               <Link to={`/products/${product.id}`}>

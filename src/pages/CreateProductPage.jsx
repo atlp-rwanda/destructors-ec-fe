@@ -1,7 +1,7 @@
-import CreateProduct from '../components/forms/CreateProductForm'
-import NavBar from '../components/NavBar'
-import profilePicture from '../assets/Frame 3.svg'
-import backArrow from '../assets/Chev.svg'
+import CreateProduct from '../components/forms/CreateProductForm';
+import NavBar from '../components/NavBar';
+import profilePicture from '../assets/Frame 3.svg';
+import backArrow from '../assets/Chev.svg';
 
 const CreateProductPage = () => {
   return (
@@ -16,7 +16,7 @@ const CreateProductPage = () => {
       < NavBar />
       <CreateProduct />
     </div>
-  )
-}
+  );
+};
 
-export default CreateProductPage
+export default CreateProductPage;

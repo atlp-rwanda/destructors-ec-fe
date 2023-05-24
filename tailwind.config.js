@@ -9,6 +9,7 @@ module.exports = {
         login: "",
       },
       fontFamily: {
+        sanslinear:['Recursive', 'sans-serif'],
         poppins: ["Poppins", "sans-serif"],
         raleway: ['Raleway', 'sans-serif'],
         sans: ['Open Sans', 'sans-serif'],

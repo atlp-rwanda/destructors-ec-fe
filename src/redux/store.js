@@ -13,6 +13,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import expireReducer from 'redux-persist-expire';
 import usersReducer from "./reducers/AdminSlice";
 import profileSlice from './reducers/profileSlice';
+import verifySellerSlice from './reducers/verifySellerSlice';
 
 
 const middlewares = [];
@@ -23,7 +24,7 @@ const persistConfig = {
   key: 'root',
   storage,
   transforms: [
-    expireReducer(loginReducer, {
+    expireReducer(loginReducer, verifySellerSlice, {
       persistedAtKey: '__persisted_at',
       expireSeconds: 86400,
       expiredState: {
@@ -36,6 +37,7 @@ const persistConfig = {
   ],
 };
 const persistedLogin = persistReducer(persistConfig, loginReducer);
+const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
 import productReducer from './reducers/createProductSlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
 import userSlice from "./reducers/userSlice";
@@ -51,6 +53,7 @@ const store = configureStore({
     categories: categoriesReducer,
     user:userSlice,
     profile: profileSlice,
+    verifySeller:persistTwoAuth,
   },
   middleware: [...middlewares, thunk],
 });

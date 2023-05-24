@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { data } from "autoprefixer";
 import axiosInstance from "../utils/Api";
 
