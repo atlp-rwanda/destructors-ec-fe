@@ -22,7 +22,7 @@ describe("SignupForm", () => {
           </Provider>
         </BrowserRouter>,
       );
-      expect(screen.getByPlaceholderText("firstname")).toBeInTheDocument();
+      expect(screen.getByPlaceholderText("firstnamekdsfjas")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("lastname")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("email")).toBeInTheDocument();
       expect(screen.getByPlaceholderText("Password")).toBeInTheDocument();

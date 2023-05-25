@@ -1,13 +1,27 @@
+
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        login: "",
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        raleway: ['Raleway', 'sans-serif'],
+        sans: ['Open Sans', 'sans-serif'],
+        lexend: ['Lexend', 'sans-serif'],
+        rubik: ['Rubik', 'sans-serif'],
+      },
       borderRadius: {
         circle: '50%',
       },
       colors: {
-        primary: '#1B73E8',
+        brand: "#37475A",
+        primary: '#37475A',
+        secondary:'#2D719D',
         hover: '#053A80',
         hover2: '#f3f7fc',
         background: '#fafafa',
@@ -37,9 +51,12 @@ module.exports = {
         md: { min: "769px" },
         lg: { min: "1440px" },
         xl: { min: "2560px" },
+        mdl:{ min: "1024px"},
+        laptop: { max: "1165px"},
       },
     },
     variants: {},
     plugins: [],
   },
 };
+

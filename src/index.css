@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .card {
+        @apply
+            bg-white text-gray-700 w-72 min-h-[10rem] shadow-lg rounded-md overflow-hidden
+    }
+}
+.spinner {
+    border-top-color: #6366f1;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

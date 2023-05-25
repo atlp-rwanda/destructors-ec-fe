@@ -1,14 +1,17 @@
 /* eslint-disable no-restricted-syntax */
-import axios from 'axios';
-import {fetchUsers} from './FetchUsers';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "../app/customAxios";
+import { showErrorMessage, showSuccessMessage } from "../../utils/toast";
+import { fetchUsers } from './FetchUsers';
 
-export const updateStatus = (id) => {
-  const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMDk4YTA1NzQtNDUzMi00ZGU5LTllZDUtMTIxNTFkMTZlYjJjIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpc0FjdGl2ZSI6ZmFsc2UsImV4cGlyZWQiOm51bGx9LCJpYXQiOjE2ODQ4NzcxNjl9.ylvfu46vf4fx1BbV_sVhDyoKjqxQGTh2_iC6PMiJL_g';
-  return async (dispatch) => {
+export const updateStatus = createAsyncThunk(
+  'updateStatus',
+  async (id, { dispatch }) => {
+    const token = localStorage.getItem('token');
     try {
-      const response = await axios.patch(`http://localhost:3000/api/v1/users/${id}/status`, {}, {
+      const response = await axios.patch(`users/${id}/status`, {}, {
         headers: {
-          Authorization: token,
+          Authorization: `Bearer ${token}`,
         },
       });
       const userId = response.data;
@@ -17,8 +20,12 @@ export const updateStatus = (id) => {
         payload: userId,
       });
       dispatch(fetchUsers());
+      showSuccessMessage('User updated successfully \u{1F389}');
+      return userId;
     } catch (error) {
       console.log(error);
+      showErrorMessage('Something went wrong \u{1F625}');
+      throw error;
     }
-  };
-};
+  },
+);

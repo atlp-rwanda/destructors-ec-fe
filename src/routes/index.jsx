@@ -1,31 +1,21 @@
 import { Route, Routes } from "react-router";
-import Home from "../pages/DashboardPage";
-import Welcome from "../pages/WelcomePage";
-import About from "../pages/About.jsx";
-import ProfilePage from "../pages/Profile";
-import Login from "../components/Login";
-import Auth from "../utils/Auth";
-import GetUsers from "../components/GetUsers";
+import GetUsers from "../components/Admin/GetUser";
 import SignupPage from "../pages/auth/Signup";
+import LandingPage from "../pages/LandingPage";
+import ProductDetails from "../components/products/ProductDetails";
+import LoginPage from "../pages/auth/LoginPage";
+import CreateProduct from "../pages/CreateProductPage";
 
 const navigator = () => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Welcome />}></Route>
         <Route path="/users" element={<GetUsers />}></Route>
-        <Route path="/" element={<Auth />} />
-        <Route path="/home" element={<Home />}></Route>
-        <Route path="about" element={<About />}></Route>
-        <Route path="profile" element={<ProfilePage />}></Route>
-        <Route path='/' element={<Welcome />}></Route>
-        <Route path='/' element={<Auth />}>
-          <Route path='/home' element={<Home />}></Route>
-          <Route path='/about' element={<About />}></Route>
-          <Route path='/profile' element={<ProfilePage />}></Route>
-        </Route>
         <Route path='/auth/signup' element={<SignupPage />} />
-        <Route path='/login' element={<Login />}></Route>
+        <Route path="/auth/login" element={<LoginPage />}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/products/:id" element={<ProductDetails />}></Route>
+        <Route path='/product' element={<CreateProduct />}></Route>
       </Routes>
     </div>
   );

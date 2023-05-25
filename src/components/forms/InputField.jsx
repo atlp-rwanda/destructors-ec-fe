@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/display-name */
+/* eslint-disable no-restricted-syntax */
 import React, { forwardRef } from "react";
 
 const InputField = forwardRef(({ parentClassName, ...props }, ref) => {
@@ -15,8 +18,8 @@ const InputField = forwardRef(({ parentClassName, ...props }, ref) => {
           {...props}
         />
         {props.error && (
-          <p className='text-red-500 text-xs' id={`${props.name}-error`}>
-            {props.error?.message}
+          <p className='text-rose-400 text-xs' id={`${props.name}-error`}>
+            {props.error?.message.split(',')[0]}
           </p>
         )}
       </div>

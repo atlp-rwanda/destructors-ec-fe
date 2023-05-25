@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable react/prop-types */
 import React from "react";
 import propTypes from "prop-types";
 
@@ -20,6 +22,6 @@ Button.propTypes = {
 };
 Button.defaultProps = {
   label: "",
-  onClick() {},
+  onClick () {},
 };
 export default Button;
