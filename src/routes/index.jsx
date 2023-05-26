@@ -14,6 +14,7 @@ import TwoFactor from "../pages/auth/TwoFactor";
 import ResetPasswordPage from "../pages/auth/ResetPassword";
 import ForgetPasswordPage from "../pages/auth/ForgetPassword";
 import VerifyEmailPage from "../components/account/VerifyEmail";
+import ProductUpdate  from "../pages/UpdateProductPage";
 
 const navigator = () => {
   return (
@@ -26,9 +27,7 @@ const navigator = () => {
         ></Route>
         <Route path='/dashboard' element={<DashboardLayout />}></Route>
         <Route path="/users" element={<GetUsers />}></Route>
-        <Route path="/profile/update-password" element={<UpdatePassword />}></Route>
         <Route path="/auth/signup" element={<SignupPage />} />
-        <Route path='/auth/signup' element={<SignupPage />} />
         <Route path='/auth/forget-password' element={<ForgetPasswordPage />} />
         <Route path='/auth/reset-password' element={<ResetPasswordPage/>} />
         <Route path="/auth/login" element={<LoginPage />}></Route>
@@ -40,6 +39,7 @@ const navigator = () => {
         <Route path="/profile/update-address" element={<EditAddress />}></Route>
         <Route path="/auth/2fa?" element={<TwoFactor/>}></Route>
         <Route path="/verify-email" element={<VerifyEmailPage />}></Route>
+        <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route>
       </Routes>
     </div>
   );
