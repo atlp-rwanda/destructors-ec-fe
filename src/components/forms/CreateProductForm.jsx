@@ -121,7 +121,7 @@ const CreateProductForm = () => {
         <div className='flex flex-col'>
           <label className=' text-slate-500 text-sm' >Category</label>
           <select name="category" defaultValue='' className='border border-gray-200 ... w-[400px] h-[30px] mt-2 text-sm pl-3  text-slate-600 xs:w-full' {...register('categoryId')} onChange={e => setProduct({ ...product, 'categoryId': e.target.value })}>
-            <option disabled hidden value='' className='text-slate-300'> --Select product categories-- </option>
+            <option disabled hidden value='' className='text-slate-100'> --Select product categories-- </option>
             {
               categories.map((data) => {
                 return <option value={data.id} key={data.id}>{data.name}</option>;
@@ -158,6 +158,7 @@ const CreateProductForm = () => {
             styles=' text-slate-500 mt-4 text-sm'
             placeholder='Product bonus'
             type='number'
+            min='0'
             className='border text-sm pl-3 border-gray-200 ... w-[400px] h-[30px] mt-2  text-slate-600 xs:w-full  placeholder:text-slate-300'
             {...register('bonus')}
             error={errors?.bonus}

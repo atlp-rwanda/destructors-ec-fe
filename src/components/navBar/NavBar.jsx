@@ -1,54 +1,14 @@
-
 import Logo from '../../assets/Logo.svg';
+import SearchField from '../searchIputField/SearchField';
 
-const categoriesList = [
-  { label: "All", value: "All" },
-  { label: "Shoes", value: "Shoes" },
-  { label: "electronics", value: "Electronics" },
-];
 function NavBar () {
-  const handleClick = (event) => {
-    const label = event.target.value;
-    console.log(label);
-  };
+
   return (
     <div className="flex flex-row justify-around items-center">
       <div className="">
         <img src={Logo} alt='log' />
       </div>
-      <div>
-        <div className="flex h-9 font-rubik">
-          <select
-            className="w-32 text-center border-secondary rounded-l border-2 border-r-0"
-            onClick={handleClick}
-          >
-            {categoriesList.map((data, id) => (
-              <option key={id}>{data.label}</option>
-            ))}
-          </select>
-          <input
-            type="text"
-            placeholder="search for products"
-            className="border-2 border-secondary border-r-0 rounded-none border-l-slate-400 w-64 text-center outline-none"
-          />
-          <button className="border-2 rounded-r w-10 flex justify-center cursor-pointer hover:bg-blue-700 items-center bg-secondary text-white border-secondary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-5"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
+      <SearchField />
       <div className="flex gap-2 cursor-pointer">
         <svg
           width="24"
