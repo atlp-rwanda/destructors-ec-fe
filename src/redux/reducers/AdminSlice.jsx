@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-fallthrough */
 const initialState = {
   users: [],
   isLoading: true,
@@ -14,6 +16,16 @@ const usersReducer = (state = initialState, action) => {
     };
   case 'UPDATE_USER_STATUS':
     return { ...state, user: action.payload };
+  case 'UPDATE_ROLE_SUCCESS':
+    const updatedUserIndex = state.users.findIndex(user => user.id === action.payload.id);
+    if (updatedUserIndex !== -1) {
+      const updatedUsers = [...state.users];
+      updatedUsers[updatedUserIndex] = action.payload;
+      return {
+        ...state,
+        users: updatedUsers,
+      };
+    }
   default:
     return state;
   }

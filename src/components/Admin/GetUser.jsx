@@ -4,6 +4,7 @@ import UserList from './Users';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../redux/actions/FetchUsers';
 import { updateStatus } from '../../redux/actions/UpdateUser';
+import { updateRole } from '../../redux/actions/UpdateRole';
 import TopSection from './TopSection';
 import UserCount from './UserCount';
 import AdminNavMobile from '../DashboarMobil';
@@ -35,6 +36,9 @@ const GetUsers = () => {
     dispatch(updateStatus(user.id));
     setConfirmationVisible(false);
   };
+  const handleUpdateRole = async (id, newRole) => {
+    dispatch(updateRole( {id, newRole} ));
+  };
 
   return (
     <div className="flex justify-space-between">
@@ -48,6 +52,7 @@ const GetUsers = () => {
           handleConfirmation={handleConfirmation}
           handleActivate={handleActivate}
           handleCancel={handleCancel}
+          handleUpdateRole={handleUpdateRole}
           selectedUserId={selectedUserId}
           setConfirmationVisible={setConfirmationVisible}
           isConfirmationVisible={isConfirmationVisible}/>
