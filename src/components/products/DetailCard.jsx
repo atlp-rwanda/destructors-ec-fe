@@ -9,7 +9,7 @@ import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/custom-animations/fold-out-animation.css';
 import 'react-awesome-slider/dist/custom-animations/open-animation.css';
-
+import  AddToCartButton  from "../../components/cart/AddToCartButton";
 function DetailCard (props) {
   const { product } = props;
   const [picImage, setPickImage] = useState(product.images[0]);
@@ -30,7 +30,7 @@ function DetailCard (props) {
                   <img
                     src={img}
                     key={id}
-                    className="w-[200px] rounded border-x-2 xs:hidden"
+                    className="w-[200px] rounded border-x-2 xs:hidden mb-3"
                     onClick={() => handleImageClick(img)}
                   />
                 );
@@ -42,7 +42,7 @@ function DetailCard (props) {
               ))}
             </AwesomeSlider>
             <div className="w-full ml-3 xs:hidden">
-              <img src={picImage} className="bg-cover w-full h-96" />
+            <img src={picImage} className="bg-cover w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -61,6 +61,7 @@ function DetailCard (props) {
             ) : (
               <div className="flex xs:mt-7">
                 <Buyer />
+                <AddToCartButton productId={product.id} /> 
               </div>
             )}
           </div>
