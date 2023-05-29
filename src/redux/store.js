@@ -1,34 +1,35 @@
-
 import { configureStore } from "@reduxjs/toolkit";
 import signupSlice from "./reducers/signupSlice";
-import {
-  productSlice,
-  singleProduct,
-} from './reducers/products';
+import { productSlice, singleProduct } from "./reducers/products";
 import loginReducer from "./reducers/loginSlice";
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
-import expireReducer from 'redux-persist-expire';
+import resetPasswordSlice from "./reducers/resetPasswordSlice";
+import resetEmailSlice from "./reducers/forgetPassword";
+import logger from "redux-logger";
+import thunk from "redux-thunk";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import expireReducer from "redux-persist-expire";
 import usersReducer from "./reducers/AdminSlice";
-import profileSlice from './reducers/profileSlice';
-import verifySellerSlice from './reducers/verifySellerSlice';
+import profileSlice from "./reducers/profileSlice";
+import verifySellerSlice from "./reducers/verifySellerSlice";
 
-import productReducer from './reducers/createProductSlice';
-import categoriesReducer from './reducers/retriveCategoriesSlice';
-import searchProductsReducer, { allProductsSlice, searchSlice } from './reducers/searchProductsSlice';
+import productReducer from "./reducers/createProductSlice";
+import categoriesReducer from "./reducers/retriveCategoriesSlice";
+import searchProductsReducer, {
+  allProductsSlice,
+  searchSlice,
+} from "./reducers/searchProductsSlice";
 
 const middlewares = [];
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === "development") {
   middlewares.push(logger);
 }
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
   transforms: [
     expireReducer(loginReducer, verifySellerSlice, {
-      persistedAtKey: '__persisted_at',
+      persistedAtKey: "__persisted_at",
       expireSeconds: 86400,
       expiredState: {
         data: null,
@@ -49,15 +50,17 @@ const store = configureStore({
     users: usersReducer,
     products: productSlice.reducer,
     productDetails: singleProduct.reducer,
-    login:persistedLogin,
+    login: persistedLogin,
     createProduct: productReducer,
     categories: categoriesReducer,
-    user:userSlice,
+    user: userSlice,
     profile: profileSlice,
-    verifySeller:persistTwoAuth,
+    verifySeller: persistTwoAuth,
     searchedProducts: searchProductsReducer,
     filteredProducts: allProductsSlice.reducer,
     searchMode: searchSlice.reducer,
+    resetPassword: resetPasswordSlice,
+    resetEmail: resetEmailSlice,
   },
   middleware: [...middlewares, thunk],
 });
