@@ -13,6 +13,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import TwoFactor from "../pages/auth/TwoFactor";
 import ResetPasswordPage from "../pages/auth/ResetPassword";
 import ForgetPasswordPage from "../pages/auth/ForgetPassword";
+import VerifyEmailPage from "../components/account/VerifyEmail";
 
 const navigator = () => {
   return (
@@ -38,6 +39,7 @@ const navigator = () => {
         <Route path="/profile/update-profile" element={<EditProfile />}></Route>
         <Route path="/profile/update-address" element={<EditAddress />}></Route>
         <Route path="/auth/2fa?" element={<TwoFactor/>}></Route>
+        <Route path="/verify-email" element={<VerifyEmailPage />}></Route>
       </Routes>
     </div>
   );
