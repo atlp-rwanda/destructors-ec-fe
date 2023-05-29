@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SignupForm from "../../components/forms/SignupForm";
+import Navbar from "../../components/NavBar";
 import middleImage from "../../public/images/middleImage.png";
 import bgImage from "../../public/images/bgsvg.svg";
-import GoogleLogin from "../../components/GoggleLogin";
+import HomeNavbar from "../../components/HomeNavBar";
 
 const SignupPage = () => {
   const data = useSelector((state) => state.signup.data);
@@ -17,7 +18,10 @@ const SignupPage = () => {
   });
 
   return (
-    <div>
+    <>
+      <div className='flex items-center'>
+        <HomeNavbar />
+      </div>
       <div className='flex flex-col w-full md:flex-row md:h-full md:justify-between justify-center items-center xs:flex-grow recursive'>
         <img
           src={bgImage}
@@ -29,13 +33,13 @@ const SignupPage = () => {
           <p className='text-xl  xs:w-full '>
             already a user ?
             <br />
-            <a href='/auth/login' className='text-[#2D719D] pt-2'>
+            <a href='/auth/signin' className='text-[#2D719D] pt-2'>
               sign in!
             </a>
           </p>
         </div>
 
-        <div className='hidden sm:flex w-[400px]'>
+        <div className='hidden sm:flex w-[450px]'>
           <img src={middleImage} alt='' />
         </div>
 
@@ -47,12 +51,9 @@ const SignupPage = () => {
             <hr className='flex-grow border-gray-300 border-t' />
           </div>
           <div className='flex items-center justify-center mt-4'></div>
-          <div className='flex items-center justify-center mt-4'>
-            <GoogleLogin />
-          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 export default SignupPage;

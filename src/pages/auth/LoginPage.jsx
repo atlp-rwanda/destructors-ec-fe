@@ -1,24 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React from 'react';
+import React from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import LoginForm from '../../components/forms/LoginForm';
+import LoginForm from "../../components/forms/LoginForm";
 import middleImage from "../../public/images/middleImage.png";
 import bgImage from "../../public/images/bgsvg.svg";
 import { useNavigate } from "react-router-dom";
-import getUserInfo from '../../utils/getUserInfo';
+import getUserInfo from "../../utils/getUserInfo";
 import GoogleLogin from "../../components/GoggleLogin";
 
 const LoginPage = () => {
   const isAuthenticated = useSelector((state) => state.login.isAuthenticated);
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem("token")) {
       const info = getUserInfo();
-      if (info.role === 'admin' || info.role === 'seller') navigate('/dashboard');
-      else navigate('/');
+      if (info.data.role === "admin" || info.data.role === "seller")
+        navigate("/dashboard");
+      else navigate("/");
     }
   }, [isAuthenticated]);
 
@@ -32,10 +31,10 @@ const LoginPage = () => {
       <div className='flex flex-col xs:items-center xs:w-full xs:px-6 ml-20'>
         <h1 className='text-3xl lg:text-[50px] mb-[3rem] '>Sign in</h1>
         <p className='text-xl  xs:w-full '>
-        if you don’t have  an account you can
+          if you don’t have an account you can
           <br />
           <a href='/auth/signup' className='text-[#2D719D] pt-2'>
-          Register here!
+            Register here!
           </a>
         </p>
       </div>
@@ -54,8 +53,7 @@ const LoginPage = () => {
         </div>
         <div className='flex items-center justify-center mt-4'></div>
         <div className='flex items-center justify-center mt-4'>
-
-          <GoogleLogin/>
+          <GoogleLogin />
         </div>
       </div>
     </div>
