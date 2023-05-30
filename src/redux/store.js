@@ -1,6 +1,4 @@
-/* eslint-disable semi */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable comma-dangle */
+
 import { configureStore } from "@reduxjs/toolkit";
 import signupSlice from "./reducers/signupSlice";
 import {
@@ -10,9 +8,10 @@ import {
 import loginReducer from "./reducers/loginSlice";
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import storage from 'redux-persist/lib/storage'; 
+import storage from 'redux-persist/lib/storage';
 import { persistReducer, persistStore } from 'redux-persist';
 import expireReducer from 'redux-persist-expire';
+import usersReducer from "./reducers/AdminSlice";
 
 const middlewares = [];
 if (process.env.NODE_ENV === 'development') {
@@ -31,21 +30,22 @@ const persistConfig = {
         isAuthenticated: false,
       },
       autoExpire: false,
-    })
+    }),
   ],
 };
-const persistedLogin = persistReducer(persistConfig, loginReducer)
+const persistedLogin = persistReducer(persistConfig, loginReducer);
 import productReducer from './reducers/createProductSlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
 
 const store = configureStore({
   reducer: {
     signup: signupSlice,
+    users: usersReducer,
     products: productSlice.reducer,
     productDetails: singleProduct.reducer,
     login:persistedLogin,
     createProduct: productReducer,
-    categories: categoriesReducer
+    categories: categoriesReducer,
   },
   middleware: [...middlewares, thunk],
 });

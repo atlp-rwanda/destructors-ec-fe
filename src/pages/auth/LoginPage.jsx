@@ -17,7 +17,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (localStorage.getItem('token')) {
       const info = getUserInfo();
-      if (info.role === 'admin' || info.role === 'seller') navigate('/dashboard');
+      if (info.role === 'admin' || info.role === 'seller') navigate('/users');
       else navigate('/');
     }
   }, [isAuthenticated]);

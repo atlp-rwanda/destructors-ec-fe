@@ -1,5 +1,6 @@
+/* eslint-disable no-restricted-syntax */
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "../app/customAxios"
+import axios from "../app/customAxios";
 
 export const retrieveCategories = createAsyncThunk(
   'retriveCategories',
@@ -8,7 +9,7 @@ export const retrieveCategories = createAsyncThunk(
       const { data } = await axios.get('/categories');
       return data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  },
 );

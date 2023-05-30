@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router";
+import GetUsers from "../components/Admin/GetUser";
 import SignupPage from "../pages/auth/Signup";
 import LandingPage from "../pages/LandingPage";
 import ProductDetails from "../components/products/ProductDetails";
@@ -9,6 +10,7 @@ const navigator = () => {
   return (
     <div>
       <Routes>
+        <Route path="/users" element={<GetUsers />}></Route>
         <Route path='/auth/signup' element={<SignupPage />} />
         <Route path="/auth/login" element={<LoginPage />}></Route>
         <Route path="/" element={<LandingPage />}></Route>
