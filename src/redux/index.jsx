@@ -3,6 +3,7 @@ import * as counterSlice from './reducers/counterSlice';
 import { combineReducers } from '@reduxjs/toolkit';
 import productReducer from './reducers/createProductSlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
+import userReducer from './reducers/userSlice'
 
 const allReducers = combineReducers({
   counter: counterSlice.default,
@@ -16,7 +17,7 @@ const allReducers = combineReducers({
 
   },
   createProduct: productReducer,
-  categories: categoriesReducer,
+  categories: categoriesReducer
 });
 
 export default allReducers;
