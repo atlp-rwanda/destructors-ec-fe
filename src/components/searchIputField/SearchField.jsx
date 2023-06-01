@@ -98,7 +98,7 @@ const SearchField = () => {
           }}
           className="border-2 border-secondary border-r-0 rounded-none border-l-slate-400 w-64 text-center outline-none"
         />
-        <button className="border-2 rounded-r w-10 flex justify-center cursor-pointer hover:bg-[#2198e7] items-center bg-secondary text-white border-secondary" onClick={handleSearch}>
+        <button className="border-2 rounded-r w-10 flex justify-center cursor-pointer hover:bg-[#2198e7] items-center bg-secondary text-white border-secondary" data-testid="searchButton" onClick={handleSearch}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -153,7 +153,7 @@ const SearchField = () => {
             className=' border text-sm pl-3 border-gray-200 ... w-[400px] h-[30px] mt-[35px]  text-slate-600 xs  placeholder:text-slate-300'
           />
           <InputField
-            placeholder='Maximum price'
+            placeholder='2022/06/10'
             type='date'
             onChange={e => setSearchCriteria({ ...searchCriteria, 'bestBefore': e.target.value })}
             className=' border text-sm pl-3 border-gray-200 ... w-[400px] h-[30px] mt-[35px]  text-slate-600 xs  placeholder:text-slate-300'

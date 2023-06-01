@@ -9,7 +9,7 @@ import Paginate from './SearchedProductPagination';
 function Product () {
   const { products, status } = useSelector((state) => state.searchedProducts);
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(3);
+  const [productsPerPage] = useState(15);
 
   const indexOfLastPost = currentPage * productsPerPage;
   const indexOfFirstPost = indexOfLastPost - productsPerPage;

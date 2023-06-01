@@ -1,6 +1,5 @@
 /* eslint-disable no-restricted-syntax */
 import InputField from "./InputField";
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useCallback, useMemo, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -10,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../redux/actions/createProduct';
 import { retrieveCategories } from '../../redux/actions/retreiveCategories';
 import { productSchema } from '../../validations/productValidation';
+import { showSuccessMessage } from "../../utils/toast";
 
 const CreateProductForm = () => {
   const resolverForm = { resolver: yupResolver(productSchema) };
@@ -50,19 +50,6 @@ const CreateProductForm = () => {
     dispatch(retrieveCategories());
   }, [dispatch]);
 
-  const notify = () => {
-    toast.success('Product created succefully', {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-  };
-
   const createItem = async (e) => {
     const productInfo = new FormData();
     productInfo.append('name', e.name);
@@ -75,6 +62,7 @@ const CreateProductForm = () => {
     selectedImages.forEach((file) => {
       productInfo.append('image', file);
     });
+
     try {
 
       if (selectedImages.length > 0) {
@@ -84,7 +72,7 @@ const CreateProductForm = () => {
           return setError(res.response);
 
         }
-        notify();
+        showSuccessMessage('Product created succefully');
         reset({
           name: '',
           categoryId: '',
