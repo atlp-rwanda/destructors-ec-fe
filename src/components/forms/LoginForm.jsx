@@ -23,7 +23,7 @@ const LoginForm = () => {
   const onSubmit = async (userData) => {
     try {
       const response = await dispatch(login(userData)).unwrap();
-      showSuccessMessage(response?.message || "success");
+      showSuccessMessage(response?.message );
     } catch (error) {
       if (error.status === 403) {
         showErrorMessage(error?.data?.message);

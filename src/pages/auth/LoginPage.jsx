@@ -17,7 +17,7 @@ const LoginPage = () => {
     if (localStorage.getItem("token")) {
       const info = getUserInfo();
       if (info.data.role === "admin" || info.data.role === "seller")
-        navigate("/dashboard");
+        navigate("/users");
       else navigate("/");
     }
   }, [isAuthenticated]);

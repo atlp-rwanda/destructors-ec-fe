@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from "vite";
 import React from "@vitejs/plugin-react";
 import path from "path";
@@ -21,7 +20,7 @@ export default defineConfig({
     },
   },
   define: {
-    'process.env': {}
+    'process.env': {},
   },
   build: {
     target: "es2017",
