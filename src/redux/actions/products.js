@@ -5,7 +5,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 const token = localStorage.getItem('token');
 const fetchProducts = createAsyncThunk('products', async (page)=>{
   try {
-    const { data } = await axios.get(`/products?page=${page}&size=2}`, {
+    const { data } = await axios.get(`/products?page=${page}&size=15}`, {
       headers:{
         Authorization:`Bearer ${token}`,
       },

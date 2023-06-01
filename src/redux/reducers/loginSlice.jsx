@@ -2,13 +2,18 @@
 /* eslint-disable no-restricted-syntax */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../app/customAxios';
+import { showErrorMessage } from '../../utils/toast';
 
 export const login = createAsyncThunk('login', async (loginData, { rejectWithValue }) => {
   try {
     const { data } = await axios.post('/users/login', loginData);
+    if (data.message === 'please verify your email...') {
+      return showErrorMessage(data.message);
+    }
     localStorage.setItem('token', data.token);
     return data;
   } catch (error) {
+    showErrorMessage(error.response.data.message);
     return rejectWithValue(error.response);
   }
 });
