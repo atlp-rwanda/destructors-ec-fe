@@ -5,6 +5,7 @@ import SignupForm from "../../components/forms/SignupForm";
 import middleImage from "../../public/images/middleImage.png";
 import bgImage from "../../public/images/bgsvg.svg";
 import GoogleLogin from "../../components/GoggleLogin";
+import HomeNavbar from "../../components/HomeNavBar";
 
 const SignupPage = () => {
   const data = useSelector((state) => state.signup.data);
@@ -18,6 +19,9 @@ const SignupPage = () => {
 
   return (
     <div>
+      <div className='flex items-center'>
+        <HomeNavbar />
+      </div>
       <div className='flex flex-col w-full md:flex-row md:h-full md:justify-between justify-center items-center xs:flex-grow recursive'>
         <img
           src={bgImage}
@@ -27,10 +31,10 @@ const SignupPage = () => {
         <div className='flex flex-col xs:items-center xs:w-full xs:px-6 ml-20'>
           <h1 className='text-3xl lg:text-[50px] mb-[3rem] '>Sign Up</h1>
           <p className='text-xl  xs:w-full '>
-          already a user ?
+            already a user ?
             <br />
             <a href='/auth/login' className='text-[#2D719D] pt-2'>
-            sign in!
+              sign in!
             </a>
           </p>
         </div>
@@ -48,8 +52,7 @@ const SignupPage = () => {
           </div>
           <div className='flex items-center justify-center mt-4'></div>
           <div className='flex items-center justify-center mt-4'>
-
-            <GoogleLogin/>
+            <GoogleLogin />
           </div>
         </div>
       </div>
