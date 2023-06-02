@@ -15,6 +15,7 @@ const InputField = forwardRef(({ parentClassName, ...props }, ref) => {
           type={props.type}
           placeholder={props.placeholder}
           className={`w-full ${props.className}`}
+          onChange={props.onChange}
           {...props}
         />
         {props.error && (

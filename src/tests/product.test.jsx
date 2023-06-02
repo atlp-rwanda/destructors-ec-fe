@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Product from '../components/products/Product';
 import { afterEach, describe, expect, test, vi } from 'vitest';
 import * as hooksModule from '../components/products/hooks';
+import { Provider } from 'react-redux';
+import store from '../redux/store';
 
 describe('Product component', () => {
   afterEach(() => {
@@ -20,7 +22,9 @@ describe('Product component', () => {
     const page = 1;
     const { getByText } = render(
       <BrowserRouter>
-        <Product page={page} />
+        <Provider store={store}>
+          <Product page={page} />
+        </Provider>
       </BrowserRouter>,
     );
 
@@ -37,7 +41,9 @@ describe('Product component', () => {
     const page = 1;
     const { getByText } = render(
       <BrowserRouter>
-        <Product page={page} />
+        <Provider store={store}>
+          <Product page={page} />
+        </Provider>
       </BrowserRouter>,
     );
 
@@ -81,7 +87,9 @@ describe('Product component', () => {
     const page = 1;
     const { getByText } = render(
       <BrowserRouter>
-        <Product page={page} />
+        <Provider store={store}>
+          <Product page={page} />
+        </Provider>
       </BrowserRouter>,
     );
 
@@ -98,7 +106,9 @@ describe('Product component', () => {
     const page = 1;
     const { getByText } = render(
       <BrowserRouter>
-        <Product page={page} />
+        <Provider store={store}>
+          <Product page={page} />
+        </Provider>
       </BrowserRouter>,
     );
 

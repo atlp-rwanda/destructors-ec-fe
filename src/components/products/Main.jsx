@@ -1,8 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import Product from "./Product";
 import { useProductAll } from "./hooks";
 function Main () {
+  const searchStatus = useSelector((state) => state.searchMode.value);
   const [page, setPage] = useState(0);
   const { products } = useProductAll();
   const totalPages = products.totalPages;
@@ -62,9 +64,11 @@ function Main () {
   return (
     <div>
       <Product page={page} />
+      {!searchStatus &&
       <div className="flex justify-center gap-3 mt-16">
         <Pagenation />
       </div>
+      }
     </div>
   );
 }

@@ -15,6 +15,9 @@ import usersReducer from "./reducers/AdminSlice";
 import profileSlice from './reducers/profileSlice';
 import verifySellerSlice from './reducers/verifySellerSlice';
 
+import productReducer from './reducers/createProductSlice';
+import categoriesReducer from './reducers/retriveCategoriesSlice';
+import searchProductsReducer, { allProductsSlice, searchSlice } from './reducers/searchProductsSlice';
 
 const middlewares = [];
 if (process.env.NODE_ENV === 'development') {
@@ -38,8 +41,6 @@ const persistConfig = {
 };
 const persistedLogin = persistReducer(persistConfig, loginReducer);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
-import productReducer from './reducers/createProductSlice';
-import categoriesReducer from './reducers/retriveCategoriesSlice';
 import userSlice from "./reducers/userSlice";
 
 const store = configureStore({
@@ -54,6 +55,9 @@ const store = configureStore({
     user:userSlice,
     profile: profileSlice,
     verifySeller:persistTwoAuth,
+    searchedProducts: searchProductsReducer,
+    filteredProducts: allProductsSlice.reducer,
+    searchMode: searchSlice.reducer,
   },
   middleware: [...middlewares, thunk],
 });

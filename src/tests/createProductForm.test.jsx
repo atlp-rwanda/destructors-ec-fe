@@ -8,6 +8,7 @@ import store from "../redux/store";
 import axios from "../redux/app/customAxios";
 import MockAdapter from "axios-mock-adapter";
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
+import { ToastContainer } from "react-toastify";
 
 describe("createProduct Form", () => {
 
@@ -98,6 +99,7 @@ describe("createProduct Form", () => {
       <BrowserRouter>
         <Provider store={store}>
           <CreateProduct />
+          <ToastContainer />
         </Provider>
       </BrowserRouter>,
     );
