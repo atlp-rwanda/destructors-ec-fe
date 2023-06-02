@@ -11,6 +11,8 @@ import EditProfile from "../pages/profile/EditProfile";
 import EditAddress from "../pages/profile/EditAddress";
 import DashboardLayout from "../layout/DashboardLayout";
 import TwoFactor from "../pages/auth/TwoFactor";
+import ResetPasswordPage from "../pages/auth/ResetPassword";
+import ForgetPasswordPage from "../pages/auth/ForgetPassword";
 
 const navigator = () => {
   return (
@@ -25,6 +27,9 @@ const navigator = () => {
         <Route path="/users" element={<GetUsers />}></Route>
         <Route path="/profile/update-password" element={<UpdatePassword />}></Route>
         <Route path="/auth/signup" element={<SignupPage />} />
+        <Route path='/auth/signup' element={<SignupPage />} />
+        <Route path='/auth/forget-password' element={<ForgetPasswordPage />} />
+        <Route path='/auth/reset-password' element={<ResetPasswordPage/>} />
         <Route path="/auth/login" element={<LoginPage />}></Route>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/products/:id" element={<ProductDetails />}></Route>
