@@ -19,6 +19,7 @@ import searchProductsReducer, {
   allProductsSlice,
   searchSlice,
 } from "./reducers/searchProductsSlice";
+import updateProductSlice from "./reducers/updateProductSlice";
 
 const middlewares = [];
 if (process.env.NODE_ENV === "development") {
@@ -63,6 +64,7 @@ const store = configureStore({
     resetPassword: resetPasswordSlice,
     resetEmail: resetEmailSlice,
     verify: verifySlice,
+    productUpdate:updateProductSlice,
   },
   middleware: [...middlewares, thunk],
 });
