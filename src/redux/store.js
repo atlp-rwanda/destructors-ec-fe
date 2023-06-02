@@ -44,6 +44,7 @@ const persistedLogin = persistReducer(persistConfig, loginReducer);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
 import userSlice from "./reducers/userSlice";
 
+import verifySlice from "./reducers/verifySlice";
 const store = configureStore({
   reducer: {
     signup: signupSlice,
@@ -61,6 +62,7 @@ const store = configureStore({
     searchMode: searchSlice.reducer,
     resetPassword: resetPasswordSlice,
     resetEmail: resetEmailSlice,
+    verify: verifySlice,
   },
   middleware: [...middlewares, thunk],
 });

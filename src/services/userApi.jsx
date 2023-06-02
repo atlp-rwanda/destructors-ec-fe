@@ -3,6 +3,7 @@ import { data } from "autoprefixer";
 import axiosInstance from "../utils/Api";
 
 const USER_URL = "/users";
+const BASE_URL = import.meta.env.VITE_SERVER_URL;
 const token = localStorage.getItem("token") || "";
 
 export const getUserProfile = async () => {
@@ -33,3 +34,12 @@ export const updateUserProfile = async (profileData) => {
     console.error("Error updating user profile:", error.response?.data?.message || error.message);
   }
 };
+
+export async function verifyUserAccount (token) {
+  try {
+    const response = await axiosInstance.get(`${BASE_URL}/users/verify-email?t=${token}`);
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to verify user account");
+  }
+}
