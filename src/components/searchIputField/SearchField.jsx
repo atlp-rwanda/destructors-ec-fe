@@ -78,7 +78,7 @@ const SearchField = () => {
 
   return (
     <div>
-      <div className="flex h-9 font-rubik">
+      <div className="flex h-9 xs:hidden font-rubik">
         <input
           value='Filters'
           type='button'

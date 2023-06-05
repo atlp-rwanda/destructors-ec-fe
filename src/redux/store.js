@@ -14,7 +14,6 @@ import profileSlice from "./reducers/profileSlice";
 import verifySellerSlice from "./reducers/verifySellerSlice";
 
 import productReducer from "./reducers/createProductSlice";
-import categoriesReducer from "./reducers/retriveCategoriesSlice";
 import searchProductsReducer, {
   allProductsSlice,
   searchSlice,
@@ -46,6 +45,8 @@ const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
 import userSlice from "./reducers/userSlice";
 
 import verifySlice from "./reducers/verifySlice";
+import categoriesReducer from './reducers/retriveCategoriesSlice';
+import cartReducer, { cartUpdate } from './reducers/cartReducer'
 const store = configureStore({
   reducer: {
     signup: signupSlice,
@@ -65,6 +66,8 @@ const store = configureStore({
     resetEmail: resetEmailSlice,
     verify: verifySlice,
     productUpdate:updateProductSlice,
+    cart: cartReducer,
+    cartUpdate: cartUpdate.reducer
   },
   middleware: [...middlewares, thunk],
 });
