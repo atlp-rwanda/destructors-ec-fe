@@ -30,7 +30,7 @@ function DetailCard (props) {
                   <img
                     src={img}
                     key={id}
-                    className="w-[200px] rounded border-x-2 xs:hidden"
+                    className="w-[200px] rounded border-x-2 xs:hidden mb-3"
                     onClick={() => handleImageClick(img)}
                   />
                 );
@@ -41,8 +41,8 @@ function DetailCard (props) {
                 <div key={id} data-src={img} />
               ))}
             </AwesomeSlider>
-            <div className="w-full ml-3 xs:hidden">
-              <img src={picImage} className="bg-cover w-full h-96" />
+            <div className="w-full ml-3 xs:hidden h-96">
+              <img src={picImage} className="bg-cover w-full h-full object-cover" />
             </div>
           </div>
         </div>
