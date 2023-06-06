@@ -1,6 +1,6 @@
 import jwtDecode from 'jwt-decode';
-
-const getUserInfo = (token = localStorage.getItem('token')) => {
+const getUserInfo = () => {
+  const token = localStorage.getItem('token');
   try {
     return jwtDecode(token);
   } catch (error) {

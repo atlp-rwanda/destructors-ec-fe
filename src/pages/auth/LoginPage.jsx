@@ -16,7 +16,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const info = getUserInfo();
-      if (info.data.role === "admin" || info.data.role === "seller")
+      if (info.data.role === "admin")
         navigate("/users");
       else navigate("/");
     }
