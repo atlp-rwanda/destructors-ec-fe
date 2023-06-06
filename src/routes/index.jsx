@@ -21,6 +21,7 @@ import OrderedProduct from "../pages/OrderedProduct";
 import { WishListComonent } from "../components/wishlist/WishListComonent";
 import setLogout from "../components/logout/logout";
 
+import SalesPage from '../pages/SalesPage';
 
 const navigator = () => {
   return (
@@ -29,8 +30,7 @@ const navigator = () => {
         <Route path='/users' element={<GetUsers />}></Route>
         <Route
           path='/profile/update-password'
-          element={<UpdatePassword />}
-        ></Route>
+          element={<UpdatePassword />}></Route>
         <Route path='/dashboard' element={<DashboardLayout />}></Route>
         <Route path="/users" element={<GetUsers />}></Route>
         <Route path="/auth/logout" element={<setLogout />}></Route>
@@ -50,6 +50,7 @@ const navigator = () => {
         <Route path="/payment-success" element={<OrderedProduct />}></Route>
         <Route path='/carts' element={<CartPage />}></Route>
         <Route path='/product-wishes' element={<WishListComonent />}></Route>
+        <Route path='/dashboard/sales' element={<SalesPage />}></Route>
       </Routes>
     </div>
   );
