@@ -11,6 +11,7 @@ import ChatApp from '../Chat/Chat.app';
 import { getUserProfile } from '../../services/userApi';
 import AddToWishList from '../wishlist/AddToWishList';
 import getUserInfo from '../../utils/getUserInfo';
+import StarRating from './review/StarRatings';
 
 function Product(props) {
   const { page } = props;
@@ -93,7 +94,7 @@ function Product(props) {
                         <p className='text-[13px]'>
                           {product.price}RWF
                         </p>
-                        ⭐⭐⭐⭐⭐
+                        <StarRating value={product.averageRating} />
                       </div>
                     </div>
                   </Link>
