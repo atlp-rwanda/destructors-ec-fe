@@ -37,6 +37,7 @@ module.exports = {
         customGray: '#37475A',
         customBlack: '#131A22',
         bgRed: '#FED7D7',
+        brRed: '#FC8181',
         backgroundImage: {
           login: "",
         },
