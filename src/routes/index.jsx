@@ -16,6 +16,8 @@ import ForgetPasswordPage from "../pages/auth/ForgetPassword";
 import VerifyEmailPage from "../components/account/VerifyEmail";
 import ProductUpdate  from "../pages/UpdateProductPage";
 import CartPage from "../pages/CartPage";
+import SucessPayment from "../components/payment/SucessPayment";
+import OrderedProduct from "../pages/OrderedProduct";
 
 const navigator = () => {
   return (
@@ -41,7 +43,7 @@ const navigator = () => {
         <Route path="/auth/2fa?" element={<TwoFactor/>}></Route>
         <Route path="/verify-email" element={<VerifyEmailPage />}></Route>
         <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route>
-  
+        <Route path="/payment-success" element={<OrderedProduct />}></Route>
         <Route path='/carts' element={<CartPage />}></Route>
       </Routes>
     </div>
