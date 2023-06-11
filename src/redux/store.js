@@ -12,13 +12,18 @@ import expireReducer from "redux-persist-expire";
 import usersReducer from "./reducers/AdminSlice";
 import profileSlice from "./reducers/profileSlice";
 import verifySellerSlice from "./reducers/verifySellerSlice";
-
 import productReducer from "./reducers/createProductSlice";
 import searchProductsReducer, {
   allProductsSlice,
   searchSlice,
 } from "./reducers/searchProductsSlice";
 import updateProductSlice from "./reducers/updateProductSlice";
+import { paymentSlice } from "./reducers/paymentSlice";
+import userSlice from "./reducers/userSlice";
+import verifySlice from "./reducers/verifySlice";
+import categoriesReducer from './reducers/retriveCategoriesSlice';
+import cartReducer, { cartUpdate } from './reducers/cartReducer';
+import { orderedProductsSlice } from './reducers/orderedProductsSlice';
 
 const middlewares = [];
 if (process.env.NODE_ENV === "development") {
@@ -40,13 +45,9 @@ const persistConfig = {
     }),
   ],
 };
+
 const persistedLogin = persistReducer(persistConfig, loginReducer);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
-import userSlice from "./reducers/userSlice";
-
-import verifySlice from "./reducers/verifySlice";
-import categoriesReducer from './reducers/retriveCategoriesSlice';
-import cartReducer, { cartUpdate } from './reducers/cartReducer'
 const store = configureStore({
   reducer: {
     signup: signupSlice,
@@ -67,7 +68,9 @@ const store = configureStore({
     verify: verifySlice,
     productUpdate:updateProductSlice,
     cart: cartReducer,
-    cartUpdate: cartUpdate.reducer
+    cartUpdate: cartUpdate.reducer,
+    payment: paymentSlice.reducer,
+    orderedProduct: orderedProductsSlice.reducer,
   },
   middleware: [...middlewares, thunk],
 });

@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import '@testing-library/jest-dom';
-import { render,screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import Product from '../components/products/Product';
 import { afterEach, describe, expect, test, vi } from 'vitest';
@@ -27,7 +27,6 @@ describe('Product component', () => {
        </Provider>
       </BrowserRouter>,
     );
-screen.debug();
     expect(getByText('Loading...')).toBeInTheDocument();
   });
 
