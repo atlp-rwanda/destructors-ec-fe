@@ -1,16 +1,33 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-restricted-syntax */
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useProductAll } from "./hooks";
-import Spinner from "../Spinner";import { useEffect } from "react";
+import Spinner from "../Spinner";import { useEffect, useState } from "react";
 import AddToCartButton from "../cart/AddToCartButton";
 import SearchedProducts from "../searchIputField/SearchedProducts";
+import ChatApp from "../Chat/Chat.app";
+import { getUserProfile } from "../../services/userApi";
+
 function Product (props) {
   const { page } = props;
   const { products, status } = useProductAll(page);
   const searchMode = useSelector((state) => state.searchMode.value);
+  const [user,setUser]=useState(null)
 
+  useEffect(()=>{
+    const userFunction=async()=>{
+      try{
+    const response= await getUserProfile()
+    setUser(response)
+      }
+      catch(error){
+        return;
+      }
+    }
+    userFunction()
+  },[])
+  const userId = user ? user.user_details.id : null;
   useEffect ( () => {
     searchMode;
   }, [searchMode]);
@@ -54,6 +71,9 @@ function Product (props) {
               </Link>
             </div>
           ))}
+              <div className="fixed top-[90%] xs:right-[100%] right-[80%]">
+                <ChatApp   loggedInUser={userId}/>
+                </div>
         </div>
       ) : <p className="flex justify-center">Waiting for products</p>
       }
