@@ -1,40 +1,41 @@
-import { configureStore } from "@reduxjs/toolkit";
-import signupSlice from "./reducers/signupSlice";
-import { productSlice, singleProduct } from "./reducers/products";
-import loginReducer from "./reducers/loginSlice";
-import resetPasswordSlice from "./reducers/resetPasswordSlice";
-import resetEmailSlice from "./reducers/forgetPassword";
-import logger from "redux-logger";
-import thunk from "redux-thunk";
-import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
-import expireReducer from "redux-persist-expire";
-import usersReducer from "./reducers/AdminSlice";
-import profileSlice from "./reducers/profileSlice";
-import verifySellerSlice from "./reducers/verifySellerSlice";
-import productReducer from "./reducers/createProductSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import signupSlice from './reducers/signupSlice';
+import { productSlice, singleProduct } from './reducers/products';
+import loginReducer from './reducers/loginSlice';
+import resetPasswordSlice from './reducers/resetPasswordSlice';
+import resetEmailSlice from './reducers/forgetPassword';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer, persistStore } from 'redux-persist';
+import expireReducer from 'redux-persist-expire';
+import usersReducer from './reducers/AdminSlice';
+import profileSlice from './reducers/profileSlice';
+import verifySellerSlice from './reducers/verifySellerSlice';
+import productReducer from './reducers/createProductSlice';
 import searchProductsReducer, {
   allProductsSlice,
   searchSlice,
-} from "./reducers/searchProductsSlice";
-import updateProductSlice from "./reducers/updateProductSlice";
-import { paymentSlice } from "./reducers/paymentSlice";
-import userSlice from "./reducers/userSlice";
-import verifySlice from "./reducers/verifySlice";
+} from './reducers/searchProductsSlice';
+import updateProductSlice from './reducers/updateProductSlice';
+import { paymentSlice } from './reducers/paymentSlice';
+import userSlice from './reducers/userSlice';
+import verifySlice from './reducers/verifySlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
 import cartReducer, { cartUpdate } from './reducers/cartReducer';
 import { orderedProductsSlice } from './reducers/orderedProductsSlice';
+import { salesReducer, salesDetailsReducer } from './reducers/saleSlice';
 
 const middlewares = [];
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
 }
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
   transforms: [
     expireReducer(loginReducer, verifySellerSlice, {
-      persistedAtKey: "__persisted_at",
+      persistedAtKey: '__persisted_at',
       expireSeconds: 86400,
       expiredState: {
         data: null,
@@ -48,8 +49,8 @@ const persistConfig = {
 
 const persistedLogin = persistReducer(persistConfig, loginReducer);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
-import { wishListPostslice } from "./reducers/wishListSlice";
-import { wishListGetslice } from "./reducers/wishListSlice";
+import { wishListPostslice } from './reducers/wishListSlice';
+import { wishListGetslice } from './reducers/wishListSlice';
 const store = configureStore({
   reducer: {
     signup: signupSlice,
@@ -68,13 +69,15 @@ const store = configureStore({
     resetPassword: resetPasswordSlice,
     resetEmail: resetEmailSlice,
     verify: verifySlice,
-    productUpdate:updateProductSlice,
+    productUpdate: updateProductSlice,
     cart: cartReducer,
     cartUpdate: cartUpdate.reducer,
     payment: paymentSlice.reducer,
     orderedProduct: orderedProductsSlice.reducer,
     wishListPost: wishListPostslice.reducer,
-    wishListGet: wishListGetslice.reducer
+    wishListGet: wishListGetslice.reducer,
+    sales: salesReducer,
+    salesDetails: salesDetailsReducer,
   },
   middleware: [...middlewares, thunk],
 });
