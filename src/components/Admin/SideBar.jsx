@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import setLogout from '../logout/logout';
 import React from 'react';
 
 const SideBar = () => {
+  const {
+    showConfirmation,
+    handleLogoutIconClick,
+    renderLogoutConfirmation,
+  } = setLogout();
   const location = useLocation();
   return (
     <div className='bg-white xs:hidden'>
@@ -25,9 +31,10 @@ const SideBar = () => {
         <img src="/setting-icon.png" alt="" className='ml-5 mr-3'/>
         <span>Settings</span>
       </div>
-      <div className='flex mt-5 mb-3'>
+      <div className='flex mt-5 mb-3 hover:cursor-pointer' onClick={handleLogoutIconClick}>
         <img src="/logout-icon.png" alt="" className='ml-5 mr-3 '/>
         <span>Logout</span>
+        {showConfirmation && renderLogoutConfirmation()}
       </div>
     </div>
   );

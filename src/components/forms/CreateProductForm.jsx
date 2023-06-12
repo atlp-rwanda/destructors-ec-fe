@@ -1,7 +1,9 @@
 /* eslint-disable no-restricted-syntax */
-import InputField from "./InputField";
+import InputField from './InputField';
 import 'react-toastify/dist/ReactToastify.css';
-import { useCallback, useMemo, useState, useEffect } from 'react';
+import {
+  useCallback, useMemo, useState, useEffect,
+} from 'react';
 import { useDropzone } from 'react-dropzone';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
@@ -9,11 +11,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../redux/actions/createProduct';
 import { retrieveCategories } from '../../redux/actions/retreiveCategories';
 import { productSchema } from '../../validations/productValidation';
-import { showSuccessMessage } from "../../utils/toast";
+import { showSuccessMessage } from '../../utils/toast';
 
 const CreateProductForm = () => {
   const resolverForm = { resolver: yupResolver(productSchema) };
-  const { register, handleSubmit, reset, formState } = useForm(resolverForm);
+  const {
+    register, handleSubmit, reset, formState,
+  } = useForm(resolverForm);
   const { errors } = formState;
 
   const [product, setProduct] = useState({});
@@ -24,11 +28,9 @@ const CreateProductForm = () => {
   const dispatch = useDispatch();
   const [selectedImages, setSelectedImages] = useState([]);
   const onDrop = useCallback((acceptedFiles) => {
-
     acceptedFiles.forEach((file) => {
       setSelectedImages((prevState) => [...prevState, file]);
     });
-
   }, []);
 
   const {
@@ -40,8 +42,8 @@ const CreateProductForm = () => {
   } = useDropzone({ onDrop, maxFiles: 2 });
   const styles = useMemo(
     () => ({
-      ...(isDragAccept ? { borderColor: "#00e676" } : {}),
-      ...(isDragReject ? { borderColor: "#ff1744" } : {}),
+      ...(isDragAccept ? { borderColor: '#00e676' } : {}),
+      ...(isDragReject ? { borderColor: '#ff1744' } : {}),
     }),
     [isDragAccept, isDragReject],
   );
@@ -64,13 +66,10 @@ const CreateProductForm = () => {
     });
 
     try {
-
       if (selectedImages.length > 0) {
-
         const res = await dispatch(createProduct(productInfo)).unwrap();
         if (res.response) {
           return setError(res.response);
-
         }
         showSuccessMessage('Product created succefully');
         reset({
@@ -87,7 +86,7 @@ const CreateProductForm = () => {
       }
       (imageError == '') ? setImageError('Upload product image') : setImageError('');
     } catch (error) {
-      return;
+
     }
   };
 
@@ -108,12 +107,10 @@ const CreateProductForm = () => {
         </div>
         <div className='flex flex-col'>
           <label className=' text-slate-500 text-sm' >Category</label>
-          <select name="category" defaultValue='' className='border border-gray-200 ... w-[400px] h-[30px] mt-2 text-sm pl-3  text-slate-600 xs:w-full' {...register('categoryId')} onChange={e => setProduct({ ...product, 'categoryId': e.target.value })}>
+          <select name="category" defaultValue='' className='border border-gray-200 ... w-[400px] h-[30px] mt-2 text-sm pl-3  text-slate-600 xs:w-full' {...register('categoryId')} onChange={(e) => setProduct({ ...product, categoryId: e.target.value })}>
             <option disabled hidden value='' className='text-slate-100'> --Select product categories-- </option>
             {
-              categories.map((data) => {
-                return <option value={data.id} key={data.id}>{data.name}</option>;
-              })
+              categories.map((data) => <option value={data.id} key={data.id}>{data.name}</option>)
             }
           </select>
           <p className=" text-rose-400 text-xs">{errors.categoryId?.message.split(',')[0]}</p>
@@ -176,15 +173,15 @@ const CreateProductForm = () => {
         </div>
         <div className='inline-grid grid-cols-2 gap-[35px] absolute top-[100px] left-[800px] xs:static xs:mt-[10px] xs:p-2 laptop:static'>
           {
-            (selectedImages.length > 0) &&
-                        selectedImages.map((image, index) => (
+            (selectedImages.length > 0)
+                        && selectedImages.map((image, index) => (
                           <div className='border border-gray-200 ... w-[200px] h-[200px] text-5xl  text-slate-400 p-[20px] xs:w-[150px] bg-white xs:h-[150px] xs:p-[15px]' key={index}>
                             <img src={`${URL.createObjectURL(image)}`} alt="" className='w-[100%] object-cover' />
                           </div>
                         ))
           }
-          {selectedImages.length < 4 &&
-                        <div className='border border-gray-200 ... w-[200px] h-[200px] text-5xl  text-slate-400 xs:w-[150px] bg-white xs:h-[150px]'  {...getRootProps({ styles })}>
+          {selectedImages.length < 4
+                        && <div className='border border-gray-200 ... w-[200px] h-[200px] text-5xl  text-slate-400 xs:w-[150px] bg-white xs:h-[150px]' style={{ zIndex: 50 }}{...getRootProps({ styles })}>
                           <input data-testid="dropzone" {...getInputProps()} />
                           {isDragActive ? (
                             <p className='mt-[70px] ml-[55px] text-2xl xs:mt-[45px] xs:ml-[25px]'>Drop it here...</p>
@@ -220,8 +217,8 @@ const CreateProductForm = () => {
         )}
       </form>
       {
-        error &&
-                <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#F8F7FC] bg-opacity-60 z-50">
+        error
+                && <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-[#F8F7FC] bg-opacity-60 z-50">
                   <div className="bg-white p-9 border-[0.5px] border-slate-300 ... h-36 xs:m-5 xs:p-5">
                     <p className='text-slate-600 xs:w-full mb-6'>{error.data.message}</p>
                     <div className="flex justify-end mt-4">
@@ -231,8 +228,8 @@ const CreateProductForm = () => {
                       >
                         {(error.status == 404) ? 'Cancel' : 'Try Again'}
                       </button>
-                      {error.status == 404 &&
-                                <button className="py-2 w-[70px] bg-[#2D719D] hover:bg-[#2198e7] text-white text-sm">
+                      {error.status == 404
+                                && <button className="py-2 w-[70px] bg-[#2D719D] hover:bg-[#2198e7] text-white text-sm">
                                     Update
                                 </button>}
                     </div>

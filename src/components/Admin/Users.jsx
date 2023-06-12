@@ -84,7 +84,7 @@ const UserList = ({
                   <td className="border-b border-gray-100 py-2 px-4 xs:hidden">
                     <button
                       className={`px-4 py-2 rounded-lg ${
-                        user.isActive ? 'bg-customBlue text-white' : 'bg-yellow-500 text-white'
+                        user.isActive ? 'bg-customBlue text-white hover:bg-slate-500' : 'bg-yellow-500 text-white hover:bg-yellow-200'
                       }`}
                       onClick={() => handleConfirmation(user)}
                       // disabled={!user.isActive}
@@ -116,14 +116,14 @@ const UserList = ({
             <p className='text-gray-500'>Are you sure you want to {selectedUserId.isActive ? 'disable' : 'activate'} this <br></br> user account?</p>
             <div className="flex justify-end mt-4">
               <button
-                className="px-4 py-2 rounded bg-customGreen text-white font-semibold mr-2"
+                className="px-4 py-2 rounded bg-customGreen text-white hover:bg-green-500 font-semibold mr-2"
                 onClick={handleCancel}
               >
           Cancel
               </button>
               {selectedUserId.isActive ? (
                 <button
-                  className="px-4 py-2 rounded bg-customYellow text-white font-semibold"
+                  className="px-4 py-2 rounded bg-customYellow text-white font-semibold hover:bg-amber-400"
                   onClick={() => {
                     handleActivate(selectedUserId);
                     setConfirmationVisible(false);
@@ -133,7 +133,7 @@ const UserList = ({
                 </button>
               ) : (
                 <button
-                  className="px-4 py-2 rounded-lg bg-customYellow text-white font-semibold"
+                  className="px-4 py-2 rounded-lg bg-customYellow hover:bg-amber-400 text-white font-semibold"
                   onClick={() => {
                     handleActivate(selectedUserId);
                     setConfirmationVisible(false);
