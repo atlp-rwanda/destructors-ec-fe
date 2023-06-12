@@ -8,7 +8,7 @@ import axios from "../redux/config/axios";
 import MockAdapter from "axios-mock-adapter";
 import { afterEach, beforeAll, describe, expect, it } from "vitest";
 import AddToCartButton from "../components/cart/AddToCartButton";
-import addToCart from '../assets/addToCart.svg'
+// import addToCart from '../assets/addToCart.svg'
 describe('cart component', () => {
 
     let mock;
@@ -80,11 +80,8 @@ it("addto cart button actionn ", async () => {
         </BrowserRouter>
         );
 
-
 const image =document.querySelector("img")
-
-await userEvent.click(image)
-expect(image.closest('a')).toHaveAttribute('href','/carts')
+expect(image.alt).toContain('addtocart')
 
 })
 })

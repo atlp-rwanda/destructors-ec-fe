@@ -18,6 +18,7 @@ import ProductUpdate  from "../pages/UpdateProductPage";
 import CartPage from "../pages/CartPage";
 import SucessPayment from "../components/payment/SucessPayment";
 import OrderedProduct from "../pages/OrderedProduct";
+import { WishListComonent } from "../components/wishlist/WishListComonent";
 
 const navigator = () => {
   return (
@@ -45,6 +46,8 @@ const navigator = () => {
         <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route>
         <Route path="/payment-success" element={<OrderedProduct />}></Route>
         <Route path='/carts' element={<CartPage />}></Route>
+  
+        <Route path='/product-wishes' element={<WishListComonent />}></Route>
       </Routes>
     </div>
   );

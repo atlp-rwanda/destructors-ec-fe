@@ -3,13 +3,13 @@
 import { useState } from "react";
 import useUserRoleState from "../../utils/isLogged";
 import Seller from "./utils/Seller";
-import Buyer from "./utils/Buyer";
 import AwesomeSlider from "react-awesome-slider";
 import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import 'react-awesome-slider/dist/custom-animations/fold-out-animation.css';
 import 'react-awesome-slider/dist/custom-animations/open-animation.css';
 import  AddToCartButton  from "../../components/cart/AddToCartButton";
+import AddToWishList from "../wishlist/AddToWishList";
 function DetailCard (props) {
   const { product } = props;
   const [picImage, setPickImage] = useState(product.images[0]);
@@ -60,7 +60,7 @@ function DetailCard (props) {
               <Seller />
             ) : (
               <div className="flex xs:mt-7">
-                <Buyer />
+                <AddToWishList productId={product.id}  /> 
                 <AddToCartButton productId={product.id} /> 
               </div>
             )}

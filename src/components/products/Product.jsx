@@ -3,11 +3,13 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useProductAll } from "./hooks";
-import Spinner from "../Spinner";import { useEffect, useState } from "react";
+import Spinner from "../Spinner";
+import { useEffect, useState } from "react";
 import AddToCartButton from "../cart/AddToCartButton";
 import SearchedProducts from "../searchIputField/SearchedProducts";
 import ChatApp from "../Chat/Chat.app";
 import { getUserProfile } from "../../services/userApi";
+import AddToWishList from "../wishlist/AddToWishList";
 
 function Product (props) {
   const { page } = props;
@@ -31,7 +33,16 @@ function Product (props) {
   useEffect ( () => {
     searchMode;
   }, [searchMode]);
-  console.log(products);
+
+  const [hoveredProductId, setHoveredProductId] = useState(null);
+
+  const handleMouseEnter = (productId) => {
+    setHoveredProductId(productId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredProductId(null);
+  };
   return (
     <>
     { searchMode ?
@@ -47,15 +58,25 @@ function Product (props) {
       {status === "succeeded" && products ? (
         <div className="flex justify-center gap-7 flex-wrap">
           {products.items.map((product) => (
-            <div key={product.id} className="card flex flex-col">
-              <Link to={`/products/${product.id}`}>
+            <div key={product.id} className="card flex flex-col" onMouseEnter={() => handleMouseEnter(product.id)}
+            onMouseLeave={handleMouseLeave}>
+              {/* <Link to={`/products/${product.id}`}> */}
                 <div className="h-44 relative">
                   <img
                     className="w-full object-cover h-full absolute rounded"
                     src={product.images[0]}
                     alt=""
                   />
+                                        {hoveredProductId === product.id && (
+                        <div className="absolute right-0 flex   ">
+                          <div className="flex flex-col-reverse  "style={{ maxWidth: '70px', maxHeight: '170px',bottom:0 }} >
+                            <AddToCartButton productId={product.id} />
+                            <AddToWishList productId={product.id} />
+                          </div>
+                        </div>
+                      )}
                 </div>
+                <Link to={`/products/${product.id}`}>
                 <div className="flex flex-col justify-between p-2">
                   <h4 className="text-lg font-medium">{product.name}</h4>
                   <p className="text-sm mb-2">
@@ -67,7 +88,7 @@ function Product (props) {
                     </p>
                   </div>
                 </div>
-                <div><AddToCartButton productId={product.id} /> </div>
+                {/* <div><AddToCartButton productId={product.id} /> </div> */}
               </Link>
             </div>
           ))}

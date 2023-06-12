@@ -1,5 +1,5 @@
 
  const totalCartItems = (cartItems) => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    return cartItems.length;
   };
   export default totalCartItems;

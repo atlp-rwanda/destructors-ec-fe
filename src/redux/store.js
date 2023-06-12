@@ -48,6 +48,8 @@ const persistConfig = {
 
 const persistedLogin = persistReducer(persistConfig, loginReducer);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
+import { wishListPostslice } from "./reducers/wishListSlice";
+import { wishListGetslice } from "./reducers/wishListSlice";
 const store = configureStore({
   reducer: {
     signup: signupSlice,
@@ -71,6 +73,8 @@ const store = configureStore({
     cartUpdate: cartUpdate.reducer,
     payment: paymentSlice.reducer,
     orderedProduct: orderedProductsSlice.reducer,
+    wishListPost: wishListPostslice.reducer,
+    wishListGet: wishListGetslice.reducer
   },
   middleware: [...middlewares, thunk],
 });
