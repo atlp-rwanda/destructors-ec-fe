@@ -79,12 +79,6 @@ describe("createProduct Form", () => {
         </Provider>
       </BrowserRouter>,
     );
-    // expect(screen.getByPlaceholderText("Name of product")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Product price")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Product quantity")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Product bonus")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Add product description")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("29/06/2023")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("search for products")).toBeInTheDocument();
   });
   it("renders searchInputField", () => {
@@ -99,12 +93,6 @@ describe("createProduct Form", () => {
         </Provider>
       </BrowserRouter>,
     );
-    // expect(screen.getByPlaceholderText("Name of product")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Product price")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Product quantity")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Product bonus")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("Add product description")).toBeInTheDocument();
-    // expect(screen.getByPlaceholderText("29/06/2023")).toBeInTheDocument();
     expect(screen.getByPlaceholderText("search for products")).toBeInTheDocument();
     expect(screen.getByDisplayValue("Filters")).toBeInTheDocument();
     expect(screen.getByTestId("searchButton")).toBeInTheDocument();
