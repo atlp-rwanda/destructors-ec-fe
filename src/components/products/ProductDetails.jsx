@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import DetailCard from "./DetailCard";
 import NavBar from "../navBar/NavBar";
-import UpPage from "../navBar/UpPage";
 import BottomNav from "../navBar/BottomNav";
 import Spinner from "../Spinner";
 import { useProductDetails } from "./hooks";
@@ -10,7 +9,6 @@ function ProductDetails () {
   const {products, status, error} = useProductDetails();
   return (
     <div>
-      <UpPage />
       <NavBar />
       <BottomNav />
       {status === "loading" && <div className="flex justify-center items-center h-screen">

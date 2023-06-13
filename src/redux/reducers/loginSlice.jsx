@@ -2,13 +2,13 @@
 /* eslint-disable no-restricted-syntax */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../app/customAxios';
-import { showErrorMessage } from '../../utils/toast';
+import { showErrorMessage, showSuccessMessage } from '../../utils/toast';
 
 export const login = createAsyncThunk('login', async (loginData, { rejectWithValue }) => {
   try {
     const { data } = await axios.post('/users/login', loginData);
     if (data.message === 'please verify your email...') {
-      return showErrorMessage(data.message);
+      return showSuccessMessage(data.message);
     }
     localStorage.setItem('token', data.token);
     console.log(data)

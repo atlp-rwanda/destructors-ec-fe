@@ -20,6 +20,7 @@ import SucessPayment from "../components/payment/SucessPayment";
 import OrderedProduct from "../pages/OrderedProduct";
 import { WishListComonent } from "../components/wishlist/WishListComonent";
 import setLogout from "../components/logout/logout";
+import { GetAllOrders } from "../components/orders/getAllOrders";
 
 import SalesPage from '../pages/SalesPage';
 
@@ -51,6 +52,7 @@ const navigator = () => {
         <Route path='/carts' element={<CartPage />}></Route>
         <Route path='/product-wishes' element={<WishListComonent />}></Route>
         <Route path='/dashboard/sales' element={<SalesPage />}></Route>
+        <Route path="/orders" element={<GetAllOrders />}></Route>
       </Routes>
     </div>
   );

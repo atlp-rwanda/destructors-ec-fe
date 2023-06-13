@@ -13,6 +13,7 @@ import usersReducer from './reducers/AdminSlice';
 import profileSlice from './reducers/profileSlice';
 import verifySellerSlice from './reducers/verifySellerSlice';
 import productReducer from './reducers/createProductSlice';
+import { expiredProducts, getStaticsSlice, getWishedProductsSlice } from "./reducers/sellerStatistics";
 import searchProductsReducer, {
   allProductsSlice,
   searchSlice,
@@ -78,6 +79,9 @@ const store = configureStore({
     wishListGet: wishListGetslice.reducer,
     sales: salesReducer,
     salesDetails: salesDetailsReducer,
+    wishedProducts: getWishedProductsSlice.reducer,
+    statistics:getStaticsSlice.reducer,
+    expiredProducts:expiredProducts.reducer,
   },
   middleware: [...middlewares, thunk],
 });
