@@ -1,16 +1,22 @@
 
 
+import { toast } from "react-toastify";
 import axios from "../app/customAxios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const postCart = createAsyncThunk(
   'cart/postCart',
-  async (cartData, { rejectWithValue }) => {
+  async (cartData, { dispatch,rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
 
       const response = await axios.post('/carts', cartData);
+      toast.success(response.data.message);
+      dispatch(fetchCart());
+
       return response.data;
+     
+    
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
