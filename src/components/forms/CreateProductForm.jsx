@@ -91,8 +91,8 @@ const CreateProductForm = () => {
   };
 
   return (
-    <div >
-      <form onSubmit={handleSubmit(createItem)} className='flex flex-col ml-[330px] mt-[100px] xs:ml-0 px-5 '>
+    <div className='flex justify-center'>
+      <form onSubmit={handleSubmit(createItem)} className='w-4/5 flex flex-col mt-[80px] xs:ml-0 px-5 '>
 
         <div>
           <InputField
@@ -171,11 +171,11 @@ const CreateProductForm = () => {
             error={errors?.description}
           />
         </div>
-        <div className='inline-grid grid-cols-2 gap-[35px] absolute top-[100px] left-[800px] xs:static xs:mt-[10px] xs:p-2 laptop:static'>
+        <div className='inline-grid grid-cols-2 gap-[35px] absolute top-[200px] right-20 xs:static xs:mt-[10px] xs:p-2 laptop:static'>
           {
             (selectedImages.length > 0)
                         && selectedImages.map((image, index) => (
-                          <div className='border border-gray-200 ... w-[200px] h-[200px] text-5xl  text-slate-400 p-[20px] xs:w-[150px] bg-white xs:h-[150px] xs:p-[15px]' key={index}>
+                          <div className='border border-gray-200 ... w-[200px] h-[200px] text-5xl  text-slate-400 flex justify-center p-2 xs:w-[150px] bg-white xs:h-[150px] xs:p-[15px]' key={index}>
                             <img src={`${URL.createObjectURL(image)}`} alt="" className='w-[100%] object-cover' />
                           </div>
                         ))

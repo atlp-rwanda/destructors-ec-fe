@@ -23,8 +23,11 @@ const setLogout = () => {
   };
 
   const handleClickOutside = (event) => {
-    if (showConfirmation && !confirmationRef.current.contains(event.target)
-    && event.target !== confirmationRef.current) {
+    if (
+      showConfirmation &&
+      !confirmationRef.current.contains(event.target) &&
+      event.target !== confirmationRef.current
+    ) {
       cancelConfirmation();
     }
   };
@@ -45,7 +48,7 @@ const setLogout = () => {
     try {
       const response = await dispatch(logoutUser()).unwrap();
       toast.success(response);
-      navigate('/auth/login');
+      navigate('/');
     } catch (error) {
       showErrorMessage(error);
     }
@@ -68,19 +71,28 @@ const setLogout = () => {
   };
 
   const renderLogoutConfirmation = () => (
-    <div className="fixed inset-0 flex top-0 left-0 w-full h-full items-center justify-center bg-gray-700 bg-opacity-75" style={{ zIndex: 9999 }} onClick={handleContainerClick}>
-      <div className="w-96 max-w-md p-6 text-red-700 bg-white rounded-lg shadow  dark:text-red-200" role="alert" ref={confirmationRef}>
-        <div className="flex items-center mb-4">
-          <FaSignOutAlt className="w-6 h-6 text-brRed mr-2 logout-icon" />
-          <span className="text-lg font-semibold text-brRed logout-icon">Logout Confirmation</span>
+    <div
+      className='fixed inset-0 flex top-0 left-0 w-full h-full items-center justify-center bg-gray-700 bg-opacity-75'
+      style={{ zIndex: 9999 }}
+      onClick={handleContainerClick}>
+      <div
+        className='w-96 max-w-md p-6 text-red-700 bg-white rounded-lg shadow  dark:text-red-200'
+        role='alert'
+        ref={confirmationRef}>
+        <div className='flex items-center mb-4'>
+          <FaSignOutAlt className='w-6 h-6 text-brRed mr-2 logout-icon' />
+          <span className='text-lg font-semibold text-brRed logout-icon'>
+            Logout Confirmation
+          </span>
         </div>
-        <div className="text-base w-60 font-normal mb-4 mt-2 text-colors-brand">Are you sure you want to logout?</div>
-        <div className="grid grid-cols-2 gap-2">
+        <div className='text-base w-60 font-normal mb-4 mt-2 text-colors-brand'>
+          Are you sure you want to logout?
+        </div>
+        <div className='grid grid-cols-2 gap-2'>
           <div>
             <button
-              className="inline-flex ml-40 border border-red justify-center w-full px-2 py-1 text-base font-medium text-red bg-white rounded-lg hover:bg-white hover:text-bgRed focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-600"
-              onClick={handleLogout}
-            >
+              className='inline-flex ml-40 border border-red justify-center w-full px-2 py-1 text-base font-medium text-red bg-white rounded-lg hover:bg-white hover:text-bgRed focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-600'
+              onClick={handleLogout}>
               Logout
             </button>
           </div>

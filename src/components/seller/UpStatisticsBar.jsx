@@ -21,13 +21,11 @@ function UpStatisticsBar () {
       {user?.data?.role === 'seller' &&
       (
         <div className='flex px-2 justify-evenly xs:flex-col xs:gap-1'>
-          {!stat?.data[2]?.productsSoldRevenue && !stat?.data[2]?.lostProductsRevenue ? <p>Loading</p> :
-            <>
-              <Rectangle backgroundImage={grad1} vector={vector1} size={stat?.data[2]?.productsSoldRevenue + " RWF" || 0} title={'Sales'} />
-              <Rectangle backgroundImage={grad2} vector={vector2} size={stat?.data[2]?.productsSold || 0} title={'Sold Products'} />
-              <Rectangle backgroundImage={grad3} vector={vector3} size={stat?.data[2]?.lostProductsRevenue + "RWF" || "0"} title={'lost Revenues'} />
-            </>
-          }
+          <>
+            <Rectangle backgroundImage={grad1} vector={vector1} size={stat?.data[2]?.productsSoldRevenue + " RWF" || 0} title={'Sales'} />
+            <Rectangle backgroundImage={grad2} vector={vector2} size={stat?.data[2]?.productsSold } title={'Sold Products'} />
+            <Rectangle backgroundImage={grad3} vector={vector3} size={stat?.data[2]?.lostProductsRevenue + "RWF" || "0"} title={'lost Revenues'} />
+          </>
         </div>
       )}
     </div>

@@ -5,10 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../redux/actions/FetchUsers';
 import { updateStatus } from '../../redux/actions/UpdateUser';
 import { updateRole } from '../../redux/actions/UpdateRole';
-import TopSection from './TopSection';
 import UserCount from './UserCount';
-import AdminNavMobile from '../DashboarMobil';
-import SideBar from './SideBar';
+
 
 const GetUsers = () => {
   const dispatch = useDispatch();
@@ -41,10 +39,9 @@ const GetUsers = () => {
   };
 
   return (
-    <div className="flex justify-space-between">
-      <SideBar />
+    <div className="flex justify-space-between w-full ">
       <div className='w-full bg-gray-100'>
-        <TopSection />
+
         <UserCount    buyerCount={buyerCount} sellerCount={sellerCount} adminCount={adminCount} />
         <
           UserList users={users}
@@ -56,7 +53,6 @@ const GetUsers = () => {
           selectedUserId={selectedUserId}
           setConfirmationVisible={setConfirmationVisible}
           isConfirmationVisible={isConfirmationVisible}/>
-        <AdminNavMobile />
       </div>
     </div>
   );

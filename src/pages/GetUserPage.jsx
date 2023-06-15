@@ -1,14 +1,11 @@
-import ProductUpdate from '../components/forms/updateProductForm';
 import React, { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/SideBar';
 import DashboardHeader from '../components/DashboardHeader';
-import { showErrorMessage } from '../utils/toast';
-import SalesList from '../components/sales/Sales';
+import GetUsers from '../components/Admin/GetUser';
 import getUserInfo from '../utils/getUserInfo';
 
-const UpdateProductPage = () => {
+const AdminGetUsersPage = () => {
   const [user, setUser] = useState();
   useEffect(() => {
     const info = getUserInfo();
@@ -21,9 +18,9 @@ const UpdateProductPage = () => {
         <DashboardHeader />
         <Outlet />
         <div>
-          {user?.data?.role === 'seller' && (
-            <div>
-              <ProductUpdate />
+          {user?.data?.role === 'admin' && (
+            <div className='flex justify-center'>
+              <GetUsers />
             </div>
           )}
         </div>
@@ -32,4 +29,4 @@ const UpdateProductPage = () => {
   );
 };
 
-export default UpdateProductPage;
+export default AdminGetUsersPage;

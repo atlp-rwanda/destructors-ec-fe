@@ -18,7 +18,6 @@ function Product(props) {
   const searchMode = useSelector((state) => state.searchMode.value);
   const [user, setUser] = useState(null);
   const info = getUserInfo();
-
   useEffect(() => {
     const userFunction = async () => {
       try {
@@ -54,13 +53,13 @@ function Product(props) {
           {status === 'loading' && (
             <div className='flex justify-center items-center flex-col'>
               <p>Loading...</p>
-              <Spinner />
+              <Spinner height={24} width={24}/>
             </div>
           )}
           {status === 'failed' && <p>Failed to fetch products.</p>}
           {status === 'succeeded' && products ? (
             <div className='flex justify-center gap-7 flex-wrap'>
-              {products.items.map((product) => (
+              {products?.products.map((product) => (
                 <div
                   key={product.id}
                   className='card flex flex-col'
@@ -89,14 +88,12 @@ function Product(props) {
                   </div>
                   <Link to={`/products/${product.id}`}>
                     <div className='flex flex-col justify-between p-2'>
-                      <h4 className='text-lg font-medium'>{product.name}</h4>
-                      <p className='text-sm mb-2'>
-                        Quantity: {product.quantity} pieces
-                      </p>
+                      <h4 className='font-medium '>{product.name}</h4>
                       <div className='flex flex-row justify-between'>
-                        <p className='text-lg text-[15px]'>
-                          Price: {product.price}RWF
+                        <p className='text-[13px]'>
+                          {product.price}RWF
                         </p>
+                        ⭐⭐⭐⭐⭐
                       </div>
                     </div>
                   </Link>

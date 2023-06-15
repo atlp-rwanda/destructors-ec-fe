@@ -12,6 +12,7 @@ import vector3 from '../../assets/Vector3.svg';
 import getUserInfo from '../../utils/getUserInfo';
 
 import { showSuccessMessage, showErrorMessage } from '../../utils/toast';
+import Spinner from '../Spinner';
 
 const SalesList = () => {
   const sales = useSelector((state) => state.sales?.sales?.Sales);
@@ -53,7 +54,10 @@ const SalesList = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className='flex flex-col'>
+      <Spinner height={10} width={10} />
+      <span className='animate-ping mt-5'>Loading...</span>
+    </div>;
   }
 
   if (error) {

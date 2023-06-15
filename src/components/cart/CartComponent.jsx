@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCart, clearCart, updateCartItemQuantity, removeFromCart } from '../../redux/actions/cartActions';
+import { Link } from "react-router-dom";
 import classes from './CartComponent.module.css';
 import emptyCart from '../../assets/cart.svg';
 import { payment } from '../../redux/actions/paymentAction';
@@ -80,13 +81,20 @@ const CartComponent = () => {
       <div >
         {isCartCleared || cartItems.length === 0 ? (
           <div>
+             <Link to={"/"}>
+              <div className='flex items-center justify-center'>
+                <p className='text-[#2D719D] underline text-lg font-semibold'>
+                  Back to Home
+                </p>
+              </div>
+            </Link>
             <img className='flex w-full  justify-center items-center  ' src={emptyCart} style={{ maxWidth: '70rem', maxHeight: '70rem' }} />
             <p className='flex w-full  justify-center text-[#CCCCCC]'>your cart is empty</p>
           </div>
         ) : (
           <div className='flex justify-between m-5 xs:flex-col '>
             <div className={classes.containe}>
-              {cartItems.map((item) => (
+              {cartItems && cartItems.map((item) => (
                 <div key={item.id} className='flex'>
                   <div className={`xs:m-0 xs:bg-white ${classes.card}`}>
                     {item.images && item.images.length > 0 && (

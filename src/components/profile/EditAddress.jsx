@@ -63,7 +63,7 @@ export default function UpdateAddress () {
   if (isLoading) {
     return (
       <div>
-        <Spinner />
+        <Spinner height={6} width={6}/>
         Loading...
       </div>
     );

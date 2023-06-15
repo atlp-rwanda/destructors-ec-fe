@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchProducts, fetchSingleProduct } from "../actions/products";
+import { fetchProducts, fetchSingleProduct, fetchProductss } from "../actions/products";
 
 const initialState = {
   products: {
@@ -55,7 +55,28 @@ const singleProduct = createSlice ({
       });
   },
 });
+
+const fetchSellerProducts = createSlice({
+  name:'sellerProducts',
+  initialState,
+  extraReducers:(builder) =>{
+    builder
+      .addCase(fetchProductss.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchProductss.fulfilled, (state, action)=> {
+        state.status = 'succeeded';
+        state.products = action.payload;
+      })
+      .addCase(fetchProductss.rejected, (state, action)=>{
+        state.status = 'failed';
+        state.products = "";
+        state.error = action.payload;
+      });
+  },
+});
 export {
   productSlice,
   singleProduct,
+  fetchSellerProducts,
 };

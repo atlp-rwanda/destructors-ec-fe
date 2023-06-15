@@ -8,7 +8,7 @@ import axios from '../app/customAxios';
 export const logoutUser = createAsyncThunk('logout', async (_, { rejectWithValue }) => {
   try {
     const response = await axios.post('/users/logout');
-    localStorage.removeItem('token');
+    localStorage.clear();
     const { message } = response.data;
     return message;
   } catch (error) {

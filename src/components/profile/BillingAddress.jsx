@@ -12,7 +12,11 @@ const BillingAddress = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center mt-5">
+      <div className="animate-bounce">
+        <span>Loading...</span>
+      </div>
+    </div>;
   }
 
   if (isError) {
