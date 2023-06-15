@@ -30,8 +30,8 @@ function DetailCard (props) {
                   <img
                     src={img}
                     key={id}
-                    className="w-[200px] rounded border-x-2 xs:hidden mb-3"
-                    onClick={() => handleImageClick(img)}
+                    className="w-[200px] h-24 object-cover rounded border-x-2 xs:hidden mb-3"
+                    onMouseEnter={() => handleImageClick(img)}
                   />
                 );
               })}
@@ -42,7 +42,7 @@ function DetailCard (props) {
               ))}
             </AwesomeSlider>
             <div className="w-full ml-3 xs:hidden">
-            <img src={picImage} className="bg-cover w-full h-full object-cover" />
+              <img src={picImage} className="bg-cover w-full h-96 object-cover" />
             </div>
           </div>
         </div>
@@ -60,8 +60,8 @@ function DetailCard (props) {
               <Seller />
             ) : (
               <div className="flex xs:mt-7">
-                <AddToWishList productId={product.id}  /> 
-                <AddToCartButton productId={product.id} /> 
+                <AddToWishList productId={product.id}  />
+                <AddToCartButton productId={product.id} />
               </div>
             )}
           </div>

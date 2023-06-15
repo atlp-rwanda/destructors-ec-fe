@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUserProfile } from "../../redux/reducers/profileSlice";
-
+import Spinner from "../Spinner";
 const ProfileDetails = () => {
   const dispatch = useDispatch();
   const { user, isLoading, isError } = useSelector((state) => state.profile);
@@ -12,7 +12,7 @@ const ProfileDetails = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center align-middle items-center mt-20"><Spinner height={10} width={10}/></div>;
   }
 
   if (isError) {

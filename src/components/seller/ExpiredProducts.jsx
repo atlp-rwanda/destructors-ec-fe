@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useExpiredProducts } from '../products/hooks';
 import Table from '../../utils/Table';
+import Spinner from '../Spinner';
 
 function ExpiredProducts () {
   const products = useExpiredProducts();
@@ -18,7 +19,7 @@ function ExpiredProducts () {
   ];
   return (
     <div>
-      {products.isLoading && <p>Loading Please Wait</p>}
+      {products.isLoading && <Spinner height={6} width={6} />}
       {!products.products ? <p>No products found</p> : (
         <Table data={products.products} columns={column} date={titleBlock}/>
       )}

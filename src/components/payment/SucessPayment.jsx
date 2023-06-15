@@ -30,7 +30,7 @@ const SucessPayment = () => {
         { isLoading &&
           <div className="flex justify-center items-center flex-col">
             <p>Loading...</p>
-            <Spinner />
+            <Spinner height={6} width={6}/>
           </div>
         }
         <div className="flex justify-center gap-7 flex-wrap pt-11">

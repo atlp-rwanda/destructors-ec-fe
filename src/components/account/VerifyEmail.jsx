@@ -38,7 +38,7 @@ const VerifyEmailPage = () => {
       {loading && (
         <p>
           {" "}
-          <Spinner /> Loading...
+          <Spinner height={6} width={6}/> Loading...
         </p>
       )}
       {!loading && !error && (

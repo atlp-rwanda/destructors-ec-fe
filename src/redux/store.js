@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import signupSlice from './reducers/signupSlice';
-import { productSlice, singleProduct } from './reducers/products';
+import { productSlice, singleProduct, fetchSellerProducts } from './reducers/products';
 import loginReducer from './reducers/loginSlice';
 import resetPasswordSlice from './reducers/resetPasswordSlice';
 import resetEmailSlice from './reducers/forgetPassword';
@@ -25,7 +25,7 @@ import verifySlice from './reducers/verifySlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
 import cartReducer, { cartUpdate } from './reducers/cartReducer';
 import { orderedProductsSlice } from './reducers/orderedProductsSlice';
-import { salesReducer, salesDetailsReducer } from './reducers/saleSlice';
+import { salesReducer, salesDetailsReducer } from './reducers/saleSlice'
 
 const middlewares = [];
 if (process.env.NODE_ENV === 'development') {
@@ -82,6 +82,7 @@ const store = configureStore({
     wishedProducts: getWishedProductsSlice.reducer,
     statistics:getStaticsSlice.reducer,
     expiredProducts:expiredProducts.reducer,
+    sellerProducts:fetchSellerProducts.reducer,
   },
   middleware: [...middlewares, thunk],
 });

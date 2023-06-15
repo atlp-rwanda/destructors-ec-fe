@@ -36,7 +36,7 @@ function Product () {
       <h3 className="flex justify-center my-5 text-2xl font-semi-bold"></h3>
       {status === "loading" && <div className="flex justify-center items-center flex-col">
         <p>Loading...</p>
-        <Spinner />
+        <Spinner height={6} width={6}/>
       </div>
       }
       {status === "failed" && <p>Failed to fetch products.</p>}

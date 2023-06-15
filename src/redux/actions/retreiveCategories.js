@@ -10,6 +10,7 @@ export const retrieveCategories = createAsyncThunk(
       return data;
     } catch (error) {
       console.log(error);
+      return error;
     }
   },
 );
