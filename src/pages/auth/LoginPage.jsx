@@ -1,24 +1,23 @@
-import React from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import LoginForm from "../../components/forms/LoginForm";
-import middleImage from "../../public/images/middleImage.png";
-import bgImage from "../../public/images/bgsvg.svg";
-import { useNavigate } from "react-router-dom";
-import getUserInfo from "../../utils/getUserInfo";
-import GoogleLogin from "../../components/GoggleLogin";
-import HomeNavbar from "../../components/HomeNavBar";
+import React from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import LoginForm from '../../components/forms/LoginForm';
+import middleImage from '../../public/images/middleImage.png';
+import bgImage from '../../public/images/bgsvg.svg';
+import { useNavigate } from 'react-router-dom';
+import getUserInfo from '../../utils/getUserInfo';
+import GoogleLogin from '../../components/GoggleLogin';
+import HomeNavbar from '../../components/HomeNavBar';
 
 const LoginPage = () => {
   const isAuthenticated = useSelector((state) => state.login.isAuthenticated);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem('token')) {
       const info = getUserInfo();
-      if (info.data.role === "admin")
-        navigate("/users");
-      else navigate("/");
+      if (info.data.role === 'admin' || info.data.role === 'seller') navigate('/dashboard');
+      else navigate('/');
     }
   }, [isAuthenticated]);
 
