@@ -68,7 +68,6 @@ describe('Seller statistics', ()=>{
           <WishedProducts />
         </Provider>
       </BrowserRouter>);
-    screen.debug();
     expect(getByText('Loading Please wait')).toBeInTheDocument();
   });
   const dumyInfo2 = ()=>{
@@ -100,7 +99,6 @@ describe('Seller statistics', ()=>{
           <ExpiredProducts />
         </Provider>
       </BrowserRouter>);
-    screen.debug();
     expect(getByText('Image')).toBeInTheDocument();
   });
   const dumyinfo3 = ()=>{

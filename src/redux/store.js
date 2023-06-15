@@ -25,7 +25,9 @@ import verifySlice from './reducers/verifySlice';
 import categoriesReducer from './reducers/retriveCategoriesSlice';
 import cartReducer, { cartUpdate } from './reducers/cartReducer';
 import { orderedProductsSlice } from './reducers/orderedProductsSlice';
-import { salesReducer, salesDetailsReducer } from './reducers/saleSlice'
+import { salesReducer, salesDetailsReducer } from './reducers/saleSlice';
+import { notificationsSlice } from './reducers/notifications';
+import googleAuth from './reducers/googleAuthSlice';
 
 const middlewares = [];
 if (process.env.NODE_ENV === 'development') {
@@ -35,7 +37,7 @@ const persistConfig = {
   key: 'root',
   storage,
   transforms: [
-    expireReducer(loginReducer, verifySellerSlice, {
+    expireReducer(loginReducer, verifySellerSlice, googleAuth, {
       persistedAtKey: '__persisted_at',
       expireSeconds: 86400,
       expiredState: {
@@ -49,6 +51,7 @@ const persistConfig = {
 };
 
 const persistedLogin = persistReducer(persistConfig, loginReducer);
+const persistedGoogleLogin = persistReducer(persistConfig, googleAuth);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
 import { wishListPostslice } from './reducers/wishListSlice';
 import { wishListGetslice } from './reducers/wishListSlice';
@@ -83,6 +86,8 @@ const store = configureStore({
     statistics:getStaticsSlice.reducer,
     expiredProducts:expiredProducts.reducer,
     sellerProducts:fetchSellerProducts.reducer,
+    notifications: notificationsSlice.reducer,
+    googleAuth: persistedGoogleLogin,
   },
   middleware: [...middlewares, thunk],
 });
