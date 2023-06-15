@@ -1,3 +1,4 @@
+import React, { useEffect,useState, useRef } from 'react';
 import logo from '../../assets/Logo (2).svg';
 import SearchField from '../searchIputField/SearchField';
 import totalCartItems from '../../utils/cartUtil';
@@ -8,12 +9,11 @@ import getUserInfo from '../../utils/getUserInfo';
 import Navigations from './Navigations';
 import UserLogin from './UserLogin';
 import Notification from '../notifications/Notification';
-import { useState, useEffect, useRef } from 'react';
 import { showSuccessMessage } from '../../utils/toast';
 import { io } from 'socket.io-client';
 import NotificationSound from "../notifications/16451_download_note_iphone_notification_ringtone_apple_sms_ringtones.mp3";
 import { increment } from '../../redux/reducers/notifications';
-
+import { getProductWishilist } from '../../redux/actions/wishListActions';
 
 function NavBar () {
   const cartItems = useSelector((state) => state.cart.items);
@@ -58,6 +58,12 @@ function NavBar () {
       showSuccessMessage('you have new notification 🔔');
       playAudio();
     });
+
+    useEffect(() => {
+      dispatch(getProductWishilist());
+  
+    }, []);
+    
     return () => {
       newSocket.disconnect();
       newSocket.off('old-notification');
