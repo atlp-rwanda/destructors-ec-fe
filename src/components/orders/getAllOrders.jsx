@@ -53,7 +53,7 @@ export const GetAllOrders=()=>{
                             <td>{order.products.length}</td>
                             <td><h3 className={`${order.status==='payed' ? 'bg-[#a4d7a4] text-[green]':'bg-[#ecc989] text-[#8d560f]'}`}>{order.status}</h3></td>
                             <td>{formattedDate(order.createdAt)}</td>
-                            <td>view</td>
+                            <td>vie</td>
                         </tr>
                         ))}
                     </tbody>
