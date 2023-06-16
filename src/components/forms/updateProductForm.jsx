@@ -105,10 +105,6 @@ const ProductUpdate=()=>{
           return updatedImages;
         });
       };
-      const deleteImage=()=>{
-        setCurrentImage('')
-        setSelectedImages([]);
-      }
     return (
         <div>
             <form action="" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data" className="flex flex-col ml-[330px] mt-[100px] xs:ml-0 px-5 ">
@@ -228,7 +224,6 @@ const ProductUpdate=()=>{
                              <img src={image} alt="" className='w-[100%] object-cover' />
                     </div>
                         ))}
-                        <button className=" bg-[black] text-[white] h-[30px]" onClick={deleteImage}>delete</button>
                         <em className=" text-rose-400 text-sm p-4">{imageError}</em>
 
                 </div>

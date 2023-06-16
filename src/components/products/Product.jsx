@@ -20,18 +20,6 @@ function Product(props) {
   const info = getUserInfo();
 
   useEffect(() => {
-    const userFunction = async () => {
-      try {
-        const response = await getUserProfile();
-        setUser(response);
-      } catch (error) {
-        return;
-      }
-    };
-    userFunction();
-  }, []);
-  const userId = user ? user.user_details.id : null;
-  useEffect(() => {
     searchMode;
   }, [searchMode]);
 
@@ -103,7 +91,7 @@ function Product(props) {
                 </div>
               ))}
               <div className='fixed top-[90%] xs:right-[100%] right-[80%]'>
-                <ChatApp loggedInUser={userId} />
+                <ChatApp />
               </div>
             </div>
           ) : (

@@ -37,7 +37,7 @@ const SalesList = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchSales());
+    console.log("+++++++++++++",dispatch(fetchSales()));
     dispatch(fetchSalesDetails());
   }, [dispatch]);
 
@@ -134,6 +134,7 @@ const SalesList = () => {
             if (!saleDetails) {
               return null;
             }
+            console.log("++++++++",salesDetails)
 
             const product = saleDetails.products[0];
             return (

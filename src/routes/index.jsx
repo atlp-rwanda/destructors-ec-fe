@@ -5,7 +5,7 @@ import LandingPage from "../pages/LandingPage";
 import ProductDetails from "../components/products/ProductDetails";
 import LoginPage from "../pages/auth/LoginPage";
 import CreateProduct from "../pages/CreateProductPage";
-import { UpdatePassword } from "../components/forms/UpdatePassword";
+// import { UpdatePassword } from "../components/forms/UpdatePassword";
 import ViewProfile from "../pages/profile/ViewProfile";
 import EditProfile from "../pages/profile/EditProfile";
 import EditAddress from "../pages/profile/EditAddress";
@@ -20,7 +20,8 @@ import SucessPayment from "../components/payment/SucessPayment";
 import OrderedProduct from "../pages/OrderedProduct";
 import { WishListComonent } from "../components/wishlist/WishListComonent";
 import setLogout from "../components/logout/logout";
-import { GetAllOrders } from "../components/orders/getAllOrders";
+import OrdersPage from "../pages/profile/GetOrderPage";
+import UpdatePasswordPage from "../pages/profile/UpdatePasswordPage";
 
 import SalesPage from '../pages/SalesPage';
 
@@ -31,7 +32,7 @@ const navigator = () => {
         <Route path='/users' element={<GetUsers />}></Route>
         <Route
           path='/profile/update-password'
-          element={<UpdatePassword />}></Route>
+          element={<UpdatePasswordPage />}></Route>
         <Route path='/dashboard' element={<DashboardLayout />}></Route>
         <Route path="/users" element={<GetUsers />}></Route>
         <Route path="/auth/logout" element={<setLogout />}></Route>
@@ -52,7 +53,7 @@ const navigator = () => {
         <Route path='/carts' element={<CartPage />}></Route>
         <Route path='/product-wishes' element={<WishListComonent />}></Route>
         <Route path='/dashboard/sales' element={<SalesPage />}></Route>
-        <Route path="/orders" element={<GetAllOrders />}></Route>
+        <Route path="dashboard/orders" element={<OrdersPage />}></Route>
       </Routes>
     </div>
   );

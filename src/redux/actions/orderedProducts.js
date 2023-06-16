@@ -9,7 +9,7 @@ export const orderedProducts = createAsyncThunk(
       const { data } = await axios.get(`/orders`);
       return data;
     } catch (error) {
-      console.log(error);
+      console.log("++++++",error.message);
     }
   },
 );

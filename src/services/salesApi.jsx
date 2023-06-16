@@ -10,6 +10,7 @@ export const getSales = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
+    console.log("+++++++++++++",response.data)
     return response.data;
   } catch (error) {
     console.error('Error fetching sales:', error);
