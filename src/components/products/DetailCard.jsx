@@ -12,8 +12,8 @@ import AddToWishList from "../wishlist/AddToWishList";
 import CreateReview from './review/CreateReview';
 import Reviewers from './review/Reviewers';
 import StarRating from './review/StarRatings';
-
-const DetailCard = (props) => {
+import SimmilarItems from "../SimmilarItems";
+function DetailCard (props) {
   const { product } = props;
   const [picImage, setPickImage] = useState(product.images[0]);
   const { userRole } = useUserRoleState();
@@ -22,12 +22,12 @@ const DetailCard = (props) => {
     setPickImage(img);
   };
 
-  return (
-    <div className='w-11/12 flex flex-col items-center justify-center'>
-      <div className='flex flex-row justify-evenly font-rubik p-10 xs:flex-col xs:justify-normal'>
-        <div className='w-1/2 xs:w-full'>
-          <div className='flex xs:flex-col'>
-            <div className='w-1/4 xs:hidden'>
+  return (<div className="flex">      
+    <div className="w-11/12 flex flex-col ">
+      <div className="flex flex-row justify-evenly font-rubik p-10 xs:flex-col xs:justify-normal">
+        <div className="w-1/2 xs:w-full">
+          <div className="flex xs:flex-col">
+            <div className="w-1/4 xs:hidden">
               {product.images.map((img, id) => {
                 return (
                   <img
@@ -86,6 +86,8 @@ const DetailCard = (props) => {
           )}
         </div>
       </div>
+    </div>
+    <SimmilarItems categoryId={product.categoryId} id={product.id} />
     </div>
   );
 }
