@@ -24,7 +24,7 @@ const AddToWishList = (productId) => {
   return (
     <div className=' flex justify-end '>
       <img
-        className=' '
+        className="cursor-pointer"
         src={addtowishlist}
         alt='addtowishlist'
         onClick={handleAddToWishlist}
