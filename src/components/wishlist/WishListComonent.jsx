@@ -16,7 +16,7 @@ export const WishListComonent = (props) => {
   }, [dispatch]);
 
   const handleRemoveFromWishlist = async () => {
-
+    window.location.reload();
   };
 
   return (

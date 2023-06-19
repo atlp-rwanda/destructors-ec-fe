@@ -16,10 +16,12 @@ import ForgetPasswordPage from "../pages/auth/ForgetPassword";
 import VerifyEmailPage from "../components/account/VerifyEmail";
 import ProductUpdate  from "../pages/UpdateProductPage";
 import CartPage from "../pages/CartPage";
-import WishListPage from "../pages/WishList";
 import SucessPayment from "../components/payment/SucessPayment";
 import OrderedProduct from "../pages/OrderedProduct";
+import { WishListComonent } from "../components/wishlist/WishListComonent";
+import setLogout from "../components/logout/logout";
 
+import SalesPage from '../pages/SalesPage';
 
 const navigator = () => {
   return (
@@ -28,10 +30,10 @@ const navigator = () => {
         <Route path='/users' element={<GetUsers />}></Route>
         <Route
           path='/profile/update-password'
-          element={<UpdatePassword />}
-        ></Route>
+          element={<UpdatePassword />}></Route>
         <Route path='/dashboard' element={<DashboardLayout />}></Route>
         <Route path="/users" element={<GetUsers />}></Route>
+        <Route path="/auth/logout" element={<setLogout />}></Route>
         <Route path="/auth/signup" element={<SignupPage />} />
         <Route path='/auth/forget-password' element={<ForgetPasswordPage />} />
         <Route path='/auth/reset-password' element={<ResetPasswordPage/>} />
@@ -47,8 +49,8 @@ const navigator = () => {
         <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route>
         <Route path="/payment-success" element={<OrderedProduct />}></Route>
         <Route path='/carts' element={<CartPage />}></Route>
-  
-        <Route path='/product-wishes' element={<WishListPage />}></Route>
+        <Route path='/product-wishes' element={<WishListComonent />}></Route>
+        <Route path='/dashboard/sales' element={<SalesPage />}></Route>
       </Routes>
     </div>
   );

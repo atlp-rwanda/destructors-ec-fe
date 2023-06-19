@@ -4,11 +4,10 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const addProductToWishilist = createAsyncThunk(
   'product-wishes/postProduct',
-  async( wishiListData ,{dispatch,rejectWithValue}) =>{
+  async( wishiListData ,{rejectWithValue}) =>{
     try{
     const token = localStorage.getItem('token');
     const response = await axios.post('/product-wishes',wishiListData);
-    dispatch(getProductWishilist());
     return response.data;
     }catch(error){
         return rejectWithValue(error.response.data)
