@@ -8,6 +8,7 @@ import Products from '../public/icons/sidebar/products.svg';
 import Logout from '../public/icons/sidebar/logout.svg';
 import Logo from '../public/images/logo.svg';
 import Sales from '../public/icons/sidebar/sales.svg';
+import Logs from  '../public/icons/sidebar/logs.svg'
 import Home from '../public/icons/sidebar/home.svg';
 import getUserInfo from '../utils/getUserInfo';
 import getBaseRoute from '../utils/extractRoute';
@@ -68,6 +69,12 @@ const Sidebar = ({ children }) => {
       name: 'Sales',
       icon: Sales,
       scope: ['seller', 'admin'],
+    },
+    {
+      path: '/dashboard/logs',
+      name: 'Logs',
+      icon: Logs,
+      scope: ['admin'],
     },
     {
       path: '/',

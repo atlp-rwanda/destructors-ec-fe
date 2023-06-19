@@ -9,6 +9,7 @@ import TopSection from './TopSection';
 import UserCount from './UserCount';
 import AdminNavMobile from '../DashboarMobil';
 import SideBar from './SideBar';
+import LogsContainer from './GetLogs';
 
 const GetUsers = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,6 @@ const GetUsers = () => {
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
-
   const adminCount = users.filter((user) => user.role === 'admin').length;
   const sellerCount = users.filter((user) => user.role === 'seller').length;
   const buyerCount = users.filter((user) => user.role === 'buyer').length;
@@ -57,6 +57,7 @@ const GetUsers = () => {
           setConfirmationVisible={setConfirmationVisible}
           isConfirmationVisible={isConfirmationVisible}/>
         <AdminNavMobile />
+        <LogsContainer />
       </div>
     </div>
   );

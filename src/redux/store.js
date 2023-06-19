@@ -25,6 +25,7 @@ import categoriesReducer from './reducers/retriveCategoriesSlice';
 import cartReducer, { cartUpdate } from './reducers/cartReducer';
 import { orderedProductsSlice } from './reducers/orderedProductsSlice';
 import { salesReducer, salesDetailsReducer } from './reducers/saleSlice';
+import logSlice from './reducers/logs';
 
 const middlewares = [];
 if (process.env.NODE_ENV === 'development') {
@@ -78,6 +79,7 @@ const store = configureStore({
     wishListGet: wishListGetslice.reducer,
     sales: salesReducer,
     salesDetails: salesDetailsReducer,
+    logs: logSlice,
   },
   middleware: [...middlewares, thunk],
 });
