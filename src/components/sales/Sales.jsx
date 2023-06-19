@@ -18,7 +18,6 @@ const SalesList = () => {
   const salesDetails = useSelector(
     (state) => state.salesDetails?.salesDetails?.Orders
   );
-  const loading = useSelector((state) => state.sales.loading);
   const error = useSelector((state) => state.sales.error);
   const dispatch = useDispatch();
   const grad1 = 'from-blue-300 to-green-300';
@@ -52,12 +51,8 @@ const SalesList = () => {
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>OOPs! Something went wrong</div>;
   }
 
   if (!sales || !sales.length) {

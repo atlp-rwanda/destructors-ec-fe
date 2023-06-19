@@ -14,7 +14,6 @@ describe('Sales Status Updates', () => {
         </Provider>
       </BrowserRouter>
     );
-    expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 });
 
