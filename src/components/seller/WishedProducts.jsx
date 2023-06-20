@@ -9,7 +9,7 @@ export default function WishedProducts () {
   const dispatch = useDispatch();
   const {data, isLoading, error} = useSelector((state) => state.wishedProducts);
   const today = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-  const [date,setDate] = useState(today);
+  const [date, setDate] = useState(today);
   useEffect(()=>{
     dispatch(wishedProduct());
   }, [dispatch]);
@@ -26,12 +26,12 @@ export default function WishedProducts () {
   const product = data[0];
   const products = product?.map((data)=>{
     arr.push({
-      id:data.productDetails.item.id,
-      name:data.productDetails.item.name,
-      price:data.productDetails.item.price,
-      image:data.productDetails.item.images,
-      quantity:data.quantity,
-      date: formatDate(data.productDetails.item.createdAt),
+      id:data.productDetails?.item?.id,
+      name:data.productDetails?.item?.name,
+      price:data.productDetails?.item?.price,
+      image:data.productDetails?.item?.images,
+      quantity:data?.quantity,
+      date: formatDate(data.productDetails?.item?.createdAt),
     });
   });
   const column = [
@@ -47,7 +47,7 @@ export default function WishedProducts () {
   ];
   return (
     <div className="flex flex-col w-fit">
-      {isLoading && <p>Loading Please wait</p>}
+      {isLoading && <p className="animate-bounce">Loading Please wait</p>}
       {data.length === 0 ? "" : (
         <Table data={arr} columns={column} date={titleBlock}/>
       )}

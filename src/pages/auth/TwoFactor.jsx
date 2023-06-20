@@ -63,7 +63,7 @@ function TwoFactor () {
       <div className='flex flex-col'>
         <form onSubmit={handleSubmit(submitForm)}>
           <InputField placeholder="Auth code"className="w-[297px] h-8 bg-slate-100 text-left pl-5 text-[14px] rounded border-black xs:w-[260px] xs:mt-10" {...register('otp')} error={errors.otp}/>
-          <Button type="submit" className={`w-48 h-6 ${errors.otp || !watch('otp') ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={errors.otp || !watch('otp')}>{isLoading ? <Spinner /> : 'verify'}</Button>
+          <Button type="submit" className={`w-48 h-6 ${errors.otp || !watch('otp') ? 'opacity-50 cursor-not-allowed' : ''}`} disabled={errors.otp || !watch('otp')}>{isLoading ? <Spinner height={4} width={4}/> : 'verify'}</Button>
         </form>
       </div>
     </div>

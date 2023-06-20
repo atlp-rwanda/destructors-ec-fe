@@ -12,15 +12,15 @@ function ProductDetails () {
       <NavBar />
       <BottomNav />
       {status === "loading" && <div className="flex justify-center items-center h-screen">
-        <Spinner />
+        <Spinner height={24} width={24}/>
       </div>}
       {status === "failed" && <p>{error}</p>}
       {status === "succeeded" && products.id ? (
         <DetailCard product={products} />
       ) : (
         <div className="flex justify-center mt-20 flex-col items-center">
-          <Spinner />
-          <p className="font-rubik">Loading please wait</p>
+          <Spinner height={24} width={24}/>
+          <p className="font-rubik animate-pulse">Loading please wait</p>
         </div>
       )}
     </div>

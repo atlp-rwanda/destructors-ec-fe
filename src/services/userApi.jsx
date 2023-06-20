@@ -13,10 +13,10 @@ export const getUserProfile = async () => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(response.data.userProfile);
+    // console.log(response.data.userProfile);
     return response.data;
   } catch (error) {
-    console.error('Error fetching user profile:', error);
+    // console.error('Error fetching user profile:', error);
     throw error;
   }
 };

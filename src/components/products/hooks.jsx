@@ -14,10 +14,7 @@ export const useProductAll = (page) => {
 
   useEffect(() => {
     dispatch(fetchProducts(page));
-    dispatch(fetchCart());
-    dispatch(getProductWishilist());
   }, [page, dispatch]);
-
   return product;
 };
 

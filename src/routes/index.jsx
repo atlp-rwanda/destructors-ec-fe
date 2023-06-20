@@ -20,18 +20,54 @@ import SucessPayment from "../components/payment/SucessPayment";
 import OrderedProduct from "../pages/OrderedProduct";
 import { WishListComonent } from "../components/wishlist/WishListComonent";
 import setLogout from "../components/logout/logout";
-
+import SellerProducts from "../pages/SellerProducts";
 import SalesPage from '../pages/SalesPage';
+import NavBar from "../components/navBar/NavBar";
+import BottomNav from "../components/navBar/BottomNav";
+import ErrorPage from "../pages/ErrorPage";
+import AdminGetUsersPage from "../pages/GetUserPage";
 
+const BuyerNavigator = () => {
+  return (
+    <div>
+      <NavBar />
+      <BottomNav />
+      <Routes>
+        <Route path="*" element={<ErrorPage />}></Route>
+        <Route path='/carts' element={<CartPage />}></Route>
+        <Route path="/payment-success" element={<OrderedProduct />}></Route>
+        <Route path='/product-wishes' element={<WishListComonent />}></Route>
+        <Route
+          path='/profile/update-password'
+          element={<UpdatePassword />}></Route>
+        <Route path="/profile" element={<ViewProfile />}></Route>
+        <Route path="/profile/update-profile" element={<EditProfile />}></Route>
+        <Route path="/profile/update-address" element={<EditAddress />}></Route>
+      </Routes>
+    </div>
+  );
+};
+const SellerNavigator = () => {
+  return (
+    <div>
+      <Routes>
+        <Route path="*" element={<ErrorPage />}></Route>
+        <Route path="/add-product" element={<CreateProduct />}></Route>
+        {/* <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route> */}
+        <Route path='/dashboard/sales' element={<SalesPage />}></Route>
+        <Route path='/dashboard/products' element={<SellerProducts />}></Route>
+      </Routes>
+    </div>
+  );
+};
 const navigator = () => {
   return (
     <div>
       <Routes>
         <Route path='/users' element={<GetUsers />}></Route>
-        <Route
-          path='/profile/update-password'
-          element={<UpdatePassword />}></Route>
         <Route path='/dashboard' element={<DashboardLayout />}></Route>
+        <Route path="/dashboard/users" element={<AdminGetUsersPage />}></Route>
+        <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route>
         <Route path="/users" element={<GetUsers />}></Route>
         <Route path="/auth/logout" element={<setLogout />}></Route>
         <Route path="/auth/signup" element={<SignupPage />} />
@@ -40,17 +76,10 @@ const navigator = () => {
         <Route path="/auth/login" element={<LoginPage />}></Route>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/products/:id" element={<ProductDetails />}></Route>
-        <Route path="/product" element={<CreateProduct />}></Route>
-        <Route path="/profile" element={<ViewProfile />}></Route>
-        <Route path="/profile/update-profile" element={<EditProfile />}></Route>
-        <Route path="/profile/update-address" element={<EditAddress />}></Route>
         <Route path="/auth/2fa?" element={<TwoFactor/>}></Route>
         <Route path="/verify-email" element={<VerifyEmailPage />}></Route>
-        <Route path="/products/:id/update-product" element={<ProductUpdate />}></Route>
-        <Route path="/payment-success" element={<OrderedProduct />}></Route>
-        <Route path='/carts' element={<CartPage />}></Route>
-        <Route path='/product-wishes' element={<WishListComonent />}></Route>
-        <Route path='/dashboard/sales' element={<SalesPage />}></Route>
+        <Route path='/*' element={<BuyerNavigator />}></Route>
+        <Route path='/seller/*' element={<SellerNavigator />}></Route>
       </Routes>
     </div>
   );

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from "react-router-dom";
 import { getProductWishilist } from '../../redux/actions/wishListActions';
 import { useProductAll } from '../../components/products/hooks';
 import Spinner from '../Spinner';
 import AddToWishList from './AddToWishList';
+import Footer from "../Footer";
 
 export const WishListComonent = (props) => {
   const dispatch = useDispatch();
@@ -20,17 +22,18 @@ export const WishListComonent = (props) => {
   };
 
   return (
+    <>
     <div className="px-10 font-rubik">
       <h3 className="flex justify-center my-5 text-2xl font-semi-bold">Wished products</h3>
       {status === 'loading' && (
         <div className="flex justify-center items-center flex-col">
           <p>Loading...</p>
-          <Spinner />
+          <Spinner height={6} width={6}/>
         </div>
       )}
       {status === 'failed' && <p>Failed to fetch products.</p>}
       {status === 'succeeded' && products ? (
-        products.items.filter((product) =>
+        products.products.filter((product) =>
           wishlistData.some((item) => item.productId === product.id)
         ).length === 0 ? (
           <p className="flex w-full  justify-center items-center py-64  text-2xl font-semi-bold">
@@ -38,7 +41,7 @@ export const WishListComonent = (props) => {
           </p>
         ) : (
           <div className="flex justify-center gap-7 flex-wrap">
-            {products.items
+            {products.products
               .filter((product) => wishlistData.some((item) => item.productId === product.id))
               .map((product) => (
                 <div key={product.id} className="card flex flex-col">
@@ -73,6 +76,8 @@ export const WishListComonent = (props) => {
         <p className="flex justify-center">Waiting for products</p>
       )}
     </div>
+    <Footer/>
+    </>
   );
 };
 

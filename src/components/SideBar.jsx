@@ -58,13 +58,13 @@ const Sidebar = ({ children }) => {
       scope: ['buyer', 'admin'],
     },
     {
-      path: '/dashboard/products',
+      path: '/seller/dashboard/products',
       name: 'Products',
       icon: Products,
       scope: ['seller', 'admin'],
     },
     {
-      path: '/dashboard/sales',
+      path: '/seller/dashboard/sales',
       name: 'Sales',
       icon: Sales,
       scope: ['seller', 'admin'],

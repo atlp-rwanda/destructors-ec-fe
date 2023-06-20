@@ -1,16 +1,15 @@
-import NavBar from '../components/navBar/NavBar'
-import UpPage from '../components/navBar/UpPage'
-import React from 'react'
-import CartComponent from '../components/cart/CartComponent'
+import NavBar from '../components/navBar/NavBar';
+import React from 'react';
+import CartComponent from '../components/cart/CartComponent';
+import Footer from '../components/Footer';
 
 const CartPage = () => {
   return (
     <div>
-        <UpPage/>
-        <NavBar/>
-        <CartComponent/>
+      <CartComponent/>
+      <Footer/>
     </div>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;

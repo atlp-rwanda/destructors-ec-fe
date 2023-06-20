@@ -14,7 +14,7 @@ const postCart = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 const fetchCart = createAsyncThunk(
@@ -22,9 +22,10 @@ const fetchCart = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem('token');
-
-      const response = await axios.get('/carts');
-      return response.data;
+      if (token){
+        const response = await axios.get('/carts');
+        return response.data;
+      }
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -43,7 +44,7 @@ const clearCart = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.message);
     }
-  }
+  },
 );
 
 const removeFromCart = createAsyncThunk(
@@ -56,7 +57,7 @@ const removeFromCart = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 const updateCartItemQuantity = createAsyncThunk(
@@ -69,7 +70,7 @@ const updateCartItemQuantity = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 

@@ -136,7 +136,7 @@ const SearchField = () => {
             onChange={e => setSearchCriteria({ ...searchCriteria, 'categoryId': e.target.value })}
           >
             <option disabled hidden value='' className='text-slate-300'> --Select product categories-- </option>
-            {categoriesList.map((data) => (
+            {categoriesList?.map((data) => (
               <option value={data.id} key={data.id} onClick={() => setSearchCriteria({ ...searchCriteria, 'category': data.name }) }>{data.name}</option>
             ))}
           </select>

@@ -15,8 +15,7 @@ const responseHandler = (response) => response;
 
 const errorHandler = (error) => {
   if (error.response.status === 401) {
-    // localStorage.clear();
-    // return (window.location.href = "/auth")
+    return (window.location.href = "/auth/login");
   }
   return Promise.reject(error);
 };

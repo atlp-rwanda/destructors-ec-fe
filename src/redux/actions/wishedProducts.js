@@ -31,6 +31,7 @@ const getStatistics = createAsyncThunk('/statistics', async ()=>{
         Authorization:`Bearer ${token}`,
       },
     });
+    console.log(data,'--------------------------------------------------');
     return data;
   } catch (error){
     return error;
@@ -38,11 +39,7 @@ const getStatistics = createAsyncThunk('/statistics', async ()=>{
 });
 const getWishedProductsDetails = async (data1)=>{
   try {
-    const {data} = await axios.get(`/products/${data1}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const {data} = await axios.get(`/products/${data1}`);
     return data;
   } catch (error){
     return error;
