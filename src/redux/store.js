@@ -22,8 +22,6 @@ import updateProductSlice from './reducers/updateProductSlice';
 import { paymentSlice } from './reducers/paymentSlice';
 import userSlice from './reducers/userSlice';
 import verifySlice from './reducers/verifySlice';
-import categoriesReducer from './reducers/retriveCategoriesSlice';
-import cartReducer, { cartUpdate } from './reducers/cartReducer';
 import { orderedProductsSlice } from './reducers/orderedProductsSlice';
 import { salesReducer, salesDetailsReducer } from './reducers/saleSlice';
 import { notificationsSlice } from './reducers/notifications';
@@ -55,6 +53,10 @@ const persistedGoogleLogin = persistReducer(persistConfig, googleAuth);
 const persistTwoAuth = persistReducer(persistConfig, verifySellerSlice);
 import { wishListPostslice } from './reducers/wishListSlice';
 import { wishListGetslice } from './reducers/wishListSlice';
+import categoriesReducer from './reducers/retriveCategoriesSlice';
+import cartReducer, { cartUpdate } from './reducers/cartReducer';
+import productReviewsSlice  from './reducers/reviewSlice';
+import getProductReviewsSlice from './reducers/getProductReviewSlice';
 const store = configureStore({
   reducer: {
     signup: signupSlice,
@@ -88,6 +90,8 @@ const store = configureStore({
     sellerProducts:fetchSellerProducts.reducer,
     notifications: notificationsSlice.reducer,
     googleAuth: persistedGoogleLogin,
+    submitProductReview: productReviewsSlice,
+    fetchProductReviews: getProductReviewsSlice,
   },
   middleware: [...middlewares, thunk],
 });
