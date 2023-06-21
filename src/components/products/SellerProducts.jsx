@@ -40,7 +40,7 @@ function SellerProduct (pages) {
       {status === 'failed' && <p>Failed to fetch products.</p>}
       {status === 'succeeded' && products ? (
         <div className='flex justify-center gap-7 flex-wrap'>
-          {products?.items.map((product) => (
+          {products?.items?.map((product) => (
             <div
               key={product.id}
               className='card flex flex-col'
@@ -49,7 +49,7 @@ function SellerProduct (pages) {
               <div className='h-44 relative'>
                 <img
                   className='w-full object-cover h-full absolute rounded'
-                  src={product.images[0]}
+                  src={product?.images[0]}
                   alt=''
                 />
                 {hoveredProductId === product.id && (

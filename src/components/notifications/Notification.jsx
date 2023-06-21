@@ -49,7 +49,7 @@ const Notification = ({notifications}) => {
   };
   console.log(notificationContainer);
   return (
-    <div className='absolute  bg-white w-[400px]  ease-in z-50 right-8 px-3 pb-3 rounded-lg drop-shadow-2xl'>
+    <div className='absolute  bg-white w-[400px] top-[100px] ease-in z-50 right-8 px-3 pb-3 rounded-lg drop-shadow-2xl'>
       <div className=' flex w-full py-2 border-b-2'>
         <h2 className=' text-xl font-black p-2 text-primary '>Notifications</h2>
         <div className={` ml-[100px] flex  mt-3 ${ notificationContainer.find(( notification  => notification.status === false)) ? 'text-primary hover:text-[#2198e7]' : ' text-slate-400 disabled'}`} onClick={markAllAsRead}>
