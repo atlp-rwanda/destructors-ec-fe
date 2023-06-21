@@ -26,6 +26,7 @@ import NavBar from '../components/navBar/NavBar';
 import BottomNav from '../components/navBar/BottomNav';
 import ErrorPage from '../pages/ErrorPage';
 import AdminGetUsersPage from '../pages/GetUserPage';
+import Welcome from "../pages/WelcomePage";
 
 const BuyerNavigator = () => {
   return (
@@ -81,6 +82,7 @@ const navigator = () => {
         <Route path='/verify-email' element={<VerifyEmailPage />}></Route>
         <Route path='/*' element={<BuyerNavigator />}></Route>
         <Route path='/seller/*' element={<SellerNavigator />}></Route>
+        <Route path='/home' element={<Welcome />}></Route>
       </Routes>
     </div>
   );

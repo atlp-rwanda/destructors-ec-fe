@@ -74,7 +74,7 @@ function Product(props) {
                     {hoveredProductId === product.id && (
                       <div className='absolute right-0 flex   '>
                         <div
-                          className='flex flex-col-reverse  '
+                          className='flex flex-col-reverse cursor-pointer  '
                           style={{
                             maxWidth: '70px',
                             maxHeight: '170px',

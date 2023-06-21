@@ -1,10 +1,15 @@
 import { useSelector } from 'react-redux';
 import getUserInfo from '../../utils/getUserInfo';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchCart } from '../../redux/actions/cartActions';
 import { getProductWishilist } from '../../redux/actions/wishListActions';
+import { io } from 'socket.io-client';
+import NotificationSound from "../notifications/16451_download_note_iphone_notification_ringtone_apple_sms_ringtones.mp3";
+import { increment } from '../../redux/reducers/notifications';
+import Notification from '../notifications/Notification';
+import { showSuccessMessage } from '../../utils/toast';
 
 function Navigations () {
   const cartItems = useSelector((state) => state.cart.items);
@@ -13,10 +18,64 @@ function Navigations () {
   const totalwishlistitems = wishlistItems.length;
   const info = getUserInfo();
   const dispatch = useDispatch();
+  const audioPlayer = useRef(null);
+  const [openNotification, setOpenNotification] = useState(false);
+  const [newNotifications, setNewNotifications] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const unReadNotification = useSelector((state) => state.notifications.value);
+
+  function playAudio () {
+    audioPlayer.current.play();
+  }
+  let loginToken = localStorage.getItem('token');
   useEffect(() =>{
     dispatch(fetchCart());
     dispatch(getProductWishilist());
   }, []);
+
+  useEffect(() => {
+    const newSocket = io(`${import.meta.env.VITE_REACT_APP_API_URLs}/notifications`, {
+      extraHeaders: {
+        authorization: `Bearer ${loginToken}`,
+      },
+    });
+    newSocket.on('old-notification', (notification) => {
+      setNotifications(notification);
+    });
+    newSocket.on('new-notification', (subject, message, image, id) => {
+      const newNotification = {
+        id,
+        subject,
+        message: {
+          text: message,
+          image,
+        },
+        status: false,
+      };
+      setNewNotifications(newNotification);
+
+      showSuccessMessage('you have new notification 🔔');
+      playAudio();
+    });
+    return () => {
+      newSocket.disconnect();
+      newSocket.off('old-notification');
+    };
+  }, [newNotifications, loginToken]);
+  let notificationNber = 0;
+  notifications.forEach(element => {
+    if (element.status === false) {
+      notificationNber += 1;
+    }
+  });
+  useEffect(() => {
+    dispatch(increment(notificationNber));
+  }, [dispatch, notificationNber]);
+
+  const notificationTab = () => {
+    setOpenNotification(!openNotification);
+  };
+
   return (
     <div className='flex gap-2 cursor-pointer'>
       <Link to="/dashboard" >
@@ -38,7 +97,7 @@ function Navigations () {
                 fill='#555555'
               />
             </svg>
-            <div className=' absolute ml-4 mb-3 border-solid border-2 rounded-full h-5 w-5 flex items-center justify-center bg-green-500 text-white text-xs'>
+            <div className=' absolute ml-4 mb-3 border-solid border-2 rounded-full h-5 w-5 flex items-center justify-center bg-[#2D719D] text-white text-xs'>
               {totalitems}
             </div>
           </div>
@@ -57,31 +116,44 @@ function Navigations () {
           />
         </svg>
       </Link>
-      <Link to='/notifications'>
-        <svg
-          width='26'
-          height='26'
-          viewBox='0 0 26 26'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'>
-          <path
-            fillRule='evenodd'
-            clipRule='evenodd'
-            d='M13.0003 19.3348C19.1095 19.3348 21.9357 18.5511 22.2087 15.4054C22.2087 12.2619 20.2382 12.464 20.2382 8.60704C20.2382 5.59432 17.3827 2.1665 13.0003 2.1665C8.61799 2.1665 5.76241 5.59432 5.76241 8.60704C5.76241 12.464 3.79199 12.2619 3.79199 15.4054C4.06602 18.563 6.89225 19.3348 13.0003 19.3348Z'
-            stroke='#555555'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-          <path
-            d='M15.5886 22.5952C14.1108 24.2362 11.8054 24.2556 10.3135 22.5952'
-            stroke='#555555'
-            strokeWidth='2'
-            strokeLinecap='round'
-            strokeLinejoin='round'
-          />
-        </svg>
-      </Link>
+      <div>
+        <div className=' static flex  items-center' onClick={notificationTab}>
+
+          <svg
+            width='26'
+            height='26'
+            viewBox='0 0 26 26'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'>
+            <path
+              fillRule='evenodd'
+              clipRule='evenodd'
+              d='M13.0003 19.3348C19.1095 19.3348 21.9357 18.5511 22.2087 15.4054C22.2087 12.2619 20.2382 12.464 20.2382 8.60704C20.2382 5.59432 17.3827 2.1665 13.0003 2.1665C8.61799 2.1665 5.76241 5.59432 5.76241 8.60704C5.76241 12.464 3.79199 12.2619 3.79199 15.4054C4.06602 18.563 6.89225 19.3348 13.0003 19.3348Z'
+              stroke='#555555'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+            <path
+              d='M15.5886 22.5952C14.1108 24.2362 11.8054 24.2556 10.3135 22.5952'
+              stroke='#555555'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+          </svg>
+          <div className=' absolute ml-4 mb-3 border-solid border-2 rounded-full h-5 w-5 flex items-center justify-center bg-[#2D719D] text-white text-xs'>
+            {unReadNotification}
+          </div>
+          { openNotification &&
+          <Notification
+            notifications = {notifications}
+
+          />}
+          <audio ref={audioPlayer} src={NotificationSound} />
+        </div>
+
+      </div>
       <Link to='/product-wishes'>
         <div className=' static flex  items-center'>
           <svg
@@ -95,7 +167,7 @@ function Navigations () {
               fill='black'
             />
           </svg>
-          <div className=' absolute ml-4 mb-3 border-solid border-2 rounded-full h-5 w-5 flex items-center justify-center bg-green-500 text-white text-xs'>
+          <div className=' absolute ml-4 mb-3 border-solid border-2 rounded-full h-5 w-5 flex items-center justify-center bg-[#2D719D] text-white text-xs'>
             {totalwishlistitems}
           </div>
         </div>

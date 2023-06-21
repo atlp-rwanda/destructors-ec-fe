@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 /* eslint-disable no-param-reassign */
 /* eslint-disable eol-last */
 /* eslint-disable no-restricted-syntax */
