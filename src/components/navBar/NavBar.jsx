@@ -13,14 +13,14 @@ import { showSuccessMessage } from '../../utils/toast';
 import { io } from 'socket.io-client';
 import NotificationSound from "../notifications/16451_download_note_iphone_notification_ringtone_apple_sms_ringtones.mp3";
 import { increment } from '../../redux/reducers/notifications';
-
+import { getProductWishilist } from '../../redux/actions/wishListActions';
 
 function NavBar () {
   const cartItems = useSelector((state) => state.cart.items);
   const totalitems = cartItems.length;
   const pathname = window.location.pathname;
   const wishlistItems = useSelector((state) => state.wishListGet.wishlistData);
-  const totalwishlistitems = wishlistItems.length;
+  const totalwishlistitems = wishlistItems?.length;
   const info = getUserInfo();
   const [openNotification, setOpenNotification] = useState(false);
 
@@ -29,6 +29,10 @@ function NavBar () {
   const [notifications, setNotifications] = useState([]);
   const unReadNotification = useSelector((state) => state.notifications.value);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductWishilist());
+
+  }, []);
 
   function playAudio () {
     audioPlayer.current.play();
@@ -58,6 +62,7 @@ function NavBar () {
       showSuccessMessage('you have new notification 🔔');
       playAudio();
     });
+
     return () => {
       newSocket.disconnect();
       newSocket.off('old-notification');

@@ -10,7 +10,7 @@ import { afterEach, beforeAll, describe, expect, it } from "vitest";
 import AddToWishList from '../components/wishlist/AddToWishList';
 
 
-describe('cart component', () => {
+describe('wishlist component', () => {
 
     let mock;
     let wishlistMock =
@@ -78,7 +78,6 @@ describe('cart component', () => {
             </BrowserRouter>
             );
 
-// screen.debug()
 const image =document.querySelector("img")
 expect(image.alt).toContain('addtowishlist')
 

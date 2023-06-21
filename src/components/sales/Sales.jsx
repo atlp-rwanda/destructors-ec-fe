@@ -19,7 +19,7 @@ const SalesList = () => {
   const salesDetails = useSelector(
     (state) => state.salesDetails?.salesDetails?.Orders
   );
-  const loading = useSelector((state) => state.sales.loading);
+ 
   const error = useSelector((state) => state.sales.error);
   const dispatch = useDispatch();
   const grad1 = 'from-blue-300 to-green-300';
@@ -53,24 +53,12 @@ const SalesList = () => {
     }
   };
 
-  if (loading) {
-    return <div className='flex flex-col'>
-      <Spinner height={10} width={10} />
-      <span className='animate-ping mt-5'>Loading...</span>
-    </div>;
-  }
+
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  if (!sales || !sales.length) {
-    return <div>No sales data available.</div>;
-  }
-
-  if (!salesDetails || !salesDetails.length) {
-    return <div>You do not have any sale yet.</div>;
-  }
 
   return (
     <div>
@@ -79,7 +67,7 @@ const SalesList = () => {
           <Rectangle
             backgroundImage={grad1}
             vector={vector1}
-            size={sales.length || '0'}
+            size={sales?.length || '0'}
             title={'New Sales'}
           />
           <Rectangle
@@ -129,7 +117,7 @@ const SalesList = () => {
           </tr>
         </thead>
         <tbody className='divide-y divide-gray-200'>
-          {sales.map((sale) => {
+          {sales?.map((sale) => {
             const saleDetails = salesDetails?.find(
               (details) => details.id === sale.orderId
             );
@@ -161,7 +149,6 @@ const SalesList = () => {
                       <div className='font-medium text-gray-900'>
                         {product.name}
                       </div>
-                      {/* <div className='text-gray-500'>{product.name}</div> */}
                     </div>
                   </div>
                 </td>

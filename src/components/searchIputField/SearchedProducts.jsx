@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Spinner from "../Spinner";
 import Paginate from './SearchedProductPagination';
-
+import AddToCartButton from '../../components/cart/AddToCartButton';
+import AddToWishList from '../../components/wishlist/AddToWishList';
 function Product () {
   const { products, status } = useSelector((state) => state.searchedProducts);
   const [currentPage, setCurrentPage] = useState(1);
@@ -15,6 +16,15 @@ function Product () {
   const indexOfFirstPost = indexOfLastPost - productsPerPage;
   const currentProducts = products.slice(indexOfFirstPost, indexOfLastPost);
 
+  const [hoveredProductId, setHoveredProductId] = useState(null);
+
+  const handleMouseEnter = (productId) => {
+    setHoveredProductId(productId);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredProductId(null);
+  };
   const previousPage = () => {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
@@ -45,19 +55,33 @@ function Product () {
           { (products.length != 0) ? <div>
             <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mdl:grid-cols-4 gap-10 px-4 md:px-10 font-rubik">
               {currentProducts.map((product) => (
-                <div key={product.id} className="card flex flex-col">
-                  <Link to={`/products/${product.id}`}>
+                <div key={product.id} className="card flex flex-col" onMouseEnter={() => handleMouseEnter(product.id)}
+                onMouseLeave={handleMouseLeave}>
+              
                     <div className="h-44 relative">
                       <img
                         className="w-full object-cover h-full absolute rounded"
                         src={product.images[0]}
                         alt="" />
+                                            {hoveredProductId === product.id && (
+                      <div className='absolute right-0 flex   '>
+                        <div
+                          className='flex flex-col-reverse  '
+                          style={{
+                            maxWidth: '70px',
+                            maxHeight: '170px',
+                            bottom: 0,
+                          }}>
+                          <AddToCartButton productId={product.id} />
+                          <AddToWishList productId={product.id} />
+                        </div>
+                      </div>
+                    )}
+                        
                     </div>
+                    <Link to={`/products/${product.id}`}>
                     <div className="flex flex-col justify-between p-2">
                       <h4 className="text-lg font-medium">{product.name}</h4>
-                      <p className="text-sm mb-2">
-                      Quantity: {product.quantity} pieces
-                      </p>
                       <div className="flex flex-row justify-between">
                         <p className="text-lg text-[15px]">
                         Price: {product.price}RWF
