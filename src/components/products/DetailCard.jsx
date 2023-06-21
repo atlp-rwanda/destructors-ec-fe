@@ -19,6 +19,7 @@ const DetailCard = (props) => {
   const [picImage, setPickImage] = useState(product.images[0]);
   const { userRole } = useUserRoleState();
 
+
   const handleImageClick = (img) => {
     setPickImage(img);
   };
@@ -77,13 +78,19 @@ const DetailCard = (props) => {
               <Seller />
             ) : (
               <div className="flex xs:mt-7">
+                <div>
                 <AddToWishList productId={product.id}  />
+                </div>
+                <div>
                 <AddToCartButton productId={product.id} />
+                </div>
               </div>
             )}
           </div>
           {userRole === 'buyer' && (
+            <div className='relative left-[13%]'>
             <CreateReview productId={product.id} isReviewed={product.isReviewed} />
+            </div>
           )}
         </div>
       </div>

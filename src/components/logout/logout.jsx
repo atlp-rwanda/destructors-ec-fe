@@ -49,6 +49,8 @@ const setLogout = () => {
       const response = await dispatch(logoutUser()).unwrap();
       toast.success(response);
       navigate('/');
+      window.location.reload()
+      cancelConfirmation();
     } catch (error) {
       showErrorMessage(error);
     }

@@ -55,19 +55,19 @@ const Sidebar = ({ children }) => {
       path: '/dashboard/orders',
       name: 'Orders',
       icon: Orders,
-      scope: ['buyer', 'admin'],
+      scope: ['buyer'],
     },
     {
       path: '/seller/dashboard/products',
       name: 'Products',
       icon: Products,
-      scope: ['seller', 'admin'],
+      scope: ['seller'],
     },
     {
       path: '/seller/dashboard/sales',
       name: 'Sales',
       icon: Sales,
-      scope: ['seller', 'admin'],
+      scope: ['seller'],
     },
     {
       path: '/',
@@ -178,20 +178,6 @@ const Sidebar = ({ children }) => {
               <img src={item.icon} alt='Icon' className='w-[18px] h-[18px]' />
             </Link>
           ))}
-        <Button
-          className='!my-0 !p-0 h-full !bg-transparent  hover:text-[#ecffe7]'
-        >
-          <div
-            className={`flex text-gray-600 ${
-              inSmallMode ? 'justify-center' : ''
-            }`}
-
-          >
-            <img src={Logout} alt='Logout Icon' className='w-[24px] h-[24px] hover:bg-bgRed'onClick={handleLogoutIconClick} />
-            <div className='hidden'>Logout</div>
-            {showConfirmation && renderLogoutConfirmation()}
-          </div>
-        </Button>
       </div>
     </div>
   );

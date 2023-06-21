@@ -76,6 +76,12 @@ const SearchField = () => {
 
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
   return (
     <div>
       <div className="flex h-9 xs:hidden font-rubik">
@@ -96,6 +102,7 @@ const SearchField = () => {
               setSearchOptions(false);
             }, 200);
           }}
+          onKeyPress={handleKeyPress}
           className="border-2 border-secondary border-r-0 rounded-none border-l-slate-400 w-64 text-center outline-none"
         />
         <button className="border-2 rounded-r w-10 flex justify-center cursor-pointer hover:bg-[#2198e7] items-center bg-secondary text-white border-secondary" data-testid="searchButton" onClick={handleSearch}>
@@ -121,7 +128,7 @@ const SearchField = () => {
           handleRemoveSearchMode={handleRemoveSearchMode}
         />
       }
-      <div className=' bg-slate-100 mt-2 absolute z-50 w-[424px]'>
+      <div className=' bg-slate-100 mt-2 absolute z-50 w-[424px] max-h-[300px] overflow-scroll'>
         {
           results.map((item) => {
             return <div className=' p-3 hover:bg-secondary' key={item.id} onClick={() => handleSuggestions(item.name)}>{item.name}</div>;

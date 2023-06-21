@@ -17,7 +17,7 @@ const SucessPayment = () => {
     paymentStatus(paymentId);
   }, []);
 
-  const orderDetails = data.Orders.find(item => item.paymentId === paymentId);
+  const orderDetails = data?.Orders?.find(item => item.paymentId === paymentId);
   const product = (data.Orders.length > 0 && paymentId) ? orderDetails.products : [];
   return (
     <div>

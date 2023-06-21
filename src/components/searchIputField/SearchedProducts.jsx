@@ -102,7 +102,7 @@ function Product () {
             />
           </div> :
             <div>
-              <p className=" font-bold ... text-primary justify-center">Product Not Found</p>
+              <p className=" font-bold ... text-primary justify-center text-center">Product Not Found</p>
             </div>
           }
         </>

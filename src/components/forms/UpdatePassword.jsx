@@ -61,13 +61,10 @@ export const UpdatePassword = () => {
   };
 
   return (
-    <>
-      <main className="flex flex-col items-center justify-center overflow-y-auto overflow-x-hidden">
-        <section className="p-1 flex items-center justify-center w-full h-[100vh]">
           <form
             onSubmit={handleSubmit(onSubmit)}
             action=""
-            className="xs:flex-col xs:w-[100vw] xs:h-fit xs:gap-0 xs:justify-center xs:relative xs:top-[80px] border-[none]  flex relative justify-center items-start px-[25px] xs:px-[0px]font-poppins flex-col w-[920px] h-[250px] border rounded-xs mt-1"
+            className="xs:flex-col xs:pl-12px xs:m-auto xs:w-[100vw] xs:h-fit xs:gap-0 xs:justify-center justify-center xs:relative xs:top-[80px] border-[none]  flex relative items-start px-[25px] xs:px-[0px]font-poppins flex-col w-[60vw] min-w-fit h-[250px] border rounded-xs ml-[30%] xs:overflow-hidden"
           >
             <div>
               <div className="current xs:flex-col flex flex-row gap-3 justify-center items-start w-[100%] xs:right-[20px] relative top-[20%]">
@@ -77,11 +74,11 @@ export const UpdatePassword = () => {
                     id="currentPassword"
                     placeholder=""
                     type={currentOpenEye ? 'text' : 'password'}
-                    className={`xs:w-[93vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] w-[40.5vw] border focus:outline-none focus:ring-2`}
+                    className={`xs:w-[100vw] xs:rounded-xl xs:h-[58.77px] self-center text-[gray] xs:bg-[#EAF0F7] lg:w-[250%] border focus:outline-none focus:ring-2`}
                     {...register("currentPassword")}
                     error={errors?.currentPassword}
                   />
-                  <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] right-[365px] transform -translate-y-1/2">
+                  <div className="absolute lg:left-[163%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] transform -translate-y-1/2">
                     {currentOpenEye ? (
                       <AiOutlineEye  onClick={currentToggle} />
                     ) : (
@@ -97,11 +94,11 @@ export const UpdatePassword = () => {
                     id="newPassword"
                     type={newOpenEye ? 'text' : 'password'}
                     placeholder=""
-                    className={`xs:w-[93vw] xs:rounded-xl xs:bg-[#EAF0F7] text-[gray] xs:h-[58.77px] w-[40.5vw] border focus:outline-none focus:ring-2`}
+                    className={`xs:w-[100vw] xs:m-auto xs:rounded-xl xs:bg-[#EAF0F7] text-[gray] xs:h-[58.77px] lg:w-[235%] border ml-[10px] focus:outline-none focus:ring-2`}
                     {...register("newPassword")}
                     error={errors?.newPassword}
                   />
-                  <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[16%] right-[365px] transform -translate-y-1/2">
+                  <div className="absolute lg:left-[163%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[16%]  transform -translate-y-1/2">
                     {newOpenEye ? (
                       <AiOutlineEye  onClick={newToggle} />
                     ) : (
@@ -117,11 +114,11 @@ export const UpdatePassword = () => {
                     id="confirmPassword"
                     type={confirmOpenEye ? 'text' : 'password'}
                     placeholder=""
-                    className={`xs:w-[93vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] w-[40.5vw] border`}
+                    className={`xs:w-[100vw] xs:rounded-xl xs:h-[58.77px] text-[gray] xs:bg-[#EAF0F7] lg:w-[250%] border`}
                     {...register("confirmPassword")}
                     error={errors?.confirmPassword}
                   />
-                  <div className="absolute lg:left-[93%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] right-[365px] transform -translate-y-1/2">
+                  <div className="absolute lg:left-[163%] sm:left-[93%] xs:text-[35px] xs:top-[55%] xs:left-[83%] text-[gray] top-[15.5%] transform -translate-y-1/2">
                     {confirmOpenEye ? (
                       <AiOutlineEye  onClick={confirmToggle} />
                     ) : (
@@ -134,13 +131,10 @@ export const UpdatePassword = () => {
             <button
               type="submit"
               disabled={loading}
-              className="lg:left-[10%] xs:self-center xs:bottom-[30px] xs:shadow-xl xs:font-semibold shadow-[#85B839] lg:bottom-[37%] sm:l-[70%] sm:mr-[10%]  xs:mr-[0%] xs:h-[61.38px] xs:mt-[20%] xs:rounded-[12px] xs:w-[195px] w-[133px] h-[51px] self-end py-1 relative sm:bottom-[35%] mt-1 mr-36 bg-[#2D719D] text-white text-base font-poppins leading-[24px] hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="lg:left-[10%] xs:self-center xs:bottom-[30px] xs:shadow-xl xs:font-semibold shadow-[#85B839] lg:bottom-[37%] sm:l-[70%] sm:mr-[10%]  xs:mr-[0%] xs:h-[61.38px] xs:mt-[20%] xs:rounded-[12px] xs:w-[195px] w-[133px] h-[51px] self-end py-1 relative sm:bottom-[35%] mt-4 mr-36 bg-[#2D719D] text-white text-base font-poppins leading-[24px] hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               {loading ? 'Loading...' : 'Save'}
             </button>
           </form>
-        </section>
-      </main>
-    </>
   );
 };
