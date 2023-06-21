@@ -31,7 +31,6 @@ const getStatistics = createAsyncThunk('/statistics', async ()=>{
         Authorization:`Bearer ${token}`,
       },
     });
-    console.log(data,'--------------------------------------------------');
     return data;
   } catch (error){
     return error;
@@ -48,13 +47,16 @@ const getWishedProductsDetails = async (data1)=>{
 
 const getFilteredProducts = createAsyncThunk('/getExpiredProducts', async ()=>{
   try {
-    const {data} = await axios.get('/products', {
+    const data = await axios.get('/products', {
       headers:{
         Authorization:`Bearer ${token}`,
       },
     });
-    const products = data.items.filter((data) => data.isExpired);
-    return products;
+    if (data.data.products){
+      const products = data.items.filter((data) => data.isExpired);
+      return products;
+    }
+    return [];
   } catch (error){
     return error;
   }
