@@ -5,7 +5,6 @@ import LandingPage from '../pages/LandingPage';
 import ProductDetails from '../components/products/ProductDetails';
 import LoginPage from '../pages/auth/LoginPage';
 import CreateProduct from '../pages/CreateProductPage';
-import { UpdatePassword } from '../components/forms/UpdatePassword';
 import ViewProfile from '../pages/profile/ViewProfile';
 import EditProfile from '../pages/profile/EditProfile';
 import EditAddress from '../pages/profile/EditAddress';
@@ -27,6 +26,8 @@ import BottomNav from '../components/navBar/BottomNav';
 import ErrorPage from '../pages/ErrorPage';
 import AdminGetUsersPage from '../pages/GetUserPage';
 import Welcome from "../pages/WelcomePage";
+import OrdersPage from '../pages/profile/GetOrderPage';
+import UpdatePasswordPage from '../pages/profile/UpdatePasswordPage';
 
 const BuyerNavigator = () => {
   return (
@@ -38,9 +39,6 @@ const BuyerNavigator = () => {
         <Route path='/carts' element={<CartPage />}></Route>
         <Route path='/payment-success' element={<OrderedProduct />}></Route>
         <Route path='/product-wishes' element={<WishListComonent />}></Route>
-        <Route
-          path='/profile/update-password'
-          element={<UpdatePassword />}></Route>
         <Route path='/profile' element={<ViewProfile />}></Route>
         <Route path='/profile/update-profile' element={<EditProfile />}></Route>
         <Route path='/profile/update-address' element={<EditAddress />}></Route>
@@ -67,6 +65,9 @@ const navigator = () => {
   return (
     <div>
       <Routes>
+      <Route
+          path='/profile/update-password'
+          element={<UpdatePasswordPage />}></Route>
         <Route path='/users' element={<GetUsers />}></Route>
         <Route path='/dashboard' element={<DashboardLayout />}></Route>
         <Route path='/dashboard/users' element={<AdminGetUsersPage />}></Route>
@@ -83,6 +84,7 @@ const navigator = () => {
         <Route path='/*' element={<BuyerNavigator />}></Route>
         <Route path='/seller/*' element={<SellerNavigator />}></Route>
         <Route path='/home' element={<Welcome />}></Route>
+        <Route path="/dashboard/orders" element={<OrdersPage />}></Route>
       </Routes>
     </div>
   );

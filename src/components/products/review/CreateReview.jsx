@@ -15,6 +15,7 @@ const CreateReview = ({ productId }) => {
   const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch();
   const { userId } = useUserRoleState();
+  const [reviewVisible,setReviewVisible]=useState(true)
 
   useEffect(() => {
     const checkReview = async () => {
@@ -52,8 +53,16 @@ const CreateReview = ({ productId }) => {
       </div>
     );
   }
+  const handleVisible=()=>{
+      setReviewVisible(!reviewVisible)
+  }
   return (
     <div className="w-full">
+      <button onClick={handleVisible} className=" bg-[#2D719D] rounded-[10px] px-4 py-2 text-white font-[500]">
+        {reviewVisible ? "Hide Review":"add Review"}
+      </button>
+      {reviewVisible &&(
+        <>
       <p>Add your review</p>
       <br />
       <form className="border-2 p-4 w-full" onSubmit={handleSubmit}>
@@ -76,6 +85,9 @@ const CreateReview = ({ productId }) => {
           </button>
         </div>
       </form>
+      </>
+      )    
+}
     </div>
   );
 };
