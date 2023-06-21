@@ -82,9 +82,6 @@ function Product () {
                     <Link to={`/products/${product.id}`}>
                     <div className="flex flex-col justify-between p-2">
                       <h4 className="text-lg font-medium">{product.name}</h4>
-                      <p className="text-sm mb-2">
-                      Quantity: {product.quantity} pieces
-                      </p>
                       <div className="flex flex-row justify-between">
                         <p className="text-lg text-[15px]">
                         Price: {product.price}RWF

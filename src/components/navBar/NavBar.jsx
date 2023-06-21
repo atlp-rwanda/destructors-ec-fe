@@ -1,4 +1,3 @@
-import React, { useEffect,useState, useRef } from 'react';
 import logo from '../../assets/Logo (2).svg';
 import SearchField from '../searchIputField/SearchField';
 import totalCartItems from '../../utils/cartUtil';
@@ -9,6 +8,7 @@ import getUserInfo from '../../utils/getUserInfo';
 import Navigations from './Navigations';
 import UserLogin from './UserLogin';
 import Notification from '../notifications/Notification';
+import { useState, useEffect, useRef } from 'react';
 import { showSuccessMessage } from '../../utils/toast';
 import { io } from 'socket.io-client';
 import NotificationSound from "../notifications/16451_download_note_iphone_notification_ringtone_apple_sms_ringtones.mp3";
@@ -20,7 +20,7 @@ function NavBar () {
   const totalitems = cartItems.length;
   const pathname = window.location.pathname;
   const wishlistItems = useSelector((state) => state.wishListGet.wishlistData);
-  const totalwishlistitems = wishlistItems.length;
+  const totalwishlistitems = wishlistItems?.length;
   const info = getUserInfo();
   const [openNotification, setOpenNotification] = useState(false);
 
@@ -29,6 +29,10 @@ function NavBar () {
   const [notifications, setNotifications] = useState([]);
   const unReadNotification = useSelector((state) => state.notifications.value);
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProductWishilist());
+
+  }, []);
 
   function playAudio () {
     audioPlayer.current.play();
@@ -59,11 +63,6 @@ function NavBar () {
       playAudio();
     });
 
-    useEffect(() => {
-      dispatch(getProductWishilist());
-  
-    }, []);
-    
     return () => {
       newSocket.disconnect();
       newSocket.off('old-notification');

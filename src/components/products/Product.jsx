@@ -30,7 +30,7 @@ function Product(props) {
     };
     userFunction();
   }, []);
-  const userId = user ? user.user_details.id : null;
+  const userId = user ? user?.user_details?.id : null;
   useEffect(() => {
     searchMode;
   }, [searchMode]);

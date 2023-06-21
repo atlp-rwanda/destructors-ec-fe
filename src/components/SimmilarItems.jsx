@@ -9,11 +9,9 @@ import AddToWishList from './wishlist/AddToWishList';
 
 function SimmilarItems ({ page, categoryId, id } ) {
   const { products, status } = useProductAll(page);
-
-  const filteredProducts = products.items
-    ? products.items.filter((product) => product.categoryId === categoryId && product.id !== id)
+  const filteredProducts = products ? products.products.filter((product) => product.categoryId === categoryId && product.id !== id)
     : [];
-
+  
   const [hoveredProductId, setHoveredProductId] = useState(null);
   const [showAllProducts, setShowAllProducts] = useState(false);
 
@@ -75,11 +73,6 @@ function SimmilarItems ({ page, categoryId, id } ) {
               </Link>
             </div>
           ))}
-          {filteredProducts.length > 3 && !showAllProducts && (
-            <button className="my-4 py-2 px-4 border border-gray-400 rounded-md text-gray-700 hover:bg-gray-100" onClick={handleShowMore}>
-              Show More
-            </button>
-          )}
         </div>
       ) : (
 null 
