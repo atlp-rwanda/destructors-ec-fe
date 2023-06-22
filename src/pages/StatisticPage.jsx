@@ -4,10 +4,12 @@ import { useSelector } from "react-redux";
 import Sidebar from "../components/SideBar";
 import DashboardHeader from "../components/DashboardHeader";
 import { showErrorMessage } from "../utils/toast";
-import SalesList from "../components/sales/Sales";
+import UpStatisticsBar from "../components/seller/UpStatisticsBar";
+import WishedProducts from "../components/seller/WishedProducts";
+import ExpiredProducts from "../components/seller/ExpiredProducts";
 import getUserInfo from "../utils/getUserInfo";
 
-const SalesPage = () => {
+const StatisticPage = () => {
   const [user, setUser] = useState();
   const info = getUserInfo();
 
@@ -15,18 +17,18 @@ const SalesPage = () => {
     setUser(info);
   }, []);
   return (
-    <div className='flex'>
-      <div className='flex flex-col bg-[#F8F7FC] flex-grow mb-8'>
-        <div>
-          {/* {user?.data?.role === "seller" && ( */}
-          <div className='flex justify-center'>
-            <SalesList />
+    <div>
+      {user?.data?.role === "seller" && (
+        <>
+          <UpStatisticsBar />
+          <div className='w-[80%] flex gap-10 ml-10 xs:flex-col'>
+            <WishedProducts />
+            <ExpiredProducts />
           </div>
-          {/* )} */}
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
 
-export default SalesPage;
+export default StatisticPage;

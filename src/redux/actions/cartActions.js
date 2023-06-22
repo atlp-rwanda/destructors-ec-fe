@@ -1,35 +1,31 @@
-
-
 import { toast } from "react-toastify";
 import axios from "../app/customAxios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 const postCart = createAsyncThunk(
-  'cart/postCart',
-  async (cartData, { dispatch,rejectWithValue }) => {
+  "cart/postCart",
+  async (cartData, { dispatch, rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
 
-      const response = await axios.post('/carts', cartData);
+      const response = await axios.post("/carts", cartData);
       toast.success(response.data.message);
       dispatch(fetchCart());
 
       return response.data;
-     
-    
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  },
+  }
 );
 
 const fetchCart = createAsyncThunk(
-  'cart/fetchCart',
+  "cart/fetchCart",
   async (_, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('token');
-      if (token){
-        const response = await axios.get('/carts');
+      const token = localStorage.getItem("token");
+      if (token) {
+        const response = await axios.get("/carts");
         return response.data;
       }
     } catch (error) {
@@ -39,45 +35,49 @@ const fetchCart = createAsyncThunk(
 );
 
 const clearCart = createAsyncThunk(
-  'cart/clearCart',
+  "cart/clearCart",
   async (_, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
 
-
-      const response = await axios.put('/carts', null);
+      const response = await axios.put("/carts", null);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.message);
     }
-  },
+  }
 );
 
 const removeFromCart = createAsyncThunk(
-  'cart/removeFromCart',
+  "cart/removeFromCart",
   async (itemId, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const response = await axios.patch(`/carts/${itemId}`, null);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  },
+  }
 );
 
 const updateCartItemQuantity = createAsyncThunk(
-  'cart/updateCartItemQuantity',
+  "cart/updateCartItemQuantity",
   async ({ itemId }, { rejectWithValue }) => {
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post('/carts', {productId: itemId });
+      const token = localStorage.getItem("token");
+      const response = await axios.post("/carts", { productId: itemId });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  },
+  }
 );
 
-
-export { postCart, fetchCart, clearCart, removeFromCart, updateCartItemQuantity };
+export {
+  postCart,
+  fetchCart,
+  clearCart,
+  removeFromCart,
+  updateCartItemQuantity,
+};

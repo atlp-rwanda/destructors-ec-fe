@@ -1,27 +1,28 @@
-import ProductUpdate from '../components/forms/updateProductForm';
-import React, { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Sidebar from '../components/SideBar';
-import DashboardHeader from '../components/DashboardHeader';
-import { showErrorMessage } from '../utils/toast';
-import SalesList from '../components/sales/Sales';
-import getUserInfo from '../utils/getUserInfo';
+import ProductUpdate from "../components/forms/updateProductForm";
+import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Sidebar from "../components/SideBar";
+import DashboardHeader from "../components/DashboardHeader";
+import { showErrorMessage } from "../utils/toast";
+import SalesList from "../components/sales/Sales";
+import getUserInfo from "../utils/getUserInfo";
 
 const UpdateProductPage = () => {
   const [user, setUser] = useState();
+  const info = getUserInfo();
+
   useEffect(() => {
-    const info = getUserInfo();
     setUser(info);
   }, []);
   return (
     <div className='flex'>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className='flex flex-col bg-[#F8F7FC] flex-grow mb-8'>
-        <DashboardHeader />
+        {/* <DashboardHeader /> */}
         <Outlet />
         <div>
-          {user?.data?.role === 'seller' && (
+          {user?.data?.role === "seller" && (
             <div>
               <ProductUpdate />
             </div>

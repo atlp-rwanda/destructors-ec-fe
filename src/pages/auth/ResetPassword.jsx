@@ -2,13 +2,11 @@
 import middleImage from "../../public/images/middleImage.png";
 import bgImage from "../../public/images/bgsvg.svg";
 import ResetPasswordForm from "../../components/forms/ResetForm";
-import HomeNavbar from "../../components/HomeNavBar";
 
 const ResetPasswordPage = () => {
   return (
     <div>
       <div className='flex items-center'>
-        <HomeNavbar />
       </div>
       <div className='flex flex-col w-full md:flex-row md:h-full md:justify-between justify-center items-center xs:flex-grow recursive'>
         <img
@@ -18,7 +16,7 @@ const ResetPasswordPage = () => {
         />
         <div className='flex flex-col xs:items-center xs:w-full xs:px-6 '>
           <h1 className='text-3xl lg:text-[50px] mb-[3rem] xs:text-[20] xs:ml-4 ml-4 '>Reset Password</h1>
-          <p className='text-xl  xs:w-full text-xl xs:ml-4 ml-4 xs:mb-10'>
+          <p className='text-xl  xs:w-full xs:ml-4 ml-4 xs:mb-10'>
           Fill out your new password  And <br></br> confirm  it in their respective fields.
           </p>
         </div>

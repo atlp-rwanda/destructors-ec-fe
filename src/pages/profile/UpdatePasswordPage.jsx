@@ -5,13 +5,9 @@ import BottomNav from "../../components/navBar/BottomNav";
 const UpdatePasswordPage = () => {
   return (
     <div>
-      <NavBar />
-      <BottomNav/>
       <div className="relative w-fit left-[8.8%]">
       <ProfileMenu />
       </div>
-
- 
       <UpdatePassword />
       </div>
   );

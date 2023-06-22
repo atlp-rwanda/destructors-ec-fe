@@ -19,9 +19,6 @@ const SignupPage = () => {
 
   return (
     <div>
-      <div className='flex items-center'>
-        <HomeNavbar />
-      </div>
       <div className='flex flex-col w-full md:flex-row md:h-full md:justify-between justify-center items-center xs:flex-grow recursive'>
         <img
           src={bgImage}

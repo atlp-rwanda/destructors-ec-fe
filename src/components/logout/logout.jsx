@@ -92,7 +92,7 @@ const setLogout = () => {
         <div className='grid grid-cols-2 gap-2'>
           <div>
             <button
-              className='inline-flex ml-40 border border-red justify-center w-full px-2 py-1 text-base font-medium text-red bg-white rounded-lg hover:bg-white hover:text-bgRed focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-600'
+              className='inline-flex ml-40 border border-red justify-center w-full px-2 py-1 text-base font-medium text-red bg-white rounded-lg hover:bg-white hover:text-bgRed focus:ring-2 focus:outline-none '
               onClick={handleLogout}>
               Logout
             </button>
