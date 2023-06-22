@@ -11,7 +11,7 @@ import { signup } from "../../redux/reducers/signupSlice";
 import InputField from "./InputField";
 import Button from "./Button";
 
-function SignupForm () {
+function SignupForm() {
   const { isLoading } = useSelector((state) => state.signup);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
@@ -24,9 +24,8 @@ function SignupForm () {
 
   const onSubmit = async (userData) => {
     try {
-      // eslint-disable-next-line no-unused-vars
       const response = await dispatch(signup(userData)).unwrap();
-      showSuccessMessage("Successfully Registered");
+      showSuccessMessage("Successfully Registered, Please verify your Email!");
     } catch (error) {
       showErrorMessage(error.data.message);
     }
