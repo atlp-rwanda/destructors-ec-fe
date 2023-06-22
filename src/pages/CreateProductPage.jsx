@@ -1,17 +1,18 @@
-import CreateProduct from '../components/forms/CreateProductForm';
-import React, { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Sidebar from '../components/SideBar';
-import DashboardHeader from '../components/DashboardHeader';
-import { showErrorMessage } from '../utils/toast';
-import SalesList from '../components/sales/Sales';
-import getUserInfo from '../utils/getUserInfo';
+import CreateProduct from "../components/forms/CreateProductForm";
+import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Sidebar from "../components/SideBar";
+import DashboardHeader from "../components/DashboardHeader";
+import { showErrorMessage } from "../utils/toast";
+import SalesList from "../components/sales/Sales";
+import getUserInfo from "../utils/getUserInfo";
 
 const CreateProductPage = () => {
   const [user, setUser] = useState();
+  const info = getUserInfo();
+
   useEffect(() => {
-    const info = getUserInfo();
     setUser(info);
   }, []);
   return (
@@ -21,7 +22,7 @@ const CreateProductPage = () => {
         <DashboardHeader />
         <Outlet />
         <div>
-          {user?.data?.role === 'seller' && (
+          {user?.data?.role === "seller" && (
             <div>
               <CreateProduct />
             </div>

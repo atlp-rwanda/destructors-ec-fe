@@ -1,39 +1,36 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   fetchSales,
   fetchSalesDetails,
   updateStatus,
-} from '../../redux/reducers/saleSlice';
-import Rectangle from './utils/Rectangle';
-import vector1 from '../../assets/Vector1.svg';
-import vector2 from '../../assets/Vector2.svg';
-import vector3 from '../../assets/Vector3.svg';
-import getUserInfo from '../../utils/getUserInfo';
-
-import { showSuccessMessage, showErrorMessage } from '../../utils/toast';
-import Spinner from '../Spinner';
+} from "../../redux/reducers/saleSlice";
+import Rectangle from "./utils/Rectangle";
+import vector1 from "../../assets/Vector1.svg";
+import vector2 from "../../assets/Vector2.svg";
+import vector3 from "../../assets/Vector3.svg";
+import { showSuccessMessage, showErrorMessage } from "../../utils/toast";
 
 const SalesList = () => {
   const sales = useSelector((state) => state.sales?.sales?.Sales);
   const salesDetails = useSelector(
     (state) => state.salesDetails?.salesDetails?.Orders
   );
- 
+
   const error = useSelector((state) => state.sales.error);
   const dispatch = useDispatch();
-  const grad1 = 'from-blue-300 to-green-300';
-  const grad2 = 'from-orange-300 to-green-300';
-  const grad3 = 'from-violet-300 to-green-300';
+  const grad1 = "from-blue-300 to-green-300";
+  const grad2 = "from-orange-300 to-green-300";
+  const grad3 = "from-violet-300 to-green-300";
   let approvedSalesCount = 0;
   let rejectedSalesCount = 0;
 
   if (sales && sales.length) {
     approvedSalesCount = sales.filter(
-      (sale) => sale.status === 'approved'
+      (sale) => sale.status === "approved"
     ).length;
     rejectedSalesCount = sales.filter(
-      (sale) => sale.status === 'rejected'
+      (sale) => sale.status === "rejected"
     ).length;
   }
 
@@ -45,20 +42,17 @@ const SalesList = () => {
   const handleStatusUpdate = async (saleId, status) => {
     try {
       await dispatch(updateStatus({ saleId, status }));
-      showSuccessMessage('Sale status updated successfully.');
+      showSuccessMessage("Sale status updated successfully.");
       dispatch(fetchSales());
       dispatch(fetchSalesDetails());
     } catch (error) {
-      showErrorMessage('Failed to update sale status. Please try again.');
+      showErrorMessage("Failed to update sale status. Please try again.");
     }
   };
-
-
 
   if (error) {
     return <div>Error: {error}</div>;
   }
-
 
   return (
     <div>
@@ -67,20 +61,20 @@ const SalesList = () => {
           <Rectangle
             backgroundImage={grad1}
             vector={vector1}
-            size={sales?.length || '0'}
-            title={'New Sales'}
+            size={sales?.length || "0"}
+            title={"New Sales"}
           />
           <Rectangle
             backgroundImage={grad2}
             vector={vector2}
-            size={approvedSalesCount || '0'}
-            title={'Approved'}
+            size={approvedSalesCount || "0"}
+            title={"Approved"}
           />
           <Rectangle
             backgroundImage={grad3}
             vector={vector3}
-            size={rejectedSalesCount || '0'}
-            title={'Rejected'}
+            size={rejectedSalesCount || "0"}
+            title={"Rejected"}
           />
         </div>
       </div>
@@ -94,7 +88,8 @@ const SalesList = () => {
           <tr>
             <th
               scope='col'
-              className='py-3.5 pl-4 pr-3 text-left  text-[#848484] sm:pl-6'>
+              className='py-3.5 pl-4 pr-3 text-left  text-[#848484] sm:pl-6'
+            >
               Name
             </th>
             <th scope='col' className='px-3 py-3.5 text-left text-[#848484]'>
@@ -111,7 +106,8 @@ const SalesList = () => {
             </th>
             <th
               scope='col'
-              className='relative py-3.5 pl-3 pr-4 sm:pr-6 text-center text-[#848484]'>
+              className='relative py-3.5 pl-3 pr-4 sm:pr-6 text-center text-[#848484]'
+            >
               <span>Action</span>
             </th>
           </tr>
@@ -164,33 +160,37 @@ const SalesList = () => {
                   </span>
                 </td>
                 <td className='whitespace-nowrap px-3 py-4 py-1/2 text-sm text-gray-500'>
-                  {sale.createdAt.split('T')[0]}
+                  {sale.createdAt.split("T")[0]}
                 </td>
                 <td className='relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6'>
-                  {sale.status === 'approved' ? (
+                  {sale.status === "approved" ? (
                     <button
                       disabled
-                      className='mx-2 inline-flex rounded-full bg-[#80d8ee] font-we px-4 py-1/2 text-xs font-semibold leading-5 text-white'>
+                      className='mx-2 inline-flex rounded-full bg-[#80d8ee] font-we px-4 py-1/2 text-xs font-semibold leading-5 text-white'
+                    >
                       Approve
                     </button>
                   ) : (
                     <button
                       className='mx-2 inline-flex rounded-full bg-[#00A3C6] px-4 py-1/2 text-xs font-semibold leading-5 text-white'
-                      onClick={() => handleStatusUpdate(sale.id, 'approved')}>
+                      onClick={() => handleStatusUpdate(sale.id, "approved")}
+                    >
                       Approve
                     </button>
                   )}
 
-                  {sale.status === 'rejected' ? (
+                  {sale.status === "rejected" ? (
                     <button
                       disabled
-                      className='mx-2 inline-flex rounded-full bg-[#dc8c8c] px-4 py-1/2 text-xs font-semibold leading-5 text-white'>
+                      className='mx-2 inline-flex rounded-full bg-[#dc8c8c] px-4 py-1/2 text-xs font-semibold leading-5 text-white'
+                    >
                       Reject
                     </button>
                   ) : (
                     <button
                       className='mx-2 inline-flex rounded-full bg-red px-4 py-1/2 text-xs font-semibold leading-5 text-white'
-                      onClick={() => handleStatusUpdate(sale.id, 'rejected')}>
+                      onClick={() => handleStatusUpdate(sale.id, "rejected")}
+                    >
                       Reject
                     </button>
                   )}

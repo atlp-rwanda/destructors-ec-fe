@@ -1,36 +1,28 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-restricted-syntax */
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useProductAll } from './hooks';
-import Spinner from '../Spinner';
-import { useEffect, useState } from 'react';
-import AddToCartButton from '../cart/AddToCartButton';
-import SearchedProducts from '../searchIputField/SearchedProducts';
-import ChatApp from '../Chat/Chat.app';
-import { getUserProfile } from '../../services/userApi';
-import AddToWishList from '../wishlist/AddToWishList';
-import getUserInfo from '../../utils/getUserInfo';
-import StarRating from './review/StarRatings';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useProductAll } from "./hooks";
+import Spinner from "../Spinner";
+import { useEffect, useState } from "react";
+import AddToCartButton from "../cart/AddToCartButton";
+import SearchedProducts from "../searchIputField/SearchedProducts";
+import ChatApp from "../Chat/Chat.app";
+import { getUserProfile } from "../../services/userApi";
+import AddToWishList from "../wishlist/AddToWishList";
+import getUserInfo from "../../utils/getUserInfo";
+import StarRating from "./review/StarRatings";
 
 function Product(props) {
   const { page } = props;
   const { products, status } = useProductAll(page);
   const searchMode = useSelector((state) => state.searchMode.value);
-  const [user, setUser] = useState(null);
+  const [userId, setUser] = useState(null);
   const info = getUserInfo();
   useEffect(() => {
-    const userFunction = async () => {
-      try {
-        const response = await getUserProfile();
-        setUser(response);
-      } catch (error) {
-        return;
-      }
-    };
-    userFunction();
+    setUser(info?.data?.id);
   }, []);
-  const userId = user ? user?.user_details?.id : null;
+
   useEffect(() => {
     searchMode;
   }, [searchMode]);
@@ -51,21 +43,22 @@ function Product(props) {
       ) : (
         <div className='px-10 font-rubik'>
           <h3 className='flex justify-center my-5 text-2xl font-semi-bold'></h3>
-          {status === 'loading' && (
+          {status === "loading" && (
             <div className='flex justify-center items-center flex-col'>
               <p>Loading...</p>
-              <Spinner height={24} width={24}/>
+              <Spinner height={24} width={24} />
             </div>
           )}
-          {status === 'failed' && <p>Failed to fetch products.</p>}
-          {status === 'succeeded' && products ? (
+          {status === "failed" && <p>Failed to fetch products.</p>}
+          {status === "succeeded" && products ? (
             <div className='flex justify-center gap-7 flex-wrap'>
-              {products?.products.map((product) => (
+              {products?.products?.map((product) => (
                 <div
                   key={product.id}
                   className='card flex flex-col'
                   onMouseEnter={() => handleMouseEnter(product.id)}
-                  onMouseLeave={handleMouseLeave}>
+                  onMouseLeave={handleMouseLeave}
+                >
                   <div className='h-44 relative'>
                     <img
                       className='w-full object-cover h-full absolute rounded'
@@ -77,11 +70,12 @@ function Product(props) {
                         <div
                           className='flex flex-col-reverse cursor-pointer  '
                           style={{
-                            maxWidth: '70px',
-                            maxHeight: '170px',
+                            maxWidth: "70px",
+                            maxHeight: "170px",
                             bottom: 0,
-                          }}>
-                          <AddToCartButton productId={product.id} />
+                          }}
+                        >
+                          <AddToCartButton productId={product?.id} />
                           <AddToWishList productId={product.id} />
                         </div>
                       </div>
@@ -91,9 +85,7 @@ function Product(props) {
                     <div className='flex flex-col justify-between p-2'>
                       <h4 className='font-medium '>{product.name}</h4>
                       <div className='flex flex-row justify-between'>
-                        <p className='text-[13px]'>
-                          {product.price}RWF
-                        </p>
+                        <p className='text-[13px]'>{product.price}RWF</p>
                         <StarRating value={product.averageRating} />
                       </div>
                     </div>

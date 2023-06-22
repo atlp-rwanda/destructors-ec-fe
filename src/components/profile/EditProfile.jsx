@@ -178,7 +178,7 @@ const UpdateProfile = () => {
                                     className="mt-1 block w-2/3 border border-gray-300 py-2 px-3 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                                   />
                                   {errors.prefferedLanguage && (
-                                    <p className="mt-2 text-sm text-red-500">{errors.prefferedLanguage.message}</p>
+                                    <p className="mt-1 text-sm text-red">{errors.prefferedLanguage.message}</p>
                                   )}
                                 </div>
                               </div>
@@ -199,7 +199,7 @@ const UpdateProfile = () => {
                                     className="mt-1 block w-2/3 border border-gray-300 py-2 px-3 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                                   />
                                   {errors.prefferedCurrency && (
-                                    <p className="mt-2 text-sm text-red-500">{errors.prefferedCurrency.message}</p>
+                                    <p className="mt-1 text-sm text-red">{errors.prefferedCurrency.message}</p>
                                   )}
                                 </div>
                               </div>
@@ -223,7 +223,7 @@ const UpdateProfile = () => {
                                     <option value="other">Other</option>
                                   </select>
                                   {errors.gender && (
-                                    <p className="mt-2 text-sm text-red-500">{errors.gender.message}</p>
+                                    <p className="mt-2 text-sm text-red">{errors.gender.message}</p>
                                   )}
                                 </div>
                               </div>
@@ -244,7 +244,7 @@ const UpdateProfile = () => {
                                     className="mt-1 block w-2/3 border border-gray-300 py-2 px-3 focus:border-blue-500 focus:outline-none focus:ring-blue-500 sm:text-sm"
                                   />
                                   {errors.dateOfBirth && (
-                                    <p className="mt-2 text-sm text-red-500">{errors.dateOfBirth.message}</p>
+                                    <p className="mt-2 text-sm text-red">{errors.dateOfBirth.message}</p>
                                   )}
                                 </div>
                               </div>

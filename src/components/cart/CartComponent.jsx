@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchCart, clearCart, updateCartItemQuantity, removeFromCart } from '../../redux/actions/cartActions';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchCart,
+  clearCart,
+  updateCartItemQuantity,
+  removeFromCart,
+} from "../../redux/actions/cartActions";
 import { Link } from "react-router-dom";
-import classes from './CartComponent.module.css';
-import emptyCart from '../../assets/cart.svg';
-import { payment } from '../../redux/actions/paymentAction';
-import Button from '../forms/Button';
+import classes from "./CartComponent.module.css";
+import emptyCart from "../../assets/cart.svg";
+import { payment } from "../../redux/actions/paymentAction";
+import Button from "../forms/Button";
 const CartComponent = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const loading = useSelector((state) => state.payment.isLoading);
   const [isCartCleared, setCartCleared] = useState(false);
-  const [productId, setProductId] = useState('');
+  const [productId, setProductId] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [currentCart, setCurrentCart] = useState([]);
 
@@ -23,7 +28,7 @@ const CartComponent = () => {
   const handleClearCart = async () => {
     try {
       const result = await dispatch(clearCart());
-      if (result.meta.requestStatus === 'fulfilled') {
+      if (result.meta.requestStatus === "fulfilled") {
         alert(result.payload?.message);
         setCartCleared(true);
       } else {
@@ -31,7 +36,7 @@ const CartComponent = () => {
         alert(errorMessage);
       }
     } catch (error) {
-      console.error('Error while clearing cart:', error);
+      console.error("Error while clearing cart:", error);
     }
   };
 
@@ -45,9 +50,8 @@ const CartComponent = () => {
   };
 
   const handleUpdateQuantity = async (itemId) => {
-    await dispatch(updateCartItemQuantity({ itemId})).then(() => {
-      setProductId('');
-
+    await dispatch(updateCartItemQuantity({ itemId })).then(() => {
+      setProductId("");
     });
     dispatch(fetchCart());
   };
@@ -60,7 +64,7 @@ const CartComponent = () => {
         await fetchUpdatedCart();
       }
     } catch (error) {
-      console.error('Error while removing item from cart:', error);
+      console.error("Error while removing item from cart:", error);
     } finally {
       setLoading(false);
     }
@@ -70,96 +74,114 @@ const CartComponent = () => {
     try {
       await dispatch(fetchCart());
     } catch (error) {
-      console.error('Error while fetching updated cart:', error);
+      console.error("Error while fetching updated cart:", error);
     }
   };
 
-
   return (
     <div className='pt-5'>
-
-      <div >
+      <div>
         {isCartCleared || cartItems.length === 0 ? (
           <div>
-             <Link to={"/"}>
+            <Link to={"/"}>
               <div className='flex items-center justify-center'>
                 <p className='text-[#2D719D] underline text-lg font-semibold'>
                   Back to Home
                 </p>
               </div>
             </Link>
-            <img className='flex w-full  justify-center items-center  ' src={emptyCart} style={{ maxWidth: '70rem', maxHeight: '70rem' }} />
-            <p className='flex w-full  justify-center text-[#CCCCCC]'>your cart is empty</p>
+            <img
+              className='flex w-full  justify-center items-center  '
+              src={emptyCart}
+              style={{ maxWidth: "70rem", maxHeight: "70rem" }}
+            />
+            <p className='flex w-full  justify-center text-[#CCCCCC]'>
+              your cart is empty
+            </p>
           </div>
         ) : (
           <div className='flex justify-between m-5 xs:flex-col '>
             <div className={classes.containe}>
-              {cartItems && cartItems.map((item) => (
-                <div key={item.id} className='flex'>
-                  <div className={`xs:m-0 xs:bg-white ${classes.card}`}>
-                    {item.images && item.images.length > 0 && (
-                      <div className='xs:bg-[#F7FAFC] xs:flex xs:items-center xs:justify-center'> <img className=' xs:mt-0 xs:p-5 mt-20 ' src={item.images[0]} alt={item.name} style={{ maxWidth: '150px', maxHeight: '150px' }} /></div>
+              {cartItems &&
+                cartItems.map((item) => (
+                  <div key={item.id} className='flex'>
+                    <div className={`xs:m-0 xs:bg-white ${classes.card}`}>
+                      {item.images && item.images.length > 0 && (
+                        <div className='xs:bg-[#F7FAFC] xs:flex xs:items-center xs:justify-center'>
+                          {" "}
+                          <img
+                            className=' xs:mt-0 xs:p-5 mt-20 '
+                            src={item.images[0]}
+                            alt={item.name}
+                            style={{ maxWidth: "150px", maxHeight: "150px" }}
+                          />
+                        </div>
+                      )}
 
-                    )}
-
-                    <div className='flex'>
-                      <div className={classes.padding}>
-                        <p className={classes.p}>{item.name}</p>
-                        <p className={classes.p}>
-                          Quantity:{' '}
+                      <div className='flex'>
+                        <div className={classes.padding}>
+                          <p className={classes.p}>{item.name}</p>
+                          <p className={classes.p}>
+                            Quantity:{" "}
+                            {productId === item.id ? (
+                              <input
+                                type='number'
+                                value={item.quantity}
+                                className={classes.inputQuantity}
+                              />
+                            ) : (
+                              item.quantity
+                            )}
+                          </p>
                           {productId === item.id ? (
-                            <input
-                              type='number'
-                              value={item.quantity}
-                              className={classes.inputQuantity}
-                            />
+                            <button
+                              className={`m-2 rounded-md border-2 bg-[#2D719D] mt-8 py-1 px-5 text-white ${classes.editButton}`}
+                              onClick={() => handleUpdateQuantity(item.id)}
+                            >
+                              +
+                            </button>
                           ) : (
-                            item.quantity
+                            <button
+                              className={`m-2 rounded-md border-2 bg-[#2D719D] mt-8 py-1 px-5 text-white ${classes.editButton}`}
+                              onClick={() => handleEditQuantity(item.id)}
+                            >
+                              edit
+                            </button>
                           )}
-                        </p>
-                        {productId === item.id ? (
-                          <button
-                            className={`m-2 rounded-md border-2 bg-[#2D719D] mt-8 py-1 px-5 text-white ${classes.editButton}`} onClick={() => handleUpdateQuantity(item.id)}
-
-                          >+
-
-                          </button>
-                        ) : (
-                          <button
-                            className={`m-2 rounded-md border-2 bg-[#2D719D] mt-8 py-1 px-5 text-white ${classes.editButton}`}
-                            onClick={() => handleEditQuantity(item.id)}
-                          >
-                            edit
-                          </button>
-                        )}
-                      </div>
-                      <div className='mr-10'>
-                        <p className={classes.p}>$ {item.price}</p>
-                        {cartItems.length > 0 && (
-                          <button
-                            className='m-2 rounded-md border-2 border-[#37475A] mt-20 py-1 px-3 text-sm text-black'
-                            onClick={() => handleRemoveFromCart(item.id)}
-                          >
-                            remove
-                          </button>
-                        )}
+                        </div>
+                        <div className='mr-10'>
+                          <p className={classes.p}>$ {item.price}</p>
+                          {cartItems.length > 0 && (
+                            <button
+                              className='m-2 rounded-md border-2 border-[#37475A] mt-20 py-1 px-3 text-sm text-black'
+                              onClick={() => handleRemoveFromCart(item.id)}
+                            >
+                              remove
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-
+                ))}
             </div>
 
             <div className={` mt-5 xs:flex${classes.buttons} mdl:w-1/6`}>
               <div className='flex justify-evenly p-3 border-solid border-2 border-gray-200'>
                 <p className='md:font-bold'>total:</p>
-                <p>{cartItems.reduce((total, item) => total + item.price * item.quantity, 0)}</p>
+                <p>
+                  {cartItems.reduce(
+                    (total, item) => total + item.price * item.quantity,
+                    0
+                  )}
+                </p>
               </div>
 
-              <button className='w-full my-2 h-[45px] rounded-md bg-[#FEFCBF] mt-5 py-2 px-3 text-sm font-semibold text-black hover:bg-[#F6E05E]' onClick={handleClearCart}>
+              <button
+                className='w-full my-2 h-[45px] rounded-md bg-[#FEFCBF] mt-5 py-2 px-3 text-sm font-semibold text-black hover:bg-[#F6E05E]'
+                onClick={handleClearCart}
+              >
                 <p>clear cart</p>
-
               </button>
               {loading ? (
                 <>
@@ -183,7 +205,12 @@ const CartComponent = () => {
                   </Button>
                 </>
               ) : (
-                <Button type='submit' label='Checkout' className='w-full my-2 h-[45px] rounded-md bg-[#2D719D] mt-5 py-2 px-3 text-sm font-semibold text-white hover:bg-[#2198e7]' onClick={handleCheckout} />
+                <Button
+                  type='submit'
+                  label='Checkout'
+                  className='w-full my-2 h-[45px] rounded-md bg-[#2D719D] mt-5 py-2 px-3 text-sm font-semibold text-white hover:bg-[#2198e7]'
+                  onClick={handleCheckout}
+                />
               )}
             </div>
             <div></div>
