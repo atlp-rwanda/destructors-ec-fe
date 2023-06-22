@@ -58,6 +58,7 @@ const routes = [
       { path: "/auth/forget-password", element: <ForgetPasswordPage /> },
       { path: "/auth/reset-password", element: <ResetPasswordPage /> },
       { path: "/verify-email", element: <VerifyEmailPage /> },
+      { path: "/home", element: <Welcome /> },
       { path: "*", element: <ErrorPage /> },
     ],
   },
