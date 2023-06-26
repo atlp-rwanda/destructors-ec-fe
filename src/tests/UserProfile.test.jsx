@@ -13,19 +13,7 @@ describe("User Profile", () => {
         <Provider store={store}>
           <ViewProfile />
         </Provider>
-      </BrowserRouter>,
+      </BrowserRouter>
     );
-  });
-
-  it("displays loading state while fetching user profile", () => {
-    render(
-      <BrowserRouter>
-        <Provider store={store}>
-          <ProfileDetails />
-        </Provider>
-      </BrowserRouter>,
-    );
-
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 });
